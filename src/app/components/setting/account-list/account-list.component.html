@@ -1,0 +1,151 @@
+<main id="AppFrameMain" class="ui-app-frame__main ">
+  <div class="wrapper"
+
+       id="wrapper">
+    <div id="body" class="clearfix" data-tg-refresh="body">
+      <div class="has-bottom-messages" id="content">
+
+        <div id="settings-account" class="page">
+
+          <header class="ui-title-bar-container">
+            <div class="ui-title-bar ui-title-bar--separator">
+              <div class="ui-title-bar__navigation">
+
+
+                <div class="ui-breadcrumbs"><a href="javascript:;" routerLink="/settings"
+                                               class="ui-button ui-button--transparent ui-breadcrumb">
+                  <svg class="next-icon next-icon--size-20 next-icon--no-nudge">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#chevron-left-thinner"></use>
+                  </svg>
+                  <span class="ui-breadcrumb__item">Settings</span></a></div>
+              </div>
+              <div class="ui-title-bar__main-group">
+                <div class="ui-title-bar__heading-group"><span class="ui-title-bar__icon"><svg
+                  class="next-icon next-icon--color-slate-lighter next-icon--size-20"> <use
+                  xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-account"></use> </svg></span>
+                  <h1 class="ui-title-bar__title">Account</h1></div>
+              </div>
+            </div>
+            <div class="collapsible-header">
+              <div class="collapsible-header__heading"></div>
+            </div>
+          </header>
+
+
+          <section class="ui-annotated-section-container">
+            <div class="ui-annotated-section staff-members ">
+              <div class="ui-annotated-section__annotation">
+                <div class="ui-annotated-section__title"><h2 class="ui-heading">Accounts and permissions</h2></div>
+              </div>
+              <div class="ui-annotated-section__content">
+
+                <section class="ui-card">
+                  <header class="ui-card__header"><h2 class="ui-heading">Account owner</h2></header>
+
+                  <div class="ui-card__section">
+                    <div class="ui-type-container">
+                      <ul class="staff-accounts-list">
+                        <li class="staff-accounts-list__item">
+                          <div class="ui-stack">
+                            <span class="user-avatar user-avatar--style-1">
+                              <img class="user-avatar__gravatar-image"
+                                   alt=""
+                                   src="//proxy.shopifycdn.com/e0a0e6a0ed58ba985e889dabc3a41804bef9b17419cdebf52f176492ff3448e9/www.gravatar.com/avatar/7536c02717821895fc4b65e6756bbdac.jpg?s=40&amp;d=blank"><span
+                              class="user-avatar__initials">NL</span>
+                            </span>
+
+                            <div class="ui-stack-item ui-stack-item--fill">
+                              <div class="ui-stack ui-stack--wrap ui-stack--distribution-leading">
+                                <div class="ui-stack-item ui-stack-item--fill">
+                                  <p>
+                                    <a href="javascript:;" [routerLink]="['/settings/account', adminUser?.id]">{{adminUser?.full_name}}</a>
+                                  </p>
+
+                                  <p>
+                                    Last login was {{adminUser?.last_login_at | date : 'long'}}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="ui-card staff-present">
+                  <header class="ui-card__header">
+                    <div class="ui-stack ui-stack--wrap">
+                      <div class="ui-stack-item ui-stack-item--fill"><h2 class="ui-heading">Staff accounts</h2>
+                      </div>
+                      <div class="ui-stack-item">
+                        <div class="ui-stack ui-stack--wrap">
+                          <div class="ui-stack-item">
+                            <button class="ui-button btn--link"
+                                    type="button" name="button">Log out all staff accounts
+                            </button>
+                          </div>
+                          <div class="ui-stack-item">
+                            <a href="javascript:;" routerLink="/settings/account/new" class="btn--link">Add
+                              staff account</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </header>
+
+
+                  <div class="ui-card__section">
+                    <div class="ui-type-container">
+                      <ul *ngIf="dataSource.length" class="staff-accounts-list">
+                        <ng-container *ngFor="let account of dataSource">
+                          <li *ngIf="account.id != adminUser.id" class="staff-accounts-list__item">
+                            <div class="ui-stack">
+                            <span class="user-avatar user-avatar--style-3">
+                              <img class="user-avatar__gravatar-image"
+                                   alt=""
+                                   src="{{account?.image_url}}"><span
+                              class="user-avatar__initials">tn</span>
+                            </span>
+
+                              <div class="ui-stack-item ui-stack-item--fill">
+                                <div class="ui-stack ui-stack--wrap ui-stack--distribution-leading">
+                                  <div class="ui-stack-item ui-stack-item--fill">
+                                    <p>
+                                      <a href="javascript:;" [routerLink]="['/settings/account', account?.id]">{{account?.first_name}}
+                                        {{account?.last_name}}</a>
+                                    </p>
+
+                                    <p>
+                                      Invitation Sent
+                                    </p>
+                                  </div>
+                                  <div>
+                                    <!--<p>-->
+                                      <!--{{account?.permissions.toString()}}-->
+                                    <!--</p>-->
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </ng-container>
+
+
+                      </ul>
+                    </div>
+                  </div>
+                </section>
+
+
+              </div>
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>

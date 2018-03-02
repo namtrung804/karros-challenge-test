@@ -1,0 +1,445 @@
+<main id="AppFrameMain" class="ui-app-frame__main ">
+  <div class="wrapper" id="wrapper">
+    <div id="body" class="clearfix">
+      <div class="" id="content">
+        <div id="pages-new" class="page">
+          <form [formGroup]="pageForm" class="new_page" id="new_page" (ngSubmit)="submitFormPage()">
+            <header class="ui-title-bar-container">
+              <div class="ui-title-bar">
+                <div class="ui-title-bar__navigation">
+                  <div class="ui-breadcrumbs">
+                    <a routerLink="/pages"
+                       class="ui-button ui-button--transparent ui-breadcrumb">
+                      <svg class="next-icon next-icon--size-20 next-icon--no-nudge">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                             xlink:href="#chevron-left-thinner">
+                        </use>
+                      </svg>
+                      <span class="ui-breadcrumb__item">Pages</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="ui-title-bar__main-group">
+                  <div class="ui-title-bar__heading-group">
+                                        <span class="ui-title-bar__icon">
+                                            <svg class="next-icon next-icon--color-slate-lighter next-icon--size-20">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                     xlink:href="#next-pages">
+
+                                                </use>
+                                            </svg>
+                                        </span>
+                    <h1 class="ui-title-bar__title">Add page</h1>
+                  </div>
+                  <div class="action-bar">
+                    <div class="ui-title-bar__mobile-primary-actions">
+                      <div class="ui-title-bar__actions">
+                        <button
+                          class="ui-button ui-button--primary js-btn-loadable js-btn-primary ui-title-bar__action btn-primary has-loading"
+                          type="submit" name="button">Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ui-title-bar__actions-group">
+                  <div class="ui-title-bar__actions">
+                    <button
+                      class="ui-button ui-button--primary js-btn-loadable js-btn-primary ui-title-bar__action btn-primary has-loading"
+                      type="submit" name="button">Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="collapsible-header">
+                <div class="collapsible-header__heading">
+                </div>
+              </div>
+            </header>
+            <div class="ui-layout">
+              <div class="ui-layout__sections" formGroupName="page">
+                <div class="ui-layout__section ui-layout__section--primary">
+                  <div class="ui-layout__item">
+                    <div class="next-card">
+                      <div class="next-card__header">
+                        <h1 class="next-heading">Page details</h1>
+                      </div>
+                      <div class="section-content">
+                        <div class="next-card__section">
+                          <div class="ui-form__section">
+                            <div class="next-input-wrapper">
+                              <label class="next-label" for="page-name">Title</label>
+                              <input
+                                id="page-name"
+                                formControlName="title"
+                                [(ngModel)]="page.title"
+                                (focus)="focusTitle()"
+                                (input)="changeTitle($event.target.value)"
+                                placeholder="e.g. Contact us, Sizing chart, FAQs"
+                                class="next-input" size="30"
+                                type="text" name="page[title]">
+                            </div>
+                            <div class="ui-form__element">
+                              <label for="page-content">Content</label>
+                              <div context="rte">
+                                <div class="rte-toolbar for-code-view"
+                                     style="display: none">
+                                  <div class="rtetools clearfix">
+                                    <div class="rtetools-buttons">
+                                      <ul class="segmented fr">
+                                        <li>
+                                          <button
+                                            class="ui-button rte-show-editor btn-slim tooltip tooltip-bottom tooltip-right-align rte-command-active"
+                                            name=""
+                                            aria-label="Show Editor"
+                                            aria-pressed="true"
+                                            type="button">
+                                                                                        <span class="tooltip-container">
+                                                                                            <span class="tooltip-label">Show editor</span>
+                                                                                        </span>
+                                            <svg class="next-icon next-icon--color-slate next-icon--size-12">
+                                              <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                   xlink:href="#rte-html">
+                                              </use>
+                                            </svg>
+                                          </button>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="next-input-wrapper">
+                                  <label class="next-label helper--visually-hidden"
+                                         for="page-content">Body html</label>
+                                  <textarea class="ui-text-area s-none rte-plainview"
+                                            id="page-content" name="page[body_html]"
+                                            aria-hidden="true"
+                                            style="display: none;">
+                                                                    </textarea>
+                                </div>
+
+                                <div class="editor-container" id="page-content_parent">
+                                                                    <textarea [froalaEditor]
+                                                                              formControlName="body_html"
+                                                                              (input)="changeBodyHTML($event.target.value)"
+                                                                              [(ngModel)]="page.body_html">
+                                                                    </textarea>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ui-layout__item">
+                    <section class="ui-card"
+                             data-context="seoFields">
+                      <header class="ui-card__header">
+                        <div class="ui-stack ui-stack--wrap">
+                          <div class="ui-stack-item ui-stack-item--fill">
+                            <h2 class="ui-heading">Search engine listing preview</h2>
+                          </div>
+                          <div class="ui-stack-item">
+                            <div class="ui-stack ui-stack--wrap">
+                              <div class="ui-stack-item">
+                                <button class="ui-button ui-button--link"
+                                        (click)="editSearchEngine = !editSearchEngine"
+                                        type="button" name="button">Edit website SEO
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </header>
+                      <div class="ui-card__section">
+                        <div class="ui-type-container">
+                          <div class="google-preview"
+                               [class.hide]="!page.metafields_global_title_tag && !page.handle && !page.metafields_global_description_tag">
+                            <span class="google__title">{{page.title}}</span>
+                            <div class="google__url">
+                              https://mybeautyfriend.com/pages/<span>{{page.handle}}</span>
+                            </div>
+                            <div class="google__description">
+                              {{page.metafields_global_description_tag}}
+                            </div>
+                          </div>
+                          <p
+                            [class.hide]="page.metafields_global_title_tag || page.handle || page.metafields_global_description_tag">
+                            Add a title and description to see how this page might appear in
+                            a search engine listing.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="ui-card__section" [class.hide]="!editSearchEngine">
+                        <div class="ui-type-container">
+
+                          <div class="ui-form__section">
+                            <div class="next-input-wrapper">
+                              <div class="ui-form__label-wrapper">
+                                <label class="next-label" for="seo-title-tag">Page
+                                  title
+                                </label>
+                                <span class="type--subdued">{{page.metafields_global_title_tag.length}} of 70 characters used</span>
+                              </div>
+                              <input id="seo-title-tag"
+                                     editable-placeholder="true" class="next-input"
+                                     size="30" type="text"
+                                     name="page[metafields_global_title_tag]"
+                                     placeholder=""
+                                     maxlength="70"
+                                     formControlName="metafields_global_title_tag"
+                                     [(ngModel)]="page.metafields_global_title_tag">
+                            </div>
+
+                            <div class="next-input-wrapper">
+                              <div class="ui-form__label-wrapper">
+                                <label class="next-label" for="seo-description-tag">Meta
+                                  description
+                                </label>
+                                <span class="type--subdued">{{page.metafields_global_description_tag.length}} of 160 characters used</span>
+                              </div>
+                              <textarea id="seo-description-tag"
+                                        editable-placeholder="true" class="ui-text-area"
+                                        name="page[metafields_global_description_tag]"
+                                        placeholder=""
+                                        maxlength="160"
+                                        formControlName="metafields_global_description_tag"
+                                        [(ngModel)]="page.metafields_global_description_tag">
+                                                            </textarea>
+                            </div>
+                            <div class="ui-form__section">
+                              <div class="next-input-wrapper">
+                                <label class="next-label"
+                                       for="object-handle">URL
+                                  and handle
+                                </label>
+                                <div class="next-input--stylized">
+                                  <span class="next-input__add-on next-input__add-on--before">https://mybeautyfriend.com/pages/</span>
+                                  <input id="object-handle"
+                                         editable-placeholder="true"
+                                         class="next-input next-input--invisible"
+                                         size="30" type="text" name="page[handle]"
+                                         placeholder=""
+                                         formControlName="handle"
+                                         [(ngModel)]="page.handle">
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+                <div class="ui-layout__section ui-layout__section--secondary">
+                  <div class="ui-layout__item">
+
+                    <div class="next-card">
+                      <header class="next-card__header">
+                        <h3 class="next-heading">Visibility</h3>
+                      </header>
+                      <section class="next-card__section">
+                        <div class="visibility">
+                          <div class="ui-form__section">
+                            <div class="ui-form__element">
+                              <fieldset class="ui-choice-list">
+                                <ul>
+                                  <li>
+                                    <div class="next-input-wrapper">
+                                      <label class="next-label next-label--switch"
+                                             for="ispublished-visible"> Visible
+                                        <span class="type--subdued"
+                                              [class.hide]="page.published == 0 || publishDate == null">(as of
+                                                                                    <span>{{publishDate | date: 'long'}}</span>)
+                                                                                </span>
+                                      </label>
+                                      <input type="radio" name="published"
+                                             id="ispublished-visible"
+                                             value="1"
+                                             class="next-radio"
+                                             formControlName="published"
+                                             [(ngModel)]="page.published"
+                                             [checked]="page.published === 1"
+                                             (click)="setVisibleDate();">
+                                      <span class="next-radio--styled"></span>
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <div class="next-input-wrapper">
+                                      <label class="next-label next-label--switch"
+                                             for="ispublished-hidden"> Hidden
+                                        <span class="type--subdued"
+                                              [class.hide]="page.published == 1 || !publishDate ">
+                                                                                    (will become visible on
+                                                                                    <span>{{publishDate | date: 'long'}}</span>)
+                                                                                </span>
+                                      </label>
+                                      <input type="radio" name="published"
+                                             id="ispublished-hidden"
+                                             value="0"
+                                             formControlName="published"
+                                             [(ngModel)]="page.published"
+                                             [checked]="page.published === 0"
+                                             class="next-radio"
+                                             (click)="setHiddenDate();">
+                                      <span class="next-radio--styled"></span>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </fieldset>
+                            </div>
+                            <div class="ui-form__element" [class.hide]="isShowSetLink">
+                              <button class="ui-button btn--link" type="button"
+                                      name="button" (click)="isShowSetLink = true">Set a
+                                specific publish date
+                              </button>
+                            </div>
+                          </div>
+                          <!--Time picker-->
+                          <div id="publishable_fields" [class.hide]="!isShowSetLink">
+                            <div class="ui-form__section">
+                              <div class="next-input-wrapper">
+                                <label class="next-label"
+                                       for="publishDate">Publish
+                                  Date</label>
+                                <p-calendar [(ngModel)]="publishDate" showTime="true"
+                                            formControlName="published_at"
+                                            hourFormat="12" showButtonBar="true"
+                                            [defaultDate]="ToDay"
+                                            [minDate]="ToDay"
+                                            [inputId]="'publishDate'"
+                                            [showIcon]="true"
+                                            [locale]="vi"
+                                            [placeholder]="publishDate ? (publishDate) : 'Select a date...'">
+                                </p-calendar>
+                              </div>
+                              <div class="ui-form__element">
+                                <button class="ui-button btn--link"
+                                        type="button" name="button"
+                                        (click)="setHiddenDate();">Clear date...
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                          <!--END Time picker-->
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                  <div class="ui-layout__item">
+                    <div class="next-card">
+                      <header class="next-card__header">
+                        <h3 class="next-heading">Template</h3>
+                      </header>
+                      <section class="next-card__section">
+                        <p class="ssb">Select a template for this page.</p>
+                        <div class="next-input-wrapper">
+                          <label class="next-label" for="page_template_suffix">Template
+                            suffix
+                          </label>
+                          <div class="ui-select__wrapper">
+                            <select class="ui-select"
+                                    name="page[template_suffix]"
+                                    id="page_template_suffix"
+                                    formControlName="template_suffix"
+                                    [(ngModel)]="page.template_suffix">
+                              <option value="">page</option>
+                              <option value="contact">page.contact</option>
+                              <option value="full-width">page.full-width</option>
+                              <option value="sidebar-left">page.sidebar-left</option>
+                              <option value="sidebar-right">page.sidebar-right</option>
+                            </select>
+                            <svg class="next-icon next-icon--size-16">
+                              <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                   xlink:href="#select-chevron"></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ui-page-actions ui-page-actions--has-secondary">
+              <div class="ui-page-actions__container">
+                <div class="ui-page-actions__actions ui-page-actions__actions--secondary">
+                  <div class="ui-page-actions__button-group">
+                    <div class="modal modal_source" id="modal_container"
+                         [ngStyle]="{'display' : isShowDelete ? 'block' : 'none'}">
+                      <header>
+                        <h2>Delete <strong>{{ page.title }}</strong>?</h2>
+                        <button class="ui-button btn--link close-modal" type="button"
+                                (click)="isShowDelete = false;" name="button">Close modal
+                        </button>
+                      </header>
+                      <form (submit)="submitDeletePage(page.id);">
+                        <div class="body">
+                          <p>Are you sure you want to delete the page
+                            <strong>{{ page.title }}</strong>? This action cannot be
+                            reversed.</p>
+                        </div>
+                        <div class="buttons">
+                          <button class="ui-button close-modal" type="button"
+                                  (click)="isShowDelete = false;" name="button">Cancel
+                          </button>
+                          <input type="submit" class="btn btn-destroy-no-hover"
+                                 value="Delete"/>
+                        </div>
+                      </form>
+                    </div>
+                    <button class="ui-button btn-destroy" type="button"
+                            (click)="isShowDelete = true;"
+                            name="button">Delete page
+                    </button>
+                  </div>
+                </div>
+                <div class="ui-page-actions__actions ui-page-actions__actions--primary">
+                  <div class="ui-page-actions__button-group">
+                    <a class="btn" routerLink="/pages">Cancel</a>
+                    <button class="ui-button ui-button--primary js-btn-primary js-btn-loadable btn-primary has-loading"
+                            type="submit" name="commit">Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Modal wrapper-->
+            <div [class.visible]="onHidden()" class="modal-bg" id="modal_backdrop" tabindex="0"></div>
+            <!--END Modal wrapper-->
+            <!--Flash message-->
+            <div class="ui-flash-wrapper" [class.ui-flash-wrapper--is-visible]="isShowFlashMessage"
+                 id="UIFlashWrapper">
+              <div class="ui-flash ui-flash--nav-offset" id="UIFlashMessage">
+                <p class="ui-flash__message" tabindex="-1" aria-live="off" role="status">
+                  {{ flash_message }}</p>
+                <div class="ui-flash__close-button">
+                  <button class="ui-button ui-button--transparent ui-button--icon-only"
+                          aria-label="Close message" type="button" name="button">
+                    <svg class="next-icon next-icon--color-white next-icon--size-12">
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-remove">
+                        <svg id="next-remove" width="100%" height="100%">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                            <path
+                              d="M18.263 16l10.07-10.07c.625-.625.625-1.636 0-2.26s-1.638-.627-2.263 0L16 13.737 5.933 3.667c-.626-.624-1.637-.624-2.262 0s-.624 1.64 0 2.264L13.74 16 3.67 26.07c-.626.625-.626 1.636 0 2.26.312.313.722.47 1.13.47s.82-.157 1.132-.47l10.07-10.068 10.068 10.07c.312.31.722.468 1.13.468s.82-.157 1.132-.47c.626-.625.626-1.636 0-2.26L18.262 16z"></path>
+                          </svg>
+                        </svg>
+                      </use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!--END Flash message-->
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>

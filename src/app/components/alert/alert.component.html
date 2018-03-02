@@ -1,0 +1,18 @@
+<div *ngIf="message" class="ui-layout__section">
+  <div class="ui-layout__item">
+    <div class="ui-banner ui-banner--status-{{classNoti}} {{fadeIn ? 'fadeIn' : 'fadeOut'}}  hide-when-printing" tabindex="-1" role="alert"
+         data-notice-announced="true">
+      <div class="ui-banner__ribbon">
+        <svg *ngIf="message.type=='success'" class="next-icon next-icon--size-20 next-icon--no-nudge">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#checkmark-circle"></use>
+        </svg>
+        <svg *ngIf="message.type=='error'" class="next-icon next-icon--size-20 next-icon--no-nudge">
+          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#error-major"></use>
+        </svg>
+      </div>
+      <div class="ui-banner__content">
+        <h2 class="ui-banner__title" [innerHTML]="message.text"></h2>
+      </div>
+    </div>
+  </div>
+</div>

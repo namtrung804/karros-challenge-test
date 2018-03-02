@@ -1,0 +1,18 @@
+/* SCSS File */
+.page-collections-show {
+  #select-products-automatically {
+    .ui-stack--spacing-tight > * {
+      margin-top: 1.6rem !important;
+    }
+    .remove-option {
+      top: 8px;
+    }
+
+  }
+  #js-products{
+    .section-content{
+      float: none;
+      padding: 0;
+    }
+  }
+}

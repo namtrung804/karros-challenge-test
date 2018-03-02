@@ -1,0 +1,814 @@
+<main id="AppFrameMain" class="ui-app-frame__main ">
+  <div class="wrapper"
+       id="wrapper">
+    <div id="body" class="clearfix">
+      <div class="" id="content">
+        <div class="mobile-app-banner">
+          <button class="ui-button ui-button--transparent ui-button--icon-only ui-dismissible__action"
+                  type="button" name="button">
+            <svg class="next-icon next-icon--size-12">
+              <use xlink:href="#next-remove"></use>
+            </svg>
+          </button>
+          <div class="mobile-app-banner__logo-container">
+            <img alt="Shopify Logo" class="mobile-app-banner__logo"
+                 src="//cdn.shopify.com/s/assets/admin/shopify-app-logo-fb28b5e698e86bb736999c5294d8b4f9a01f6ea9efe4cd382aa6f2bbe52070d2.png">
+          </div>
+          <div class="mobile-app-banner__content">
+            <p class="mobile-app-banner__heading">
+              Shopify
+            </p>
+            <p class="mobile-app-banner__subheading">
+              Official app
+            </p>
+          </div>
+          <a href="http://www.shopify.com/install/detect" class="ui-button"
+             target="_blank" rel="noopener noreferrer">Install</a>
+        </div>
+
+
+        <div id="products-index" class="page products-page has-contextual-help">
+
+
+          <header class="ui-title-bar-container ui-title-bar-container--full-width">
+            <div class="ui-title-bar">
+              <div class="ui-title-bar__main-group">
+                <div class="ui-title-bar__heading-group"><span class="ui-title-bar__icon"><svg
+                  class="next-icon next-icon--color-slate-lighter next-icon--size-20"> <use
+                  xlink:href="#next-products"></use> </svg></span>
+                  <h1 class="ui-title-bar__title">Orders</h1></div>
+                <div class="action-bar">
+                  <div class="action-bar__item action-bar__item--link-container hide">
+                    <div class="action-bar__top-links">
+                      <button class="ui-button ui-button--transparent action-bar__link"
+                              type="button"
+                              name="button">
+                        <svg class="next-icon next-icon--size-20 action-bar__link-icon next-icon--no-nudge">
+                          <use xlink:href="#next-export-minor"></use>
+                        </svg>
+                        Export
+                      </button>
+                      <button class="ui-button ui-button--transparent action-bar__link"
+                              type="button"
+                              name="button">
+                        <svg class="next-icon next-icon--size-20 action-bar__link-icon next-icon--no-nudge">
+                          <use xlink:href="#next-import-minor"></use>
+                        </svg>
+                        Import
+                      </button>
+                    </div>
+                    <div class="action-bar__more">
+                      <div class="ui-popover__container">
+                        <button class="ui-button ui-button--transparent" type="button" name="button"><span
+                          class="action-bar__more-label">More actions</span>
+                          <svg class="next-icon next-icon--size-20">
+                            <use xlink:href="#next-disclosure"></use>
+                          </svg>
+                        </button>
+                        <div class="ui-popover ui-popover--align-edge">
+                          <div class="ui-popover__tooltip"></div>
+                          <div class="ui-popover__content-wrapper">
+                            <div class="ui-popover__content">
+                              <div class="ui-popover__pane">
+                                <ul class="action-bar__popover-wrapper">
+                                  <li>
+                                    <ul class="ui-action-list">
+                                      <li class="ui-action-list__item">
+                                        <button class="ui-action-list-action"
+                                                type="button"
+                                                name="button"><span class="ui-action-list-action__text"><span
+                                          class="action-bar__popover-icon-wrapper"><svg
+                                          class="next-icon next-icon--color-blue next-icon--size-16 action-bar__popover-icon"> <use
+                                          xlink:href="#next-export-minor"></use> </svg></span>Export</span></button>
+                                      </li>
+                                      <li class="ui-action-list__item">
+                                        <button class="ui-action-list-action"
+                                                type="button"
+                                                name="button"><span class="ui-action-list-action__text"><span
+                                          class="action-bar__popover-icon-wrapper"><svg
+                                          class="next-icon next-icon--color-blue next-icon--size-16 action-bar__popover-icon"> <use
+                                          xlink:href="#next-import-minor"></use> </svg></span>Import</span></button>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <div class="ui-popover__section ui-popover__section--no-padding"><h3
+                                      class="ui-subheading action-bar__popover-label">Other actions</h3></div>
+                                    <ul class="ui-action-list">
+                                      <li class="ui-action-list__item"><a
+                                        href="javascript:"
+                                        class="ui-action-list-action"><span
+                                        class="ui-action-list-action__text"><span
+                                        class="action-bar__popover-icon-wrapper"><img role="presentation"
+                                                                                      class="action-bar__popover-icon action-bar__popover-icon--image"
+                                                                                      src="https://cdn.shopify.com/s/files/applications/60fca9c7f3400ddd43004e94b1355691_512x512.png?1390232038"
+                                                                                      alt="60fca9c7f3400ddd43004e94b1355691 512x512"
+                                                                                      height="20" width="20"></span>View all products with reviews</span></a>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--<div class="ui-title-bar__mobile-primary-actions">-->
+                  <!--<div class="ui-title-bar__actions">-->
+                  <!--<a routerLink="/order/new" href="javascript:;"-->
+                  <!--class="ui-button ui-button&#45;&#45;primary ui-title-bar__action">Create Order</a>-->
+                  <!--</div>-->
+                  <!--</div>-->
+                </div>
+              </div>
+              <!--<div class="ui-title-bar__actions-group">-->
+              <!--<div class="ui-title-bar__actions">-->
+              <!--<a routerLink="/order/new" href="javascript:;"-->
+              <!--class="ui-button ui-button&#45;&#45;primary ui-title-bar__action">Create Order</a></div>-->
+              <!--</div>-->
+            </div>
+            <div class="collapsible-header">
+              <div class="collapsible-header__heading"></div>
+            </div>
+          </header>
+
+
+          <a href="javascript:"
+             type="text/html" class="modal_source" style="display: none"></a>
+
+          <div class="ui-layout ui-layout--full-width">
+            <div class="ui-layout__sections">
+              <app-alert style="width: 100%"></app-alert>
+              <div class="ui-layout__section">
+
+
+                <div class="ui-layout__item">
+                  <section class="ui-card">
+                    <div class="has-bulk-actions">
+
+
+                      <div>
+
+
+                        <div class="next-tab__container ">
+                          <ul class="next-tab__list" role="tablist">
+                            <li role="presentation">
+                              <a class="next-tab next-tab--is-active" tabindex="-1" aria-controls="NextTabPanel-1-all"
+                                 aria-selected="false" aria-label="All orders"
+                                 (click)="selectTab('all',$event)" href="javascript:">All</a></li>
+                            <li role="presentation"><a class="next-tab" tabindex="-1"
+                                                       aria-controls="NextTabPanel-2-open" aria-selected="false"
+                                                       (click)="selectTab('open',$event)" href="javascript:">Open</a>
+                            </li>
+                            <li role="presentation"><a class="next-tab" tabindex="0"
+                                                       aria-controls="NextTabPanel-3-unfulfilled" aria-selected="true"
+                                                       (click)="selectTab('unfulfilled',$event)" href="javascript:">Unfulfilled</a>
+                            </li>
+                            <li role="presentation"><a class="next-tab" tabindex="-1"
+                                                       aria-controls="NextTabPanel-4-unpaid" aria-selected="false"
+                                                       (click)="selectTab('unpaid',$event)"
+                                                       href="javascript:">Unpaid</a>
+                            </li>
+                            <li class="next-tab__list__disclosure-item dropdown-container"><span
+                              class="next-tab next-tab--disclosure" tabindex="-1"
+                              aria-selected="true" aria-label="dropdown item" role="button"><svg
+                              class="next-icon next-icon--size-16 next-icon--no-nudge"> <use
+                              xmlns:xlink="http://www.w3.org/1999/xlink"
+                              xlink:href="#next-ellipsis"></use> </svg></span>
+                              <div class="dropdown">
+                                <ul class="next-tab__list--vertical" role="tablist"></ul>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="next-card__section next-card__section--no-bottom-spacing">
+
+                          <div class="obj-filter hide-when-printing table-filter-container">
+
+                            <div class="next-input-wrapper"><label class="next-label"></label>
+                              <div class="next-field__connected-wrapper">
+                                <div class="next-field--connected--no-flex">
+                                  <div class="ui-popover__container">
+                                    <button (click)="isCustomFilter = !isCustomFilter" class="ui-button" type="button"
+                                            name="button">
+                                      Filter <span class="btn__text--deprioritize">orders</span>
+                                      <svg class="next-icon next-icon--size-20">
+                                        <use xlink:href="#next-disclosure"></use>
+                                      </svg>
+                                    </button>
+                                    <div [class.ui-popover--is-active]="isCustomFilter"
+                                         class="ui-popover ui-popover--align-edge ui-popover--is-positioned-beneath "
+                                         data-popover-css-vertical-margin="13" data-popover-css-horizontal-margin="16"
+                                         data-popover-css-max-height="300" data-popover-css-max-width="550"
+                                         id="ui-popover--11" aria-labelledby="ui-popover-activator--11"
+                                         aria-expanded="true" role="dialog">
+                                      <div class="ui-popover__tooltip" style="left: 72px;"></div>
+                                      <div class="ui-popover__content-wrapper">
+                                        <div class="ui-popover__content" style="max-height: 238px; width: 188px;">
+                                          <div class="ui-popover__section">
+                                            <div class="add-filters">
+                                              <form class="clearfix">
+                                                <p class="filter-heading">Show all orders where:</p>
+                                                <div class="filter-builder">
+                                                  <div class="next-input-wrapper--half-spacing">
+                                                    <div class="next-input-wrapper"><label
+                                                      class="next-label helper--visually-hidden" for="filter-select-1">Select
+                                                      a filter</label>
+                                                      <div class="ui-select__wrapper">
+                                                        <select (change)=" selectedFilter = $event.target.value"
+                                                                name="filter-select-1" id="filter-select-1"
+                                                                class="ui-select">
+                                                          <option value="">Select a filter...</option>
+                                                          <option value="status-status">Status</option>
+                                                          <option value="financial_status">Payment
+                                                            status
+                                                          </option>
+                                                          <option value="fulfillment_status">
+                                                            Fulfillment status
+                                                          </option>
+                                                          <option value="tag-tagged_with">Tagged with</option>
+                                                          <option value="processed_at-date">Date</option>
+                                                          <option value="customer_id-customer">Customer</option>
+                                                        </select>
+                                                        <svg class="next-icon next-icon--size-16">
+                                                          <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                               xlink:href="#select-chevron"></use>
+                                                        </svg>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div *ngIf="selectedFilter == 'status-status'">
+
+                                                    <div class="next-input-wrapper--half-spacing">
+                                                      <div class="next-input-wrapper"><label
+                                                        class="next-label helper--visually-hidden"
+                                                        for="filter-select-status-status">Select a value</label>
+                                                        <div class="ui-select__wrapper"><select
+                                                          name="filter-select-status-status"
+                                                          id="filter-select-status-status"
+                                                          class="ui-select">
+                                                          <option value="">Select a value...</option>
+                                                          <option value="open">open</option>
+                                                          <option value="closed">archived</option>
+                                                          <option value="cancelled">cancelled</option>
+                                                          <option value="any">any</option>
+                                                        </select>
+                                                          <svg class="next-icon next-icon--size-16">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                 xlink:href="#select-chevron"></use>
+                                                          </svg>
+                                                        </div>
+                                                      </div>
+
+                                                    </div>
+                                                    <div class="next-input-wrapper--vertical-block">
+                                                      <button class="ui-button btn-slim add-filter filtering-complete"
+                                                              type="submit" name="button">Add filter
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                  <div *ngIf="selectedFilter == 'financial_status'">
+
+                                                    <div class="next-input-wrapper--half-spacing">
+                                                      <div class="next-input-wrapper"><label
+                                                        class="next-label helper--visually-hidden"
+                                                        for="filter-select-financial_status-payment_status">Select a
+                                                        value</label>
+                                                        <div class="ui-select__wrapper">
+                                                          <select #financial_status
+                                                                  name="filter-select-financial_status-payment_status"
+                                                                  id="filter-select-financial_status-payment_status"
+                                                                  class="ui-select">
+                                                            <option value="">Select a value...</option>
+                                                            <option value="authorized">authorized</option>
+                                                            <option value="paid">paid</option>
+                                                            <option value="partially_refunded">partially refunded
+                                                            </option>
+                                                            <option value="partially_paid">partially paid</option>
+                                                            <option value="pending">pending</option>
+                                                            <option value="refunded">refunded</option>
+                                                            <option value="unpaid">unpaid</option>
+                                                            <option value="voided">voided</option>
+                                                            <option value="any">any</option>
+                                                          </select>
+                                                          <svg class="next-icon next-icon--size-16">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                 xlink:href="#select-chevron"></use>
+                                                          </svg>
+                                                        </div>
+                                                      </div>
+
+                                                    </div>
+                                                    <div class="next-input-wrapper--vertical-block">
+                                                      <button
+                                                        (click)="addFilter('q[financial_status]' , financial_status.value)"
+                                                        class="ui-button btn-slim add-filter filtering-complete"
+                                                        type="submit" name="button">Add filter
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                  <div *ngIf="selectedFilter == 'fulfillment_status'">
+
+                                                    <div class="next-input-wrapper--half-spacing">
+                                                      <div class="next-input-wrapper"><label
+                                                        class="next-label helper--visually-hidden"
+                                                        for="filter-select-fulfillment_status-fulfillment_status">Select
+                                                        a value</label>
+                                                        <div class="ui-select__wrapper">
+                                                          <select #fulfillment_status
+                                                                  name="filter-select-fulfillment_status-fulfillment_status"
+                                                                  id="filter-select-fulfillment_status-fulfillment_status"
+                                                                  class="ui-select">
+                                                            <option value="">Select a value...</option>
+                                                            <option value="shipped">fulfilled</option>
+                                                            <option value="unshipped">not fulfilled</option>
+                                                            <option value="partial">partially fulfilled</option>
+                                                            <option value="unfulfilled">unfulfilled</option>
+                                                          </select>
+                                                          <svg class="next-icon next-icon--size-16">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                 xlink:href="#select-chevron"></use>
+                                                          </svg>
+                                                        </div>
+                                                      </div>
+
+                                                    </div>
+                                                    <div class="next-input-wrapper--vertical-block">
+                                                      <button
+                                                        (click)="addFilter('q[fulfillment_status]' , fulfillment_status.value)"
+                                                        class="ui-button btn-slim add-filter filtering-complete"
+                                                        type="submit" name="button">Add filter
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                  <div *ngIf="selectedFilter == 'tag-tagged_with'">
+                                                    <label class="next-label" for="filter-input-3_"></label>
+
+                                                    <div class="next-input-wrapper--half-spacing">
+                                                      <div class="next-input-wrapper"><label
+                                                        class="next-label helper--visually-hidden" for="filter-input-3">Filter-input-3</label>
+                                                        <input #tags_title_eq
+                                                               type="text" name="filter-input-3" id="filter-input-3"
+                                                               class="next-input"></div>
+                                                    </div>
+                                                    <div class="next-input-wrapper--vertical-block">
+                                                      <button
+                                                        (click)="addFilter('q[tags_title_eq]' , tags_title_eq.value)"
+                                                        class="ui-button btn-slim add-filter filtering-complete"
+                                                        type="submit" name="button">Add filter
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                  <div *ngIf="selectedFilter == 'processed_at-date'">
+
+                                                    <div class="next-input-wrapper--half-spacing">
+                                                      <div class="next-input-wrapper"><label
+                                                        class="next-label helper--visually-hidden"
+                                                        for="filter-select-4">Select a value</label>
+                                                        <div class="ui-select__wrapper">
+                                                          <select name="filter-select-4"
+                                                                  id="filter-select-4"
+                                                                  class="ui-select">
+                                                            <option value="">Select a value...</option>
+                                                            <option value="past_week">in the last week</option>
+                                                            <option value="past_month">in the last month</option>
+                                                            <option value="past_quarter">in the last 3 months</option>
+                                                            <option value="past_year">in the last year</option>
+                                                            <option value="less_than">on or before</option>
+                                                            <option value="greater_than">on or after</option>
+                                                          </select>
+                                                          <svg class="next-icon next-icon--size-16">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                 xlink:href="#select-chevron"></use>
+                                                          </svg>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="next-input-wrapper--vertical-block">
+                                                      <button class="ui-button btn-slim add-filter filtering-complete"
+                                                              type="submit" name="button">Add filter
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                  <div *ngIf="selectedFilter == 'customer_id-customer'">
+                                                    <label class="next-label" for="filter-input-3_"></label>
+
+                                                    <div class="next-input-wrapper--half-spacing">
+                                                      <div class="next-input-wrapper"><label
+                                                        class="next-label helper--visually-hidden" for="filter-input-3">Email</label>
+                                                        <input #customer_email_eq placeholder="Email"
+                                                               type="text" name="filter-input-3" id="filter-input-3"
+                                                               class="next-input"></div>
+                                                    </div>
+                                                    <div class="next-input-wrapper--vertical-block">
+                                                      <button
+                                                        (click)="addFilter('q[customer_email_eq]' , customer_email_eq.value)"
+                                                        class="ui-button btn-slim add-filter filtering-complete"
+                                                        type="submit" name="button">Add filter
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </form>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div id="has-saved-search-actions"
+                                     class=""></div>
+
+                                <form class="next-form next-form--full-width next-field--connected--no-border-radius">
+                                  <label class="next-label helper--visually-hidden" for="query">Query</label>
+                                  <div class="next-input--stylized next-field--connected"><span
+                                    class="next-input__add-on next-input__add-on--before"><svg
+                                    class="next-icon next-icon--color-slate-lightest next-icon--size-16"> <use
+                                    xlink:href="#next-search-reverse"></use> </svg></span>
+                                    <input id="query"
+                                           placeholder="Search orders"
+                                           #searchBox
+                                           (keyup)="searchTerms.next(searchBox.value)"
+                                           class="next-input next-input--invisible"
+                                           type="text">
+                                  </div>
+                                </form>
+                                <div id="saved-search-actions-next" class="saved-search-actions-next">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div *ngIf="filterArray.length" class="filter-list">
+                            <ul class="ui-tags active-filters">
+                              <li *ngFor="let filter of filterArray" class="ui-tag">
+                                <div [ngSwitch]="filter.param">
+                                  <span *ngSwitchCase="'q[published_eq]'"
+                                        class="ui-tag__label"> Status is {{filter.value}}</span>
+                                  <span *ngSwitchCase="'q[financial_status]'"
+                                        class="ui-tag__label"> Payment status is {{filter.value}}</span>
+                                  <span *ngSwitchCase="'q[fulfillment_status]'"
+                                        class="ui-tag__label"> Fulfillment status is {{filter.value}}</span>
+                                  <span *ngSwitchCase="'q[type_eq]'"
+                                        class="ui-tag__label"> Tagged with {{filter.value}}</span>
+                                  <span *ngSwitchCase="'q[type_eq]'"
+                                        class="ui-tag__label"> Date is {{filter.value}}</span>
+                                  <span *ngSwitchCase="'q[type_eq]'"
+                                        class="ui-tag__label"> Customer {{filter.value}}</span>
+                                  <span *ngSwitchDefault
+                                        class="ui-tag__label"> Name is {{filter.value}}</span>
+                                </div>
+                                <button (click)="addFilter(filter.param, '')" type="button" name="button"
+                                        aria-label="Remove tag"
+                                        class="ui-tag__remove-button">
+                                  <svg class="next-icon next-icon--color-slate-lighter next-icon--size-12">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-remove"></use>
+                                  </svg>
+                                </button>
+                              </li>
+                            </ul>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <div id="products-results">
+                        <div class="ui-card__section">
+                          <div class="ui-type-container">
+                            <div class="table-wrapper">
+                              <div class="example-container mat-elevation-z8">
+                                <p-dataTable [loading]="loading" [tableStyleClass]="'table-hover expanded'"
+                                             [(value)]="dataSource">
+                                  <p-column field="id">
+                                    <ng-template let-col let-dat="rowData" pTemplate="header">
+                                    <span class="select">
+                                      <div
+                                        class="tooltip tooltip-left-align tooltip-bottom bulk-actions__select-all-tooltip">
+                                        <div class="next-input-wrapper bulk-actions__select-all btn--select-all">
+                                          <label
+                                            class="next-label next-label--switch {{selectList.length ?'helper--visually-hidden':'btn btn-slim bulk-actions__select-all-btn'}} "
+                                            for="bulk-actions__select-all">
+                                            <span class="helper--visually-hidden">Select all products</span>
+                                          </label>
+                                          <input #selectAll (change)="clickSelectAll(selectAll)"
+                                                 [checked]="selectList.length"
+                                                 name="bulk-actions__select-all" id="bulk-actions__select-all" value=""
+                                                 class="next-checkbox js-no-dirty bulk-actions__select-all-checkbox"
+                                                 type="checkbox">
+                                          <span class="next-checkbox--styled">
+                                            <svg class="next-icon next-icon--size-10 checkmark"> <use
+                                              xlink:href="#next-checkmark-thick">
+
+                                            </use>
+                                            </svg>
+                                            <svg class="next-icon next-icon--size-10 indeterminate"> <use
+                                              xlink:href="#next-minus">
+
+                                            </use>
+                                            </svg>
+                                          </span>
+                                        </div>
+                                        <div class="tooltip-container">
+                                          <span class="tooltip-label">Select all products</span>
+                                        </div>
+                                      </div>
+
+                                      <div [class.bulk-actions--is-visible]="selectList.length"
+                                           class="bulk-actions ">
+                                        <ul class="bulk-actions__main-bar segmented">
+                                          <li>
+                                            <a class="btn btn-slim btn-disabled btn--selection">
+                                              <span class="selection-count">
+                                                <span>{{selectList.length}}</span> selected
+                                              </span>
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <div class="ui-popover__container">
+                                              <button (click)="isShowBulkAction = !isShowBulkAction"
+                                                      class="ui-button ui-button--size-small" type="button"
+                                                      name="button">
+                                                Bulk actions
+                                                <svg class="next-icon next-icon--size-20">
+                                                  <use xlink:href="#next-disclosure"></use>
+                                                </svg>
+                                              </button>
+
+                                              <div [class.ui-popover--is-active]="isShowBulkAction"
+                                                   class="ui-popover ui-popover--full-height ui-popover--is-positioned-beneath "
+                                                   id="ui-popover--1" aria-labelledby="ui-popover-activator--1"
+                                                   aria-expanded="true" role="dialog"
+                                                   style="max-width: none;margin-right: 0px;margin-left: 0px;transform-origin: 104px -5px 0px;left: -45px;"><div
+                                                class="ui-popover__tooltip" style="left: 104px;">
+
+                                              </div>
+                                                <div class="ui-popover__content-wrapper">
+                                                  <div class="ui-popover__content"
+                                                       style="max-height: 283px; width: 208px;">
+                                                    <div
+                                                      class="ui-popover__pane">
+
+
+                                                      <div class="ui-popover__section ui-popover__section--no-padding">
+
+                                                        <ul class="next-list next-list--compact">
+                                                            <li>
+                                                              <a (click)="popupFulfill.show()"
+                                                                 class="next-list__item">
+                                                                Fulfill orders
+                                                              </a>
+                                                            </li>
+                                                            <li>
+                                                               <a (click)="popupCaptureAllOrder.show()"
+                                                                  class="next-list__item">
+                                                                Capture order payments
+                                                              </a>
+                                                            </li>
+
+                                                            <li>
+                                                              <a (click)="bulkOrders('close')"
+                                                                 class="next-list__item">Archive orders</a>
+                                                            </li>
+                                                          <li>
+                                                              <a (click)="bulkOrders('open')"
+                                                                 class="next-list__item">Unarchive orders</a>
+                                                            </li>
+                                                          <li>
+                                                              <a
+                                                                (click)="PopupTagsComponent.showPopup(dataTag, dataTagTemp, 'Add tag')"
+                                                                class="next-list__item">Add tags</a>
+                                                            </li>
+                                                          <li>
+                                                              <a
+                                                                (click)="PopupTagsComponent.showPopup(dataTag, dataTagTemp, 'Remove tag(s)')"
+                                                                class="next-list__item">Remove tags</a>
+                                                            </li>
+                                                        </ul>
+                                                      </div>
+
+                                                  </div>
+                                              </div>
+                                              </div>
+                                              </div>
+                                            </div>
+                                          </li>
+                                        </ul>
+
+                                        <span *ngIf="selectList.length==dataSource.length" class="bulk-select-all">
+                                          <p class="bulk-action-all-selector">
+                                            All orders <span>on this page</span> are selected.
+                                          </p>
+                                        </span>
+                                      </div>
+                                    </span>
+                                    </ng-template>
+                                    <ng-template let-col let-dat="rowData" pTemplate="body">
+                                      <div class="next-input-wrapper">
+                                        <input id="order_ids_{{dat[col.field]}}" class="next-checkbox input-checkbox "
+                                               (change)="clickSelect(dat[col.field],$event.target.checked)"
+                                               name='order_ids_{{dat[col.field]}}'
+                                               type="checkbox" value="{{dat[col.field]}}">
+                                        <span class="next-checkbox--styled"><svg
+                                          class="next-icon next-icon--size-10 checkmark">
+                                          <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                               xlink:href="#next-checkmark-thick"></use>
+                                        </svg>
+                                        </span>
+                                      </div>
+                                    </ng-template>
+                                  </p-column>
+                                  <p-column [sortable]="true" field="name" header="Order">
+                                    <ng-template let-col let-dat="rowData" pTemplate="body">
+                                      <a [class.is-cancelled]="dat.cancelled_at != null "
+                                         [routerLink]="['/orders', dat.id]">
+                                        {{dat[col.field]}}
+                                      </a>
+                                    </ng-template>
+                                  </p-column>
+                                  <p-column [sortable]="true" field="created_at" header="Date">
+                                    <ng-template let-col let-dat="rowData" pTemplate="body">
+                                      <a [class.is-cancelled]="dat.cancelled_at != null "
+                                         [routerLink]="['/orders', dat.id]">
+                                        {{dat[col.field]| date: 'MMM d, y, h:mm:ss a z'}}
+                                      </a>
+
+                                    </ng-template>
+                                  </p-column>
+                                  <p-column [sortable]="true" field="billing_address" header="Customer">
+                                    <ng-template let-col let-dat="rowData" pTemplate="body">
+                                      {{dat[col.field]?.name}}
+                                    </ng-template>
+                                  </p-column>
+                                  <p-column [sortable]="true" field="financial_status" header="Payment Status">
+                                    <ng-template let-col let-dat="rowData" pTemplate="body">
+                                      <div [ngSwitch]="dat[col.field]">
+                                        <span *ngSwitchCase="'Authorized'"
+                                              class="badge badge--status-attention badge--progress-incomplete">{{dat[col.field]}}</span>
+                                        <span *ngSwitchCase="'Pending'"
+                                              class="badge badge--status-warning badge--progress-incomplete">{{dat[col.field]}}</span>
+                                        <span *ngSwitchDefault
+                                              class="badge badge--status-complete badge--progress-complete">{{dat[col.field]}}</span>
+                                      </div>
+                                    </ng-template>
+                                  </p-column>
+                                  <p-column [sortable]="true" field="fulfillment_status" header="Fulfillment status">
+                                    <ng-template let-col let-dat="rowData" pTemplate="body">
+                                      <div [ngSwitch]="dat[col.field]">
+                                        <span *ngSwitchCase="'Unfulfilled'"
+                                              class="badge badge--status-attention badge--progress-incomplete">Unfulfilled</span>
+
+                                        <span *ngSwitchCase="'Partially Fulfilled'"
+                                              class="badge badge--status-warning badge--progress-partially-complete">Partially Fulfilled</span>
+
+                                        <span *ngSwitchCase="'Fulfilled'"
+                                              class="badge badge--status-complete badge--progress-complete">Fulfilled</span>
+                                      </div>
+                                    </ng-template>
+                                  </p-column>
+                                  <p-column [sortable]="true" field="total_price" header="Total">
+                                    <ng-template let-col let-dat="rowData" pTemplate="body">
+                                      <a [class.is-cancelled]="dat.cancelled_at != null " class="total">
+                                        {{dat[col.field] | number}} {{dat.currency}}
+                                      </a>
+                                    </ng-template>
+                                  </p-column>
+                                </p-dataTable>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="next-card__section">
+                          <div class="next-grid next-grid--no-padding next-grid--center-aligned">
+                            <div class="next-grid__cell next-grid__cell--no-flex">
+
+                              <ul id="pagination-links" class="segmented" refresh-always="">
+                                <li>
+
+
+                                  <a [class.disabled]="pagination.number - 1 <= 0"
+                                     (click)="pagination.number -1 <= 0 ? '': getDataOrders(pagination.number-1)"
+                                     class="btn js-keep-open js-pagination-link js-prev-btn tooltip tooltip-bottom">
+                                    <span class="tooltip-container">
+                                      <span class="tooltip-label">Previous (J)</span>
+                                    </span>
+                                    <svg role="img" class="next-icon next-icon--rotate-270 next-icon--size-16"
+                                         aria-labelledby="next-arrow-detailed-d4791a64675cff701ed7102c4bc95c9c-title">
+                                      <title id="next-arrow-detailed-d4791a64675cff701ed7102c4bc95c9c-title">
+                                        previous</title>
+                                      <use xlink:href="#next-arrow-detailed"></use>
+                                    </svg>
+                                  </a></li>
+                                <li>
+
+
+                                  <a [class.disabled]="pagination.number +1 > pagination.totalPages"
+                                     (click)="pagination.number +1 > pagination.totalPages ? '' : getDataOrders(pagination.number+1)"
+                                     class="btn js-keep-open js-pagination-link js-next-btn tooltip tooltip-bottom">
+                                    <span class="tooltip-container">
+                                      <span class="tooltip-label">Next (K)</span>
+                                    </span>
+                                    <svg role="img" class="next-icon next-icon--rotate-90 next-icon--size-16"
+                                         aria-labelledby="next-arrow-detailed-18dc9ab8461a527f4ef50f779aa3baa3-title">
+                                      <title id="next-arrow-detailed-18dc9ab8461a527f4ef50f779aa3baa3-title">
+                                        next</title>
+                                      <use xlink:href="#next-arrow-detailed"></use>
+                                    </svg>
+                                  </a></li>
+                              </ul>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui-footer-help">
+            <div class="ui-footer-help__content">
+              <div class="ui-footer-help__icon">
+                <svg class="next-icon next-icon--size-24 next-icon--no-nudge" role="img"
+                     aria-labelledby="next-help-circle-113f92885f93ab7182dd3ba28a2a01b1-title"><title
+                  id="next-help-circle-113f92885f93ab7182dd3ba28a2a01b1-title">Help</title>
+                  <use xlink:href="#next-help-circle"></use>
+                </svg>
+              </div>
+              <div><p>Learn more about <a target="_blank" href="https://docs.shopify.com/manual/products">products</a>.
+              </p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+<div (onHidden)="popupFulfill.hide()" [config]="{ show: false }" bsModal #popupFulfill="bs-modal"
+     class="wrap-popup">
+  <div class="modal" data-tg-refresh="modal" id="modal_container" aria-hidden="false" aria-labelledby="ModalTitle"
+       tabindex="-1" style="display: block;">
+    <header>
+      <h2 id="ModalTitle">
+        Fulfill
+        <span>{{selectList.length}} orders</span><span
+        class="hide"> matching your search</span>?
+      </h2>
+      <a href="javascript:;" (click)="popupFulfill.hide()" class="close-modal" role="button"
+         aria-label="Close dialog">x</a>
+    </header>
+    <div class="body">
+      <p>Would you like to fulfill the selected orders?</p>
+    </div>
+
+    <form>
+      <div class="buttons">
+        <div class="fl align-with-input">
+          <input type="checkbox" id="send-email" checked="" value="true">
+          <label class="inline fw-normal type--subdued" for="send-email"> Send a <a
+            href="javascript:;">notification</a> to the customer</label>
+        </div>
+        <a class="btn close-modal" href="javascript:;" (click)="popupFulfill.hide()">Cancel</a>
+        <button (click)="bulkOrders('fulfill')"
+                class="ui-button ui-button--primary js-btn-primary js-btn-loadable btn-primary has-loading"
+                type="submit" name="commit">Fulfill
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<div (onHidden)="popupCaptureAllOrder.hide()" [config]="{ show: false }" bsModal #popupCaptureAllOrder="bs-modal"
+     class="wrap-popup">
+  <div class="modal" data-tg-refresh="modal" id="modal_container" aria-hidden="false" aria-labelledby="ModalTitle"
+       tabindex="-1" style="display: block;">
+    <header>
+      <h2 id="ModalTitle">
+        Capture
+        <span>{{selectList.length}} Order Payments</span><span
+        class="hide"> matching your search</span>?
+      </h2>
+      <a href="javascript:;" (click)="popupCaptureAllOrder.hide()" class="close-modal" role="button"
+         aria-label="Close dialog">x</a>
+    </header>
+    <div class="body">
+      <p>Are you sure you want to capture all selected order payments?</p>
+    </div>
+
+    <form>
+      <div class="buttons">
+        <a class="btn close-modal" href="javascript:;" (click)="popupCaptureAllOrder.hide()">Cancel</a>
+        <button class="ui-button ui-button--primary js-btn-primary js-btn-loadable btn-primary has-loading"
+                type="submit" name="commit">Capture all payments
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-popup-tags (output-data)="bulkOrders($event.title,$event.tags)"></app-popup-tags>

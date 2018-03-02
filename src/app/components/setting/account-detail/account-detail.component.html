@@ -1,0 +1,626 @@
+<main id="AppFrameMain" class="ui-app-frame__main ">
+  <div class="wrapper"
+       data-define="{ notifier: new Shopify.Notifications({ shopName: Shopify.shop.settings.shopName, iconPath: &quot;\/\/cdn.shopify.com\/s\/assets\/admin\/shopify-notification-icon-5bb71743b535cc0810f4fa447c50934f8b99a46d030d55b8467c3831c14f5c36.png&quot; }) }"
+       id="wrapper">
+    <div id="body" class="clearfix" data-tg-refresh="body">
+      <div class="has-bottom-messages" id="content">
+
+        <div id="account-show" class="page">
+          <form [formGroup]="dataForm" (ngSubmit)="submitForm()" class="edit_user">
+            <header class="ui-title-bar-container">
+              <div class="ui-title-bar">
+                <div class="ui-title-bar__navigation">
+
+
+                  <div class="ui-breadcrumbs"><a href="javascript:;" routerLink="/settings/account"
+                                                 class="ui-button ui-button--transparent ui-breadcrumb">
+                    <svg class="next-icon next-icon--size-20 next-icon--no-nudge">
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#chevron-left-thinner"></use>
+                    </svg>
+                    <span class="ui-breadcrumb__item">Account</span></a></div>
+                </div>
+                <div class="ui-title-bar__main-group">
+                  <div class="ui-title-bar__heading-group"><span class="ui-title-bar__icon"><svg
+                    class="next-icon next-icon--color-slate-lighter next-icon--size-20"> <use
+                    xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-account"></use> </svg></span>
+                    <h1 class="ui-title-bar__title">{{account.id == -1 ? 'Add staff account' : account.full_name }}</h1>
+                  </div>
+                </div>
+              </div>
+              <div class="collapsible-header">
+                <div class="collapsible-header__heading"></div>
+              </div>
+            </header>
+            <div class="ui-layout ui-layout--full-width">
+              <div class="ui-layout__sections">
+                <app-alert style="width: 100%;"></app-alert>
+                <div class="ui-layout__section">
+                  <div class="ui-layout__item">
+
+
+                    <section class="ui-annotated-section-container">
+                      <div class="ui-annotated-section">
+                        <div class="ui-annotated-section__annotation">
+                          <div class="ui-annotated-section__title"><h2 class="ui-heading">Account information</h2></div>
+                        </div>
+                        <div class="ui-annotated-section__content">
+                          <section class="ui-card">
+                            <header class="ui-card__header"><h2 class="ui-heading">Staff profile</h2></header>
+
+
+                            <div class="ui-card__section">
+                              <div class="ui-type-container">
+
+                                <div class="ui-form__section">
+                                  <div class="ui-form__element">
+                                    <div class="ui-stack ui-stack--wrap ui-stack--alignment-center">
+                                      <div class="user-avatar--main">
+                                        <span class="user-avatar user-avatar--style-3"><img
+                                          class="user-avatar__gravatar-image" alt=""
+                                          src="{{account?.image_url}}"><span
+                                          class="user-avatar__initials">tn</span></span>
+                                      </div>
+                                      <div class="styled-file-input" id="user-image-drop">
+                                        <div class="btn">
+                                          <input type="file" id="user-upload-image" accept="image/*"
+                                                 (change)="onFileChange($event)" #fileInput
+                                                 class="users-file-input js-no-dirty">
+                                          <label>Upload photo</label>
+                                        </div>
+                                      </div>
+                                      <div>
+                                        <button
+                                          (click)="account.id == -1 && account.image_id == null ? account.image_url = null : deleteImage()"
+                                          class="ui-button users-file-input" type="button"
+                                          name="button">Delete photo
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="ui-form__section">
+                                  <div class="ui-form__group">
+                                    <div class="next-input-wrapper"><label class="next-label" for="user_first_name">First
+                                      name</label>
+                                      <input required class="next-input" size="30" type="text"
+                                             [(ngModel)]="account.first_name"
+                                             formControlName="first_name" id="user_first_name">
+                                    </div>
+                                    <div class="next-input-wrapper"><label class="next-label" for="user_last_name">Last
+                                      name</label>
+                                      <input class="next-input" size="30" type="text" [(ngModel)]="account.last_name"
+                                             formControlName="last_name" id="user_last_name">
+                                    </div>
+                                  </div>
+                                  <div class="ui-form__group">
+                                    <div class="ui-form__element">
+                                      <label class="next-label" for="user_email">Email address</label>
+
+                                      <div *ngIf="account.id != -1" class="editable">
+                                        <div class="display-mode">
+                                          <span id="staff-member-email5394497584">trung.trannam@tripath.vn</span>
+                                        </div>
+                                      </div>
+                                      <div *ngIf="account.id == -1" class="editable">
+                                        <div class="next-input-wrapper">
+                                          <input
+                                            class="next-input" size="30" type="email" [(ngModel)]="account.email"
+                                            formControlName="email">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="next-input-wrapper"><label class="next-label" for="user_phone">Phone
+                                      <span class="note">(optional)</span></label>
+                                      <input class="next-input" size="30"
+                                             type="tel" [(ngModel)]="account.phone"
+                                             formControlName="phone"
+                                             id="user_phone">
+                                    </div>
+                                    <div *ngIf="account.id == -1" class="next-input-wrapper">
+                                      <label class="next-label">Password</label>
+                                      <input
+                                        type="password" class="next-input" size="30" formControlName="password">
+                                    </div>
+                                    <div *ngIf="account.id == -1" class="next-input-wrapper">
+                                      <label class="next-label">Confirm password</label>
+                                      <input
+                                        type="password" class="next-input" size="30" formControlName="confirm_password">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="ui-card__section">
+                              <div class="ui-type-container">
+                                <div class="ui-stack ui-stack--wrap ui-stack--vertical">
+                                  <div class="ui-stack-item">
+                                    <h3 class="ui-subheading">Details</h3>
+                                  </div>
+                                  <div class="ui-stack-item">
+                                    <div class="ui-form__section">
+                                      <div class="next-input-wrapper"><label class="next-label" for="user_bio">Bio <span
+                                        class="note">(optional)</span></label>
+                                        <textarea
+                                          class="ui-text-area ui-text-area--resize-vertical"
+                                          aria-describedby="help-fdd29e7276455c87107d3bf4a4988229"
+                                          [(ngModel)]="account.bio"
+                                          formControlName="bio"
+                                          id="user_bio"></textarea>
+                                        <p id="help-fdd29e7276455c87107d3bf4a4988229" class="next-input__help-text">You
+                                          can select for this to appear on blog posts that trung publishes, from within
+                                          your theme editor.</p></div>
+
+                                      <div class="next-input-wrapper"><label class="next-label" for="user_url">Personal
+                                        website address <span class="note">(optional)</span></label>
+                                        <input
+                                          maxlength="255" class="next-input" size="30" type="text"
+                                          [(ngModel)]="account.pwa"
+                                          formControlName="pwa"
+                                          id="user_url">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="ui-card__section">
+                              <div class="ui-type-container">
+                                <div class="ui-stack ui-stack--wrap ui-stack--vertical">
+                                  <div class="ui-stack-item">
+                                    <h3 class="ui-subheading">Notifications</h3>
+                                  </div>
+                                  <div class="ui-stack-item">
+                                    <div class="ui-form__section">
+                                      <div class="next-input-wrapper"><label class="next-label next-label--switch"
+                                                                             for="user_receive_announcements">Allow
+                                        important notifications to be sent by email</label>
+                                        <input
+                                          class="next-checkbox" aria-describedby="help-4954187d5540de40403449c081463039"
+                                          type="checkbox" [(ngModel)]="account.receive_announcements"
+                                          formControlName="receive_announcements"
+                                          id="user_receive_announcements">
+                                        <span class="next-checkbox--styled"><svg
+                                          class="next-icon next-icon--size-10 checkmark"> <use
+                                          xmlns:xlink="http://www.w3.org/1999/xlink"
+                                          xlink:href="#next-checkmark-thick"></use> </svg></span>
+                                        <p id="help-f5d49394ff200fd06cec9f9e1573b736" class="next-input__help-text">We
+                                          periodically send out important news about Shopify to our users via email. We
+                                          keep the email volume to an absolute minimum.</p></div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div *ngIf="adminUser.id == account.id" class="ui-card__section">
+                              <div class="ui-type-container">
+                                <div class="ui-stack ui-stack--wrap ui-stack--vertical">
+                                  <div class="ui-stack-item">
+                                    <h3 class="ui-subheading">Password reset</h3>
+                                  </div>
+                                  <div class="ui-stack-item">
+                                    <p>Change the password you use to login to tripathtest.</p>
+                                  </div>
+                                  <div class="ui-stack-item">
+                                    <button class="ui-button" (click)="isShowChangePassword = !isShowChangePassword"
+                                            type="button" name="button">Change password
+                                    </button>
+                                  </div>
+                                  <div [class.hide]="!isShowChangePassword" class="ui-stack-item">
+                                    <form [formGroup]="dataFormChangePassword">
+                                      <div class="next-input-wrapper">
+                                        <label class="next-label" for="user_url">Current password</label>
+                                        <input formControlName="old_password" maxlength="255" class="next-input" size="30"
+                                               type="password">
+                                      </div>
+                                      <div class="ui-form__section ">
+                                        <div class="ui-form__group">
+                                          <div class="next-input-wrapper">
+                                            <label class="next-label" for="user_password">New
+                                              password</label>
+                                            <input type="password" formControlName="new_password"
+                                                   class="next-input" size="30"
+                                                   id="user_password">
+                                          </div>
+                                          <div class="next-input-wrapper">
+                                            <label class="next-label"
+                                                   for="user_password_confirmation">Confirm
+                                              new password</label>
+                                            <input type="password"
+                                                   class="next-input" size="30"
+                                                   formControlName="confirm_password"
+                                                   id="user_password_confirmation">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </section>
+                        </div>
+                      </div>
+                    </section>
+
+
+                    <section class="ui-annotated-section-container">
+                      <div class="ui-annotated-section">
+                        <div class="ui-annotated-section__annotation">
+                          <div class="ui-annotated-section__title"><h2 class="ui-heading">Admin Access</h2></div>
+                        </div>
+                        <div class="ui-annotated-section__content">
+                          <section class="ui-card">
+                            <div class="ui-card__section">
+                              <div class="ui-type-container">
+                                <div class="ui-stack ui-stack--wrap ui-stack--vertical">
+                                  <div class="ui-stack-item">
+                                    <h3 class="ui-subheading">Customize Permissions</h3>
+                                  </div>
+                                  <div class="ui-stack-item">
+                                    <p>Enable or restrict {{account.id == -1 ? 'new account':account.last_name+"'s"}}
+                                      access to various parts of this store.</p>
+                                  </div>
+                                  <div class="ui-stack-item">
+                                    <div class="ui-form__section">
+
+                                      <div class="next-input-wrapper">
+                                        <label class="next-label next-label--switch"
+                                               for="user_has_full_permissions">{{account.id == -1 ? 'new account' :
+                                          account.first_name+' '+account.last_name }}
+                                          has full permissions</label>
+                                        <input name="user[has_full_permissions]"
+                                               type="hidden" value="0">
+                                        <input
+                                          class="next-checkbox" type="checkbox"
+                                          [checked]="account.has_full_permissions"
+                                          [(ngModel)]="account.has_full_permissions"
+                                          formControlName="has_full_permissions" id="user_has_full_permissions"><span
+                                        class="next-checkbox--styled"><svg
+                                        class="next-icon next-icon--size-10 checkmark"> <use
+                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+
+                                      <div [class.hide]="account.has_full_permissions" class="ui-form__element "
+                                      >
+                                        <strong>Select what this staff account can view and edit.</strong>
+                                      </div>
+                                      <div [class.hide]="account.has_full_permissions" class="ui-form__group "
+
+                                           id="staff-permissions-list">
+                                        <div class="ui-form__element">
+                                          <div class="ui-form__element">
+                                            <fieldset class="ui-choice-list">
+                                              <legend class="ui-choice-list__title">General</legend>
+                                              <ul>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch" for="user_allow_dashboard">Home</label><input
+                                                    name="user[allow_dashboard]" type="hidden" value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_dashboard]" id="user_allow_dashboard"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch"
+                                                    for="user_allow_orders">Orders</label><input
+                                                    name="user[allow_orders]" type="hidden" value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_orders]" id="user_allow_orders"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch" for="user_allow_draft_orders">Draft
+                                                    orders</label><input name="user[allow_draft_orders]" type="hidden"
+                                                                         value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_draft_orders]" id="user_allow_draft_orders"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch" for="user_allow_products">Products</label><input
+                                                    name="user[allow_products]" type="hidden" value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_products]" id="user_allow_products"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch" for="user_allow_gift_cards">Gift
+                                                    cards</label><input name="user[allow_gift_cards]" type="hidden"
+                                                                        value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_gift_cards]" id="user_allow_gift_cards"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch" for="user_allow_customers">Customers</label><input
+                                                    name="user[allow_customers]" type="hidden" value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_customers]" id="user_allow_customers"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch" for="user_allow_reports">Reports</label><input
+                                                    name="user[allow_reports]" type="hidden" value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_reports]" id="user_allow_reports"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch" for="user_allow_overviews">Dashboards</label><input
+                                                    name="user[allow_overviews]" type="hidden" value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_overviews]" id="user_allow_overviews"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch" for="user_allow_marketing">Discounts</label><input
+                                                    name="user[allow_marketing]" type="hidden" value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_marketing]" id="user_allow_marketing"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch" for="user_allow_applications">Apps</label><input
+                                                    name="user[allow_applications]" type="hidden" value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_applications]" id="user_allow_applications"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch" for="user_allow_preferences">Settings</label><input
+                                                    name="user[allow_preferences]" type="hidden" value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_preferences]" id="user_allow_preferences"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+
+                                              </ul>
+                                            </fieldset>
+                                          </div>
+                                        </div>
+                                        <div class="ui-form__element">
+                                          <div class="ui-form__element">
+                                            <fieldset class="ui-choice-list">
+                                              <legend class="ui-choice-list__title">Online store</legend>
+                                              <ul>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch"
+                                                    for="user_allow_themes">Themes</label><input
+                                                    name="user[allow_themes]" type="hidden" value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_themes]" id="user_allow_themes"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch" for="user_allow_pages">Blog
+                                                    posts and pages</label><input name="user[allow_pages]" type="hidden"
+                                                                                  value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_pages]" id="user_allow_pages"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch" for="user_allow_links">Navigation</label><input
+                                                    name="user[allow_links]" type="hidden" value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_links]" id="user_allow_links"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch" for="user_allow_domains">Domains</label><input
+                                                    name="user[allow_domains]" type="hidden" value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_domains]" id="user_allow_domains"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+
+                                              </ul>
+                                            </fieldset>
+                                          </div>
+                                          <div class="ui-form__element">
+                                            <fieldset class="ui-choice-list">
+                                              <legend class="ui-choice-list__title">Point of sale</legend>
+                                              <ul>
+                                                <li>
+                                                  <div class="next-input-wrapper"><label
+                                                    class="next-label next-label--switch" for="user_allow_locations">Locations</label><input
+                                                    name="user[allow_locations]" type="hidden" value="0"><input
+
+                                                    class="next-checkbox" type="checkbox" value="1" checked="checked"
+                                                    name="user[allow_locations]" id="user_allow_locations"><span
+                                                    class="next-checkbox--styled"><svg
+                                                    class="next-icon next-icon--size-10 checkmark"> <use
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                    xlink:href="#next-checkmark-thick"></use> </svg></span></div>
+                                                </li>
+
+                                              </ul>
+                                            </fieldset>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </section>
+                        </div>
+                      </div>
+                    </section>
+
+
+                    <section *ngIf="account.id != -1" class="ui-annotated-section-container">
+                      <div class="ui-annotated-section">
+                        <div class="ui-annotated-section__annotation">
+                          <div class="ui-annotated-section__title"><h2 class="ui-heading">Remove staff account</h2>
+                          </div>
+                        </div>
+                        <div class="ui-annotated-section__content">
+
+
+                          <section class="ui-card">
+                            <header class="ui-card__header"><h2 class="ui-heading">Delete staff account</h2></header>
+
+                            <div class="ui-card__section">
+                              <div class="ui-type-container">
+                                <div class="ui-stack ui-stack--wrap ui-stack--vertical">
+                                  <div class="ui-stack-item">
+                                    <p>
+                                      Deleted staff accounts will be permanently removed from your store.
+                                      This action cannot be reversed.
+                                    </p>
+                                  </div>
+                                  <div class="ui-stack-item">
+                                    <div></div>
+                                    <button class="ui-button btn-destroy"
+                                            (click)="popupDeleteAccount.show()"
+                                            type="button" name="button">Delete staff account
+                                    </button>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </section>
+                        </div>
+                      </div>
+                    </section>
+
+
+                    <div class="ui-page-actions">
+                      <div class="ui-page-actions__container">
+                        <div class="ui-page-actions__actions ui-page-actions__actions--primary">
+                          <div class="ui-page-actions__button-group">
+                            <button class="ui-button js-btn-loadable js-btn-primary btn-primary has-loading"
+                                    type="submit"
+                                    name="button">Save
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+<div (onHidden)="popupDeleteAccount.hide()" [config]="{ show: false }" bsModal
+     #popupDeleteAccount="bs-modal"
+     class="wrap-popup">
+  <div class="modal" data-tg-refresh="modal" id="modal_container" aria-hidden="false" aria-labelledby="ModalTitle"
+       tabindex="-1" style="display: block;">
+    <header>
+      <h2 id="ModalTitle">Confirm deleting staff account for {{account.full_name}}</h2>
+      <button (click)="popupDeleteAccount.hide()" class="ui-button btn--link close-modal" type="button"
+              name="button">Close modal
+      </button>
+      <app-alert></app-alert>
+    </header>
+
+    <div data-context="reorder">
+
+      <form>
+        <div class="body">
+          <p class="ssb">
+            Are you sure you want to delete the staff account for? This action cannot be reversed.
+          </p>
+          <label for="password">Enter your current password to continue:</label>
+          <input #password type="password" name="password" id="password">
+        </div>
+        <div class="buttons">
+          <button (click)="popupDeleteAccount.hide()" class="ui-button close-modal" type="button" name="button">
+            Cancel
+          </button>
+          <button [disabled]="!password.value" (click)="deleteAccount(password.value)"
+                  class="ui-button js-btn-loadable js-btn-primary btn-primary has-loading"
+                  type="submit" name="button">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

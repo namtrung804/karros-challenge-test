@@ -1,0 +1,28 @@
+.customers-page {
+  .next-input-wrapper {
+    margin-top: 0 !important;
+  }
+  a.tooltip:hover {
+    span.tooltip-container {
+      display: block;
+    }
+  }
+}
+.ui-datatable {
+  .ui-datatable-loading-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: #ffffff;
+    z-index: 500;
+    i {
+      position: absolute;
+      top: 100px;
+    }
+  }
+}

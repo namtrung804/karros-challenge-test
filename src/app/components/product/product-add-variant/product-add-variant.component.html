@@ -1,0 +1,504 @@
+<main id="AppFrameMain" class="ui-app-frame__main ">
+  <div class="wrapper"
+       id="wrapper">
+    <div id="body" class="clearfix" data-tg-refresh="body">
+      <div class="" id="content">
+
+        <div id="variants-new" class="page">
+
+          <form [formGroup]="dataForm" (ngSubmit)="submitForm()">
+            <header class="ui-title-bar-container">
+              <div class="ui-title-bar">
+                <div class="ui-title-bar__navigation">
+
+
+                  <div class="ui-breadcrumbs"><a [routerLink]="['/products', product.id]" href="javascript:"
+                                                 class="ui-button ui-button--transparent ui-breadcrumb">
+                    <svg class="next-icon next-icon--size-20 next-icon--no-nudge">
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#chevron-left-thinner"></use>
+                    </svg>
+                    <span class="ui-breadcrumb__item">{{product.title}}</span></a></div>
+                </div>
+                <div class="ui-title-bar__main-group">
+                  <div class="ui-title-bar__heading-group"><span class="ui-title-bar__icon"><svg
+                    class="next-icon next-icon--color-slate-lighter next-icon--size-20"> <use
+                    xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-products"></use> </svg></span>
+                    <h1 class="ui-title-bar__title">{{variantID != 0 ? variant.title : 'Add variant'}} </h1>
+                  </div>
+                  <div class="action-bar">
+                    <div class="ui-title-bar__mobile-primary-actions">
+                      <div class="ui-title-bar__actions">
+                        <button
+                          class="ui-button ui-button--primary js-btn-loadable js-btn-primary ui-title-bar__action btn-primary has-loading"
+                          type="submit" name="button" disabled="disabled">Save
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="ui-title-bar__actions-group">
+                  <div class="ui-title-bar__actions">
+                    <button
+                      class="ui-button ui-button--primary js-btn-loadable js-btn-primary ui-title-bar__action btn-primary has-loading"
+                      type="submit" name="button" disabled="disabled">Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="collapsible-header">
+                <div class="collapsible-header__heading"></div>
+              </div>
+              <app-alert></app-alert>
+            </header>
+
+            <div class="individual-variant">
+
+              <div class="ui-layout">
+
+                <div class="ui-layout__sections">
+
+                  <div class="ui-layout__section ui-layout__section--secondary">
+                    <div class="ui-layout__item">
+                      <div class="next-card next-card--aside">
+                        <section id="variant-back-btn-header" class="next-card__section">
+                          <div
+                            class="next-grid next-grid--no-outside-padding back-to-product next-grid--vertically-centered">
+                            <div class="next-grid__cell next-grid__cell--no-flex back-to-product__image">
+                              <a
+                                [routerLink]="['/products', product.id]" href="javascript:">
+                                <div class="aspect-ratio aspect-ratio--square back-to-product__thumbnail">
+                                  <img title="{{product.title}}"
+                                       src="{{product.image.src}}"
+                                       alt="{{product.title}}">
+                                </div>
+                              </a></div>
+
+                            <div class="next-grid__cell">
+                              <p class="large back-to-product__space-for-variant-count">
+                                {{product.title}}
+                              </p>
+                              <div class="back-to-product__variant-count">
+                                <span class="type--subdued">
+                                  {{product.variants.length}} variants
+                                </span>
+                              </div>
+                              <a class="back-to-product__link"
+                                 [routerLink]="['/products', product.id]" href="javascript:">
+                                <div
+                                  class="next-grid next-grid--compact next-grid--no-outside-padding next-grid--vertically-centered">
+                                  <div class="next-grid__cell next-grid__cell--no-flex" style="flex-shrink: 1">
+                                    Back to product
+                                  </div>
+                                </div>
+                              </a></div>
+                          </div>
+                        </section>
+                      </div>
+
+                      <section class="ui-card ui-card--type-aside"
+                      >
+                        <div class="ui-card__section">
+                          <div class="ui-type-container">
+                            <h2 class="ui-heading">Variants</h2>
+                          </div>
+                        </div>
+                        <ul id="variant-navigation-menu" *ngIf="product.variants.length "
+                            class="next-list variant-list next-list--divided next-list--subdued">
+                          <li *ngFor="let variant of product.variants" refresh="variant-nav-link">
+                            <a [class.next-list__item--is-current]="variant.id == variantID"
+                               class="next-list__item "
+                               [routerLink]="['/products/'+product.id+'/variants',variant.id]"
+                               href="javascript:">
+                              <div class="ui-stack ui-stack--alignment-center ui-stack--spacing-tight">
+                                <div>
+                                  <div class="aspect-ratio aspect-ratio--square aspect-ratio--square--40">
+                                    <img *ngIf="variant.image_url != null" title="{{variant.title}}"
+                                         class="aspect-ratio__content"
+                                         src="{{variant.image_url}}"
+                                         alt="{{variant.title}}">
+                                    <svg *ngIf="variant.image_url == null"
+                                         class="next-icon next-icon--size-24 aspect-ratio__content next-icon--sky-dark next-icon--no-nudge">
+                                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-photos"></use>
+                                    </svg>
+                                  </div>
+                                </div>
+                                <div>
+                                  <span class="variant-option-value option-1">{{variant.option1}}</span>
+                                  <span *ngIf="variant.option2 != ''" class="type--subdued"> • </span>
+                                  <span class="variant-option-value option-2">{{variant.option2}}</span>
+                                  <span *ngIf="variant.option3 != ''" class="type--subdued"> • </span>
+                                  <span class="variant-option-value option-3">{{variant.option3}}</span>
+                                </div>
+                              </div>
+                            </a>
+                          </li>
+                        </ul>
+
+                      </section>
+                    </div>
+                  </div>
+                  <div class="ui-layout__section ui-layout__section--primary">
+                    <div class="ui-layout__item">
+                      <div class="variant-properties">
+                        <div id="variant-edit-card" class="next-card">
+                          <div class="next-grid next-grid--no-padding next-grid--no-outside-padding">
+                            <div class="next-grid__cell">
+                              <div *ngIf="product.options.length" class="next-card__section">
+                                <h2 class="next-heading">Options</h2>
+                                <div *ngFor="let option of product.options; let i = index" class="next-input-wrapper">
+                                  <label class="next-label"
+                                         for="variant_option{{i+1}}">{{option.name}}</label>
+                                  <input
+                                    class="next-input variant-option-{{i+1}}"
+                                    size="30"
+                                    type="text"
+                                    [(ngModel)]="variant['option'+(i+1)]"
+                                    formControlName="option{{i+1}}"
+                                    id="variant_option{{i+1}}">
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="next-grid__cell next-grid__cell--third next-grid__cell--full-height">
+
+                              <div class="next-card__section tc">
+                                <div id="variant-image" refresh="variant-image"
+                                     class="variant-image-section ui-droppable">
+                                  <div class="">
+                                    <a
+                                      (click)="PopupManagerImagesComponent.showPopup(product,imgIDVariantSelected,selectList,listVariantsChange)"
+                                      class="aspect-ratio aspect-ratio--square aspect-ratio--interactive variant-image">
+                                      <div *ngIf="variant.image_url != null">
+                                        <img src="{{variant.image_url}}" class="aspect-ratio__content"
+                                             title="">
+                                      </div>
+                                      <div *ngIf="variant.image_url == null"
+                                           class="next-media__blank-slate">
+                                        <div
+                                          class="next-media__blank-slate__content next-media__blank-slate__content--align-middle product-image__blank-slate">
+                                          <svg class="next-icon next-icon--size-80 next-upload-dropzone__icon">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                 xlink:href="#next-dropzone"></use>
+                                          </svg>
+                                          <p class="variant-image__blank-slate-label">Choose image</p>
+                                        </div>
+                                      </div>
+                                    </a>
+                                  </div>
+
+                                </div>
+                                <div *ngIf="variant.image_url != null">
+                                  <a class="st block">Change image</a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+
+                        <section class="ui-card">
+                          <header class="ui-card__header"><h2 class="ui-heading">Pricing</h2></header>
+
+                          <div class="ui-card__section">
+                            <div class="ui-type-container">
+                              <div class="ui-form__section">
+                                <div class="ui-form__group">
+                                  <div class="next-input-wrapper">
+                                    <label class="next-label"
+                                           for="variant-price">Price</label>
+                                    <div class="next-input--stylized next-input--has-content">
+                                      <span
+                                        class="next-input__add-on next-input__add-on--before">$</span>
+                                      <input type="text"
+                                             formControlName="price"
+                                             [(ngModel)]="variant.price"
+                                             id="variant-price"
+                                             class="next-input next-input--invisible js-money-field"
+                                             placeholder="0.00"
+
+                                      >
+                                    </div>
+                                  </div>
+                                  <div class="next-input-wrapper"><label class="next-label"
+                                                                         for="variant-compare_at_price">Compare at
+                                    price</label>
+                                    <div class="next-input--stylized"><span
+                                      class="next-input__add-on next-input__add-on--before">$</span>
+                                      <input type="text"
+                                             id="variant-compare_at_price"
+                                             formControlName="compare_at_price"
+                                             [(ngModel)]="variant.compare_at_price"
+                                             class="next-input next-input--invisible js-money-field"
+
+                                      >
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="next-input-wrapper">
+                                <label class="next-label next-label--switch"
+                                       for="variant-taxable">Charge taxes on this
+                                  product</label>
+                                <input type="checkbox" id="variant-taxable"
+                                       formControlName="taxable"
+                                       [(ngModel)]="variant.taxable"
+                                       [checked]="variant.taxable "
+                                       class="next-checkbox">
+                                <span
+                                  class="next-checkbox--styled"><svg class="next-icon next-icon--size-10 checkmark"> <use
+                                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                                  xlink:href="#next-checkmark-thick"></use> </svg>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                        <section class="ui-card">
+                          <header class="ui-card__header"><h2 class="ui-heading">Inventory</h2></header>
+
+                          <div class="ui-card__section">
+                            <div class="ui-type-container">
+                              <div class="next-grid next-grid--no-outside-padding">
+                                <div class="next-grid__cell">
+                                  <div class="next-input-wrapper">
+                                    <label class="next-label" for="variant-sku">SKU <span
+                                      class="note">(Stock Keeping Unit)</span></label>
+                                    <input type="text"
+                                           id="variant-sku"
+                                           formControlName="sku"
+                                           [(ngModel)]="variant.sku"
+                                           class="next-input">
+                                  </div>
+                                </div>
+                                <div class="next-grid__cell">
+                                  <div class="next-input-wrapper"><label class="next-label" for="variant-barcode">Barcode
+                                    <span class="note">(ISBN, UPC, GTIN, etc.)</span>
+                                  </label>
+                                    <input type="text"
+                                           id="variant-barcode"
+                                           formControlName="barcode"
+                                           [(ngModel)]="variant.barcode"
+                                           class="next-input">
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="next-grid next-grid--no-outside-padding">
+                                <div class="next-grid__cell">
+                                  <div class="next-input-wrapper">
+                                    <label class="next-label"
+                                           for="variant-inventory-management">Inventory
+                                      policy</label>
+                                    <div class="ui-select__wrapper next-input--has-content">
+                                      <select
+                                        formControlName="inventory_management"
+                                        id="variant-inventory-management"
+                                        class="ui-select ui-select">
+                                        <option [selected]="variant.inventory_management==''" value="">Don't track
+                                          inventory
+                                        </option>
+                                        <option [selected]="variant.inventory_management=='shopify'" value="shopify">
+                                          Shopify
+                                          tracks this product's inventory
+                                        </option>
+                                      </select>
+                                      <svg class="next-icon next-icon--size-16">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                             xlink:href="#select-chevron"></use>
+                                      </svg>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="next-grid__cell next-grid__cell--quarter">
+                                  <div
+
+                                  >
+                                    <div>
+                                      <div class="next-input-wrapper">
+                                        <label class="next-label"
+                                               for="variant_inventory_quantity">Quantity</label>
+                                        <input
+                                          formControlName="inventory_quantity"
+                                          [(ngModel)]="variant.inventory_quantity"
+                                          type="number"
+                                          id="variant_inventory_quantity"
+                                          class="next-input next-input--number quantity-field next-input next-input--number no-spinbox">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="next-grid__cell next-grid__cell--quarter">
+                                </div>
+                              </div>
+
+                              <div class="next-grid next-grid--no-outside-padding"
+                              >
+                                <div class="next-grid__cell">
+                                  <div class="next-input-wrapper">
+                                    <label class="next-label next-label--switch"
+                                           for="variant-inventory_policy">Allow customers
+                                      to purchase this product when it's out of stock</label>
+                                    <input type="checkbox"
+                                           id="variant-inventory_policy"
+                                           formControlName="inventory_policy"
+                                           [(ngModel)]="variant.inventory_policy"
+                                           [checked]="variant.inventory_policy != 0"
+                                           class="next-checkbox">
+                                    <span
+                                      class="next-checkbox--styled"><svg class="next-icon next-icon--size-10 checkmark"> <use
+                                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                                      xlink:href="#next-checkmark-thick"></use> </svg></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+
+                        <section class="ui-card">
+                          <header class="ui-card__header"><h2 class="ui-heading">Shipping</h2></header>
+
+                          <div class="ui-card__section">
+                            <div class="ui-type-container">
+                              <div class="ui-stack ui-stack--wrap">
+                                <div class="next-input-wrapper">
+                                  <label class="next-label next-label--switch"
+                                         for="variant-requires_shipping">This product
+                                    requires shipping</label>
+                                  <input type="checkbox" id="variant-requires_shipping"
+                                         formControlName="requires_shipping"
+                                         [(ngModel)]="variant.requires_shipping"
+                                         [checked]="variant.requires_shipping"
+                                         class="next-checkbox">
+                                  <span
+                                    class="next-checkbox--styled"><svg class="next-icon next-icon--size-10 checkmark"> <use
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-checkmark-thick"></use> </svg></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="ui-card__section">
+                            <div class="ui-type-container">
+                              <div class="ui-stack ui-stack--wrap ui-stack--vertical ui-stack--spacing-tight">
+                                <h3 class="ui-subheading">Weight</h3>
+                                <p class="type--subdued">Used to calculate shipping rates at checkout.
+                                </p>
+                                <div class="ui-stack ui-stack--wrap ui-stack--distribution-equal-spacing">
+                                  <div class="ui-stack-item" style="max-width:215px">
+                                    <div class="next-input-wrapper">
+                                      <label class="next-label" for="variant_weight">Weight</label>
+                                      <div class="next-field__connected-wrapper">
+                                        <input type="text"
+                                               id="variant_weight"
+                                               formControlName="grams"
+                                               [(ngModel)]="variant.grams"
+                                               class="next-field--connected next-input">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="ui-stack ui-stack--wrap ui-stack--vertical ui-stack--spacing-tight">
+                                <h3 class="ui-subheading">International Customs</h3>
+                                <div class="ui-stack ui-stack--wrap">
+                                  <div class="next-input-wrapper">
+                                    <label class="next-label" for="variant-hs-code">HS
+                                      tariff code <span class="note">
+                                        <a href="http://hts.usitc.gov/" target="_blank"
+                                           rel="noopener noreferrer">  (look up code)</a>
+                                      </span>
+                                    </label>
+                                    <input
+                                      type="text"
+                                      id="variant-hs-code"
+                                      formControlName="metafields_global_harmonized_system_code"
+                                      [(ngModel)]="variant.metafields_global_harmonized_system_code"
+                                      class="next-input">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <section class="ui-card__section">
+                            <div class="ui-type-container">
+                              <h3 class="ui-subheading">Fulfillment Service</h3>
+                              <div class="ui-stack ui-stack--wrap ui-stack--spacing-none">
+                                <div class="next-input-wrapper">
+                                  <label class="next-label helper--visually-hidden"
+                                         for="variant-fulfillment-service">Fulfillment
+                                    service</label>
+                                  <div class="ui-select__wrapper next-input--has-content">
+                                    <select
+                                      formControlName="fulfillment_service"
+                                      id="variant-fulfillment-service" class="ui-select">
+                                      <option [selected]="variant.fulfillment_service=='manual'" value="manual">Manual
+                                      </option>
+                                    </select>
+                                    <svg class="next-icon next-icon--size-16">
+                                      <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                           xlink:href="#select-chevron"></use>
+                                    </svg>
+                                  </div>
+                                </div>
+                              </div>
+                              <p class="hide">You must use the same SKU
+                                that your fulfillment service uses for this variant.</p>
+                            </div>
+                          </section>
+                        </section>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div [class.ui-page-actions--has-secondary]="variantID != 0" class="ui-page-actions">
+              <div class="ui-page-actions__container">
+                <div *ngIf="variantID != 0" class="ui-page-actions__actions ui-page-actions__actions--secondary">
+                  <div class="ui-page-actions__button-group">
+                    <a (click)="popupDeleteVariant.show()" class="btn btn-destroy">Delete variant</a>
+                  </div>
+                </div>
+                <div class="ui-page-actions__actions ui-page-actions__actions--primary">
+                  <div class="ui-page-actions__button-group">
+                    <a *ngIf="variantID == 0" [routerLink]="['/products', product.id]" href="javascript:" class="btn">Cancel</a>
+                    <button class="ui-button js-btn-loadable btn-primary js-btn-primary has-loading" type="submit"
+                            name="button">Save variant
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+<app-popup-manager-images
+  (reload-data)="reloadData($event)"
+></app-popup-manager-images>
+<div *ngIf="variantID != 0" (onHidden)="popupDeleteVariant.hide()" [config]="{ show: false }" bsModal
+     #popupDeleteVariant="bs-modal"
+     class="wrap-popup">
+  <div class="modal" data-tg-refresh="modal" id="modal_container" aria-hidden="false" aria-labelledby="ModalTitle"
+       tabindex="-1" style="display: block;">
+    <header>
+      <h2 id="ModalTitle">Delete {{variant.title}}?</h2>
+      <button (click)="popupDeleteVariant.hide()" class="ui-button btn--link close-modal" type="button" name="button">Close modal</button>
+    </header>
+    <div class="body">
+      <p>Are you sure you want to delete the variant <strong>{{variant.title}}</strong>?
+        This action cannot be reversed.</p>
+    </div>
+    <div class="buttons">
+      <button (click)="popupDeleteVariant.hide()" class="ui-button close-modal" type="button" name="button">Cancel</button>
+      <a class="btn btn-destroy-no-hover js-btn-loadable" (click)="deleteVariant(variant)" >Delete variant</a>
+    </div>
+
+  </div>
+</div>

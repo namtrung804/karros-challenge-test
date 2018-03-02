@@ -1,0 +1,10 @@
+.ui-button.btn--link {
+  &:focus, &:active{
+    ~ .ui-popover {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      display: block;
+      opacity: 1;
+    }
+  }
+}

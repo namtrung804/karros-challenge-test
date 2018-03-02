@@ -1,0 +1,145 @@
+/* SCSS File */
+.page-products-index, .page-orders-index, .page-collections-index {
+  .next-input--stylized {
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  table {
+    thead {
+      tr {
+        th {
+          .bulk-actions__select-all-btn {
+            min-height: 29px;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+
+        td {
+          .next-input-wrapper {
+            position: relative;
+            top: -13px;
+          }
+        }
+      }
+    }
+  }
+  .ui-paginator {
+    text-align: center;
+    margin-top: 40px;
+    .ui-paginator-element {
+      background: $background-color;
+      color: $black-color;
+      border-left-width: 1px !important;
+      border-radius: 3px 0 0 3px;
+      position: relative;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      display: inline-block;
+      height: auto;
+      margin: 0;
+      font-family: inherit;
+      font-weight: 400;
+      white-space: nowrap;
+      cursor: pointer;
+      text-transform: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      vertical-align: middle;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      padding: 0.9rem 1.5rem;
+      background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f9fafb));
+      background: linear-gradient(to bottom, #fff, #f9fafb);
+      border: 1px solid $border-color;
+      -webkit-box-shadow: 0 1px 0 0 rgba(22, 29, 37, 0.05);
+      box-shadow: 0 1px 0 0 rgba(22, 29, 37, 0.05);
+      font-size: 1.4rem;
+      line-height: 1.6rem;
+      -webkit-transition: all 0.2s ease-out;
+      transition: all 0.2s ease-out;
+      -webkit-transition-property: background, border, color, -webkit-box-shadow;
+      transition-property: background, border, box-shadow, color;
+      transition-property: background, border, box-shadow, color, -webkit-box-shadow;
+      -webkit-tap-highlight-color: transparent;
+      &.ui-state-active {
+        color: $grey-color;
+      }
+    }
+  }
+
+}
+
+#AppFrameMain {
+  .next-input-wrapper {
+    margin-top: 1.6rem;
+  }
+}
+
+.page-products-new {
+  .popup-change-options-variant {
+    &.option-1 {
+      tag[_ngcontent-c1], .tagit-choice {
+        background: $color-option1;
+        color: #fff;
+        border-radius: 05px;
+        padding: 0px 8px;
+      }
+    }
+    &.option-2 {
+      tag[_ngcontent-c1], .tagit-choice {
+        background: $color-option2;
+        color: #fff;
+        border-radius: 05px;
+        padding: 0px 8px;
+      }
+    }
+    &.option-3 {
+      tag[_ngcontent-c1], .tagit-choice {
+        background: $color-option3;
+        color: #fff;
+        border-radius: 05px;
+        padding: 0px 8px;
+      }
+    }
+  }
+  table {
+    thead {
+      tr {
+        th {
+          .bulk-actions__select-all-btn {
+            min-height: 29px;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+
+        td {
+          .next-input-wrapper {
+            position: relative;
+            top: -13px;
+          }
+        }
+      }
+    }
+  }
+}
+.spreadsheet__cell--selectable{
+  &:hover, &:focus, &:active{
+    border-color: $color-focus-bulk;
+    -webkit-box-shadow: inset 0px 0px 0px 1px $color-focus-bulk;
+    box-shadow: inset 0px 0px 0px 1px $color-focus-bulk;
+  }
+}
+.back-to-product {
+  .back-to-product__thumbnail{
+    padding-bottom: 0;
+  }
+}

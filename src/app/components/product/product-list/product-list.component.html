@@ -1,0 +1,833 @@
+<main id="AppFrameMain" class="ui-app-frame__main ">
+  <div class="wrapper"
+       id="wrapper">
+    <div id="body" class="clearfix">
+      <div class="" id="content">
+        <div class="mobile-app-banner">
+          <button class="ui-button ui-button--transparent ui-button--icon-only ui-dismissible__action"
+                  type="button" name="button">
+            <svg class="next-icon next-icon--size-12">
+              <use xlink:href="#next-remove"></use>
+            </svg>
+          </button>
+          <div class="mobile-app-banner__logo-container">
+            <img alt="Shopify Logo" class="mobile-app-banner__logo"
+                 src="//cdn.shopify.com/s/assets/admin/shopify-app-logo-fb28b5e698e86bb736999c5294d8b4f9a01f6ea9efe4cd382aa6f2bbe52070d2.png">
+          </div>
+          <div class="mobile-app-banner__content">
+            <p class="mobile-app-banner__heading">
+              Shopify
+            </p>
+            <p class="mobile-app-banner__subheading">
+              Official app
+            </p>
+          </div>
+          <a href="http://www.shopify.com/install/detect" class="ui-button"
+             target="_blank" rel="noopener noreferrer">Install</a>
+        </div>
+
+
+        <div id="products-index" class="page products-page has-contextual-help">
+
+
+          <header class="ui-title-bar-container ui-title-bar-container--full-width">
+            <div class="ui-title-bar">
+              <div class="ui-title-bar__main-group">
+                <div class="ui-title-bar__heading-group"><span class="ui-title-bar__icon"><svg
+                  class="next-icon next-icon--color-slate-lighter next-icon--size-20"> <use
+                  xlink:href="#next-products"></use> </svg></span>
+                  <h1 class="ui-title-bar__title">Products</h1></div>
+                <div class="action-bar">
+                  <div class="action-bar__item action-bar__item--link-container hide">
+                    <div class="action-bar__top-links">
+                      <button class="ui-button ui-button--transparent action-bar__link"
+                              type="button"
+                              name="button">
+                        <svg class="next-icon next-icon--size-20 action-bar__link-icon next-icon--no-nudge">
+                          <use xlink:href="#next-export-minor"></use>
+                        </svg>
+                        Export
+                      </button>
+                      <button class="ui-button ui-button--transparent action-bar__link"
+                              type="button"
+                              name="button">
+                        <svg class="next-icon next-icon--size-20 action-bar__link-icon next-icon--no-nudge">
+                          <use xlink:href="#next-import-minor"></use>
+                        </svg>
+                        Import
+                      </button>
+                    </div>
+                    <div class="action-bar__more">
+                      <div class="ui-popover__container">
+                        <button class="ui-button ui-button--transparent" type="button" name="button"><span
+                          class="action-bar__more-label">More actions</span>
+                          <svg class="next-icon next-icon--size-20">
+                            <use xlink:href="#next-disclosure"></use>
+                          </svg>
+                        </button>
+                        <div class="ui-popover ui-popover--align-edge">
+                          <div class="ui-popover__tooltip"></div>
+                          <div class="ui-popover__content-wrapper">
+                            <div class="ui-popover__content">
+                              <div class="ui-popover__pane">
+                                <ul class="action-bar__popover-wrapper">
+                                  <li>
+                                    <ul class="ui-action-list">
+                                      <li class="ui-action-list__item">
+                                        <button class="ui-action-list-action"
+                                                type="button"
+                                                name="button"><span class="ui-action-list-action__text"><span
+                                          class="action-bar__popover-icon-wrapper"><svg
+                                          class="next-icon next-icon--color-blue next-icon--size-16 action-bar__popover-icon"> <use
+                                          xlink:href="#next-export-minor"></use> </svg></span>Export</span></button>
+                                      </li>
+                                      <li class="ui-action-list__item">
+                                        <button class="ui-action-list-action"
+                                                type="button"
+                                                name="button"><span class="ui-action-list-action__text"><span
+                                          class="action-bar__popover-icon-wrapper"><svg
+                                          class="next-icon next-icon--color-blue next-icon--size-16 action-bar__popover-icon"> <use
+                                          xlink:href="#next-import-minor"></use> </svg></span>Import</span></button>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                  <li>
+                                    <div class="ui-popover__section ui-popover__section--no-padding"><h3
+                                      class="ui-subheading action-bar__popover-label">Other actions</h3></div>
+                                    <ul class="ui-action-list">
+                                      <li class="ui-action-list__item"><a
+                                        href="javascript:"
+                                        class="ui-action-list-action"><span
+                                        class="ui-action-list-action__text"><span
+                                        class="action-bar__popover-icon-wrapper"><img role="presentation"
+                                                                                      class="action-bar__popover-icon action-bar__popover-icon--image"
+                                                                                      src="https://cdn.shopify.com/s/files/applications/60fca9c7f3400ddd43004e94b1355691_512x512.png?1390232038"
+                                                                                      alt="60fca9c7f3400ddd43004e94b1355691 512x512"
+                                                                                      height="20" width="20"></span>View all products with reviews</span></a>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ui-title-bar__mobile-primary-actions">
+                    <div class="ui-title-bar__actions">
+                      <a routerLink="/products/new" href="javascript:"
+                         class="ui-button ui-button--primary ui-title-bar__action">Add product</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-title-bar__actions-group">
+                <div class="ui-title-bar__actions">
+                  <a routerLink="/products/new" href="javascript:"
+                     class="ui-button ui-button--primary ui-title-bar__action">Add product</a></div>
+              </div>
+            </div>
+            <div class="collapsible-header">
+              <div class="collapsible-header__heading"></div>
+            </div>
+          </header>
+
+
+          <a href="javascript:"
+             type="text/html" class="modal_source" style="display: none"></a>
+
+          <div class="ui-layout ui-layout--full-width">
+            <div class="ui-layout__sections">
+
+              <app-alert style="width: 100%"></app-alert>
+              <div class="ui-layout__section">
+
+
+                <div class="ui-layout__item">
+
+                  <section class="ui-card">
+                    <div class="has-bulk-actions">
+
+
+                      <div>
+
+
+                        <div class="next-tab__container ">
+                          <ul class="next-tab__list" role="tablist">
+                            <li role="presentation"><a class="next-tab next-tab--is-active" tabindex="0"
+                                                       aria-controls="NextTabPanel-1-all" aria-selected="true"
+                                                       aria-label="All products" href="javascript:">All</a></li>
+                            <li class="next-tab__list__disclosure-item dropdown-container"><span
+                              class="next-tab next-tab--disclosure" tabindex="-1"
+                              aria-selected="true" aria-label="dropdown item" role="button"><svg
+                              class="next-icon next-icon--size-16 next-icon--no-nudge"> <use
+                              xlink:href="#next-ellipsis"></use> </svg></span>
+                              <div class="dropdown">
+                                <ul class="next-tab__list--vertical" role="tablist"></ul>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="next-card__section next-card__section--no-bottom-spacing">
+
+                          <div class="obj-filter hide-when-printing table-filter-container">
+
+                            <div class="next-input-wrapper"><label class="next-label"></label>
+                              <div class="next-field__connected-wrapper">
+                                <div class="next-field--connected--no-flex">
+                                  <div class="ui-popover__container">
+                                    <button (click)="isCustomFilter = !isCustomFilter" class="ui-button" type="button"
+                                            name="button">
+                                      Filter <span class="btn__text--deprioritize">products</span>
+                                      <svg class="next-icon next-icon--size-20">
+                                        <use xlink:href="#next-disclosure"></use>
+                                      </svg>
+                                    </button>
+                                    <div [class.ui-popover--is-active]="isCustomFilter"
+                                         class="ui-popover ui-popover--align-edge ui-popover--is-positioned-beneath "
+                                         data-popover-css-vertical-margin="13" data-popover-css-horizontal-margin="16"
+                                         data-popover-css-max-height="300" data-popover-css-max-width="550"
+                                         id="ui-popover--11" aria-labelledby="ui-popover-activator--11"
+                                         aria-expanded="true" role="dialog">
+                                      <div class="ui-popover__tooltip" style="left: 72px;"></div>
+                                      <div class="ui-popover__content-wrapper">
+                                        <div class="ui-popover__content" style="max-height: 238px; width: 188px;">
+                                          <div class="ui-popover__section">
+                                            <div class="add-filters">
+                                              <form class="clearfix">
+                                                <p class="filter-heading">Show all products where:</p>
+                                                <div class="filter-builder">
+                                                  <div class="next-input-wrapper--half-spacing">
+                                                    <div class="next-input-wrapper"><label
+                                                      class="next-label helper--visually-hidden" for="filter-select-1">Select
+                                                      a filter</label>
+                                                      <div class="ui-select__wrapper">
+                                                        <select (change)=" selectedFilter = $event.target.value"
+                                                                name="filter-select-1" id="filter-select-1"
+                                                                class="ui-select">
+                                                          <option value="">Select a filter...</option>
+                                                          <option value="published_status-availability">Availability
+                                                          </option>
+                                                          <option value="error_feedback-publishing_error">Publishing
+                                                            error
+                                                          </option>
+                                                          <option value="product_type-product_type">Product type
+                                                          </option>
+                                                          <option value="vendor-product_vendor">Product vendor</option>
+                                                          <option value="tag-tagged_with">Tagged with</option>
+                                                        </select>
+                                                        <svg class="next-icon next-icon--size-16">
+                                                          <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                               xlink:href="#select-chevron"></use>
+                                                        </svg>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+
+                                                  <div *ngIf="selectedFilter == 'published_status-availability'">
+                                                    <label class="next-label" for="filter-input-0_">is</label>
+
+                                                    <div class="next-input-wrapper--half-spacing">
+                                                      <div class="next-input-wrapper"><label
+                                                        class="next-label helper--visually-hidden"
+                                                        for="filter-select-published_status-availability">Select a
+                                                        value</label>
+                                                        <div class="ui-select__wrapper">
+                                                          <select class="ui-select"
+                                                                  name="filter-select-published_status-availability"
+                                                                  id="filter-select-published_status-availability">
+                                                            <option value="">Select a value...</option>
+                                                            <option value="facebook:visible">available on Facebook
+                                                            </option>
+                                                            <option value="facebook:hidden">unavailable on Facebook
+                                                            </option>
+                                                            <option value="online_store:visible">available on Online
+                                                              Store
+                                                            </option>
+                                                            <option value="online_store:hidden">unavailable on Online
+                                                              Store
+                                                            </option>
+                                                          </select>
+                                                          <svg class="next-icon next-icon--size-16">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                 xlink:href="#select-chevron"></use>
+                                                          </svg>
+                                                        </div>
+                                                      </div>
+
+                                                    </div>
+                                                    <div class="next-input-wrapper--vertical-block">
+                                                      <button class="ui-button btn-slim add-filter filtering-complete"
+                                                              type="submit" name="button">Add filter
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                  <div *ngIf="selectedFilter == 'error_feedback-publishing_error'">
+                                                    <label class="next-label" for="filter-input-1_">on</label>
+
+                                                    <div class="next-input-wrapper--half-spacing">
+                                                      <div class="next-input-wrapper"><label
+                                                        class="next-label helper--visually-hidden"
+                                                        for="filter-select-error_feedback-publishing_error">Select a
+                                                        value</label>
+                                                        <div class="ui-select__wrapper">
+                                                          <select class="ui-select"
+                                                                  name="filter-select-error_feedback-publishing_error"
+                                                                  id="filter-select-error_feedback-publishing_error">
+                                                            <option value="">Select a value...</option>
+                                                            <option value="d89827eee683b30743dab8a8c3a4c56f">Facebook
+                                                            </option>
+                                                          </select>
+                                                          <svg class="next-icon next-icon--size-16">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                 xlink:href="#select-chevron"></use>
+                                                          </svg>
+                                                        </div>
+                                                      </div>
+
+                                                    </div>
+                                                    <div class="next-input-wrapper--vertical-block">
+                                                      <button class="ui-button btn-slim add-filter filtering-complete"
+                                                              type="submit" name="button">Add filter
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                  <div *ngIf="selectedFilter == 'product_type-product_type'">
+                                                    <label class="next-label" for="filter-input-2_">is</label>
+
+                                                    <div class="next-input-wrapper--half-spacing">
+                                                      <div class="next-input-wrapper"><label
+                                                        class="next-label helper--visually-hidden"
+                                                        for="filter-select-product_type-product_type">Select a
+                                                        value</label>
+                                                        <div class="ui-select__wrapper">
+                                                          <select class="ui-select" #productTypeValue
+                                                                  name="filter-select-product_type-product_type"
+                                                                  id="filter-select-product_type-product_type">
+                                                            <option value="">Select a value...</option>
+                                                            <option *ngFor="let type of productType"
+                                                                    value="{{type.title}}">{{type.title}}
+                                                            </option>
+                                                          </select>
+                                                          <svg class="next-icon next-icon--size-16">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                 xlink:href="#select-chevron"></use>
+                                                          </svg>
+                                                        </div>
+                                                      </div>
+
+                                                    </div>
+                                                    <div class="next-input-wrapper--vertical-block">
+                                                      <button
+                                                        (click)="addFilter('q[product_type_title_eq]' , productTypeValue.value)"
+                                                        class="ui-button btn-slim add-filter filtering-complete"
+                                                        type="submit" name="button">Add filter
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                  <div *ngIf="selectedFilter == 'vendor-product_vendor'">
+                                                    <label class="next-label" for="filter-input-3_">is</label>
+
+                                                    <div class="next-input-wrapper--half-spacing">
+                                                      <div class="next-input-wrapper"><label
+                                                        class="next-label helper--visually-hidden"
+                                                        for="filter-select-vendor-product_vendor">Select a value</label>
+                                                        <div class="ui-select__wrapper">
+                                                          <select class="ui-select" #productVendorValue
+                                                                  name="filter-select-vendor-product_vendor"
+                                                                  id="filter-select-vendor-product_vendor"
+                                                                  class="ui-select">
+                                                            <option value="">Select a value...</option>
+                                                            <option *ngFor="let vendor of productVendor"
+                                                                    value="{{vendor.title}}">{{vendor.title}}
+                                                            </option>
+                                                          </select>
+                                                          <svg class="next-icon next-icon--size-16">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                 xlink:href="#select-chevron"></use>
+                                                          </svg>
+                                                        </div>
+                                                      </div>
+
+                                                    </div>
+                                                    <div class="next-input-wrapper--vertical-block">
+                                                      <button
+                                                        (click)="addFilter('q[vendor_title_eq]' , productVendorValue.value)"
+                                                        class="ui-button btn-slim add-filter filtering-complete"
+                                                        type="submit" name="button">Add filter
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                  <div *ngIf="selectedFilter == 'tag-tagged_with'">
+
+                                                    <div class="next-input-wrapper--half-spacing">
+                                                      <div class="next-input-wrapper"><label
+                                                        class="next-label helper--visually-hidden" for="filter-input-4">Filter-input-4</label>
+                                                        <input #productTagValue
+                                                               type="text" name="filter-input-4" id="filter-input-4"
+                                                               class="next-input"></div>
+                                                    </div>
+                                                    <div class="next-input-wrapper--vertical-block">
+                                                      <button
+                                                        (click)="addFilter('q[tags_title_cont]' , productTagValue.value)"
+                                                        class="ui-button btn-slim add-filter filtering-complete"
+                                                        type="submit" name="button">Add filter
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </form>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div id="has-saved-search-actions"
+                                     class=""></div>
+
+                                <form class="next-form next-form--full-width next-field--connected--no-border-radius">
+                                  <label class="next-label helper--visually-hidden" for="query">Query</label>
+                                  <div class="next-input--stylized next-field--connected"><span
+                                    class="next-input__add-on next-input__add-on--before"><svg
+                                    class="next-icon next-icon--color-slate-lightest next-icon--size-16"> <use
+                                    xlink:href="#next-search-reverse"></use> </svg></span>
+                                    <input #searchBox id="query" placeholder="Search products" (keyup)="searchTerms.next(searchBox.value)"
+                                           class="next-input next-input--invisible"
+                                           type="text">
+                                  </div>
+                                </form>
+                                <div id="saved-search-actions-next" class="saved-search-actions-next">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div *ngIf="filterArray.length" class="filter-list">
+                            <ul class="ui-tags active-filters">
+                              <li *ngFor="let filter of filterArray" class="ui-tag">
+                                <div [ngSwitch]="filter.param">
+                                  <span *ngSwitchCase="'q[product_type_title_eq]'"
+                                        class="ui-tag__label"> Product type is {{filter.value}}</span>
+                                  <span *ngSwitchCase="'q[vendor_title_eq]'"
+                                        class="ui-tag__label"> Product vendor is {{filter.value}}</span>
+                                  <span *ngSwitchCase="'q[tags_title_cont]'"
+                                        class="ui-tag__label"> Tagged with is {{filter.value}}</span>
+                                  <span *ngSwitchDefault
+                                        class="ui-tag__label"> Title is {{filter.value}}</span>
+                                </div>
+                                <button (click)="addFilter(filter.param, '')" type="button" name="button"
+                                        aria-label="Remove tag"
+                                        class="ui-tag__remove-button">
+                                  <svg class="next-icon next-icon--color-slate-lighter next-icon--size-12">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-remove"></use>
+                                  </svg>
+                                </button>
+                              </li>
+                            </ul>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <div id="products-results">
+                        <div class="ui-card__section">
+                          <div class="ui-type-container">
+                            <div class="table-wrapper">
+                              <div class="example-container mat-elevation-z8">
+                                <p-dataTable [loading]="loading" [tableStyleClass]="'table-hover expanded'"
+                                             [(value)]="dataSource">
+                                  <p-column field="id">
+                                    <ng-template let-col let-dat="rowData" pTemplate="header">
+                                    <span class="select">
+                                      <div
+                                        class="tooltip tooltip-left-align tooltip-bottom bulk-actions__select-all-tooltip">
+                                        <div class="next-input-wrapper bulk-actions__select-all btn--select-all">
+                                          <label
+                                            class="next-label next-label--switch {{selectList.length ?'helper--visually-hidden':'btn btn-slim bulk-actions__select-all-btn'}} "
+                                            for="bulk-actions__select-all">
+                                            <span class="helper--visually-hidden">Select all products</span>
+                                          </label>
+                                          <input #selectAll (change)="clickSelectAll(selectAll)"
+                                                 [checked]="selectList.length"
+                                                 name="bulk-actions__select-all" id="bulk-actions__select-all" value=""
+                                                 class="next-checkbox js-no-dirty bulk-actions__select-all-checkbox"
+                                                 type="checkbox">
+                                          <span class="next-checkbox--styled">
+                                            <svg class="next-icon next-icon--size-10 checkmark"> <use
+                                              xlink:href="#next-checkmark-thick">
+
+                                            </use>
+                                            </svg>
+                                            <svg class="next-icon next-icon--size-10 indeterminate"> <use
+                                              xlink:href="#next-minus">
+
+                                            </use>
+                                            </svg>
+                                          </span>
+                                        </div>
+                                        <div class="tooltip-container">
+                                          <span class="tooltip-label">Select all products</span>
+                                        </div>
+                                      </div>
+
+                                      <div [class.bulk-actions--is-visible]="selectList.length"
+                                           class="bulk-actions ">
+                                        <ul class="bulk-actions__main-bar segmented">
+                                          <li>
+                                            <a class="btn btn-slim btn-disabled btn--selection">
+                                              <span class="selection-count">
+                                                <span>{{selectList.length}}</span> selected
+                                              </span>
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a [routerLink]="['/products/bulk', {ids:selectList}]" class="btn btn-slim">
+                                              Edit products
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <div class="ui-popover__container">
+                                              <button (click)="isShowBulkAction = !isShowBulkAction"
+                                                      class="ui-button ui-button--size-small" type="button"
+                                                      name="button">
+                                                Bulk actions
+                                                <svg class="next-icon next-icon--size-20">
+                                                  <use xlink:href="#next-disclosure"></use>
+                                                </svg>
+                                              </button>
+
+                                              <div [class.ui-popover--is-active]="isShowBulkAction"
+                                                   class="ui-popover ui-popover--full-height ui-popover--is-positioned-beneath "
+                                                   id="ui-popover--1" aria-labelledby="ui-popover-activator--1"
+                                                   aria-expanded="true" role="dialog"
+                                                   style="max-width: none;margin-right: 0px;margin-left: 0px;transform-origin: 104px -5px 0px;left: -45px;"><div
+                                                class="ui-popover__tooltip" style="left: 104px;">
+
+                                              </div>
+                                                <div class="ui-popover__content-wrapper">
+                                                  <div class="ui-popover__content"
+                                                       style="max-height: 283px; width: 208px;">
+                                                    <div
+                                                      class="ui-popover__pane">
+
+
+                                                      <div class="ui-popover__section ui-popover__section--no-padding">
+                                                        <ul class="next-list next-list--compact">
+                                                            <li>
+                                                              <a (click)="showPopupMakeProduct('available')"
+                                                                 class="next-list__item">
+                                                                Make products available
+                                                              </a>
+                                                            </li>
+                                                            <li>
+                                                               <a (click)="showPopupMakeProduct('unavailable')"
+                                                                  class="next-list__item">
+                                                                Make products unavailable
+                                                              </a>
+                                                            </li>
+
+                                                            <li>
+                                                              <a (click)="popupProductDelete.show()"
+                                                                 class="next-list__item">Delete selected products</a>
+                                                            </li>
+                                                        </ul>
+                                                      </div>
+                                                      <div class="ui-popover__section ui-popover__section--no-padding">
+                                                        <ul class="next-list next-list--compact">
+                                                          <li>
+                                                            <a (click)="showPopupTag('Add tag')" class="next-list__item">Add tags</a>
+                                                          </li>
+                                                          <li>
+                                                            <a (click)="showPopupTag('Remove tag(s)')"
+                                                               class="next-list__item">Remove tags</a>
+                                                          </li>
+                                                        </ul>
+                                                  </div>
+                                                      <div class="ui-popover__section ui-popover__section--no-padding">
+                                                        <ul class="next-list next-list--compact">
+                                                          <li>           <a (click)="showPopupCollection('Add')"
+                                                            class="next-list__item">Add to collection</a>
+                                                          </li>
+                                                          <li><a (click)="showPopupCollection('Remove')" class="next-list__item">Remove from collection</a>
+                                                          </li>
+                                                        </ul>
+                                                  </div>
+
+                                                  </div>
+                                              </div>
+                                              </div>
+                                              </div>
+                                            </div>
+                                          </li>
+                                        </ul>
+
+                                        <span *ngIf="selectList.length==dataSource.length" class="bulk-select-all">
+                                          <p class="bulk-action-all-selector">
+                                            All products <span>on this page</span> are selected.
+                                              <a>Select all 50+ products from your store</a>
+                                              <a>Clear selection</a>
+                                          </p>
+                                        </span>
+                                      </div>
+                                    </span>
+                                    </ng-template>
+                                    <ng-template let-col let-dat="rowData" pTemplate="body">
+                                      <div class="next-input-wrapper">
+                                        <input id="product_ids_{{dat[col.field]}}" class="next-checkbox input-checkbox "
+                                               (change)="clickSelect(dat[col.field],$event.target.checked)"
+                                               name='product_ids_{{dat[col.field]}}'
+                                               type="checkbox" value="{{dat[col.field]}}">
+                                        <span class="next-checkbox--styled"><svg
+                                          class="next-icon next-icon--size-10 checkmark">
+                                          <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                               xlink:href="#next-checkmark-thick"></use>
+                                        </svg>
+                                        </span>
+                                      </div>
+                                    </ng-template>
+                                  </p-column>
+                                  <p-column field="image" header="">
+                                    <ng-template let-col let-dat="rowData" pTemplate="body">
+                                      <a
+                                        class="aspect-ratio aspect-ratio--square aspect-ratio--square--50 aspect-ratio--interactive">
+                                        <img class="aspect-ratio__content" src='{{dat[col.field]?.src}}'>
+                                      </a>
+                                    </ng-template>
+                                  </p-column>
+                                  <p-column [sortable]="true" field="title" header="Product">
+                                    <ng-template let-col let-dat="rowData" pTemplate="body">
+                                      <div class="ui-stack ui-stack--wrap">
+                                        <div class="ui-stack-item">
+                                          <a [routerLink]="['/products', dat.id]" data-nested-link-target="true">{{dat[col.field]}}</a>
+                                        </div>
+                                      </div>
+                                      <div *ngIf="!dat.published">
+                                        <a class="tooltip tooltip-bottom tooltip--no-decoration">
+                                          <span class="x-small type--subdued">Unavailable on all sales channels</span>
+                                          <div class="tooltip-container">
+                                            <span class="tooltip-label">Unavailable on Online Store and Facebook</span>
+                                          </div>
+                                        </a>
+                                      </div>
+                                    </ng-template>
+                                  </p-column>
+                                  <p-column [sortable]="true" field="inventory" header="Inventory"></p-column>
+                                  <p-column [sortable]="true" field="product_type" header="Type">
+                                  </p-column>
+                                  <p-column [sortable]="true" field="vendor" header="Vendor">
+                                  </p-column>
+                                </p-dataTable>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="next-card__section">
+                          <div class="next-grid next-grid--no-padding next-grid--center-aligned">
+                            <div class="next-grid__cell next-grid__cell--no-flex">
+
+                              <ul id="pagination-links" class="segmented" refresh-always="">
+                                <li>
+
+
+                                  <a [class.disabled]="pagination.number - 1 <= 0"
+                                     (click)="pagination.number -1 <= 0 ? '': getDataProducts(pagination.number-1)"
+                                     class="btn js-keep-open js-pagination-link js-prev-btn tooltip tooltip-bottom">
+                                    <span class="tooltip-container">
+                                      <span class="tooltip-label">Previous (J)</span>
+                                    </span>
+                                    <svg role="img" class="next-icon next-icon--rotate-270 next-icon--size-16"
+                                         aria-labelledby="next-arrow-detailed-d4791a64675cff701ed7102c4bc95c9c-title">
+                                      <title id="next-arrow-detailed-d4791a64675cff701ed7102c4bc95c9c-title">
+                                        previous</title>
+                                      <use xlink:href="#next-arrow-detailed"></use>
+                                    </svg>
+                                  </a></li>
+                                <li>
+
+
+                                  <a [class.disabled]="pagination.number +1 > pagination.totalPages"
+                                     (click)="pagination.number +1 > pagination.totalPages ? '' : getDataProducts(pagination.number+1)"
+                                     class="btn js-keep-open js-pagination-link js-next-btn tooltip tooltip-bottom">
+                                    <span class="tooltip-container">
+                                      <span class="tooltip-label">Next (K)</span>
+                                    </span>
+                                    <svg role="img" class="next-icon next-icon--rotate-90 next-icon--size-16"
+                                         aria-labelledby="next-arrow-detailed-18dc9ab8461a527f4ef50f779aa3baa3-title">
+                                      <title id="next-arrow-detailed-18dc9ab8461a527f4ef50f779aa3baa3-title">
+                                        next</title>
+                                      <use xlink:href="#next-arrow-detailed"></use>
+                                    </svg>
+                                  </a></li>
+                              </ul>
+
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui-footer-help">
+            <div class="ui-footer-help__content">
+              <div class="ui-footer-help__icon">
+                <svg class="next-icon next-icon--size-24 next-icon--no-nudge" role="img"
+                     aria-labelledby="next-help-circle-113f92885f93ab7182dd3ba28a2a01b1-title"><title
+                  id="next-help-circle-113f92885f93ab7182dd3ba28a2a01b1-title">Help</title>
+                  <use xlink:href="#next-help-circle"></use>
+                </svg>
+              </div>
+              <div><p>Learn more about <a target="_blank" href="https://docs.shopify.com/manual/products">products</a>.
+              </p></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+<div (onHidden)="popupProductAvailable.hide()" [config]="{ show: false }" bsModal #popupProductAvailable="bs-modal"
+     class="wrap-popup">
+  <div class="modal"
+       data-tg-refresh="modal" id="modal_container" aria-hidden="false" aria-labelledby="ModalTitle" tabindex="-1"
+       style="display: block;">
+    <div>
+      <header>
+        <h2 id="ModalTitle">
+          Make
+          <span>{{selectList.length}} products</span>
+          {{titleProductPopup}}
+        </h2>
+        <a (click)="popupProductAvailable.hide()" href="javascript:" class="close-modal" role="button"
+           aria-label="Close dialog">x</a>
+      </header>
+
+      <div class="body">
+        <p>Make <span>these</span> <span>products</span> {{titleProductPopup}} on:</p>
+        <div>
+          <input type="checkbox" id="publish_facebook" value="83830023" checked="checked"
+                 class="js-channel">
+          <label for="publish_facebook" class="inline">Facebook</label>
+        </div>
+        <div>
+          <input type="checkbox" id="publish_online_store" value="78540999" checked="checked"
+                 class="js-channel">
+          <label for="publish_online_store" class="inline">Online Store</label>
+        </div>
+
+      </div>
+
+      <div class="buttons">
+        <a (click)="popupProductAvailable.hide()" class="btn close-modal" href="javascript:">Cancel</a>
+        <button (click)="bulkProduct(titleProductPopup=='available' ? 'publish':'unpublish')"
+                class="btn btn-primary js-btn-loadable">
+
+          Make <span>products</span> {{titleProductPopup}}
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div (onHidden)="popupProductDelete.hide()" [config]="{ show: false }" bsModal #popupProductDelete="bs-modal"
+     class="wrap-popup">
+  <div class="modal" data-tg-refresh="modal" aria-hidden="false" aria-labelledby="ModalTitle" tabindex="-1"
+       style="display: block;">
+    <header>
+      <h2>
+        Delete
+        <span>{{selectList.length}} products</span><span class="hide"> matching your search</span>?
+      </h2>
+      <button (click)="popupProductDelete.hide()" class="ui-button btn--plain close-modal" type="button" name="button">
+        ×
+      </button>
+    </header>
+    <form>
+      <div class="body">
+        <p>
+          Deleted products cannot be recovered. Do you still want to continue?
+        </p>
+      </div>
+      <div class="buttons">
+        <button class="ui-button close-modal" (click)="popupProductDelete.hide()" type="button" name="button">Cancel
+        </button>
+        <button (click)="bulkProduct('destroy')" type="submit"
+                class="btn btn-destroy-no-hover js-btn-loadable has-loading">
+          Delete <span></span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<app-popup-tags (output-data)="bulkProduct($event.title,$event.tags)" ></app-popup-tags>
+<div (onHidden)="popupProductCollection.hide()" [config]="{ show: false }" bsModal #popupProductCollection="bs-modal"
+     class="wrap-popup">
+  <div class="modal" data-tg-refresh="modal" id="modal_container" aria-hidden="false" aria-labelledby="ModalTitle"
+       tabindex="-1" style="display: block;">
+    <div >
+      <header>
+        <h2 id="ModalTitle">
+          {{titleProductCollection}}
+          <span>{{selectList.length}} product</span><span class="hide"> matching your search</span>?
+        </h2>
+        <button (click)="popupProductCollection.hide()" class="ui-button btn--link close-modal" type="button" name="button">Close modal</button>
+      </header>
+
+      <div id="partial_container">
+        <a href="javascript:"
+           type="text/html" style="display: none"></a>
+        <div data-tg-refresh="resource-search" id="resource-search">
+          <div class="body">
+            <input type="text" #searchCollections (keyup)="boxSearchCollections.next(searchCollections.value)" id="searchQuery" class="ssb"
+                   placeholder="Search for Collections">
+            <div class="datalist" id="search-results" data-tg-refresh="search-results">
+              <ul *ngIf="collectionsCustom.length" class="datalist-stacked unstyled">
+                <li *ngFor="let collection of collectionsCustom" (click)="addCollection(collection)" [class.datalist-item-applied]="selectedCollections.indexOf(collection.id) != -1" class="resource-search-result ">
+                  <a href="javascript:"
+                  >
+                    <span class="ico ico-16">✔</span>
+                    {{collection.title}}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div *ngIf="selectedCollections.length" class="box warning s-none ppl ppr">
+            <p>
+              You are about to add
+              <span class="selection-count"
+              >{{selectList.length}} product</span>
+              to
+              <span
+              >{{selectedCollections.length}} collection</span>:
+            </p>
+            <p class="link-overflow">custom</p>
+          </div>
+
+          <div class="buttons">
+            <div id="results-pagination-links" data-tg-refresh="results-pagination-links">
+            </div>
+            <button (click)="popupProductCollection.hide()" class="ui-button close-modal" type="button" name="button">Cancel</button>
+            <button (click)="bulkProduct(titleProductCollection == 'Add'? 'add_to_collections' :'remove_from_collections',selectedCollections)" type="submit"
+                    class="btn btn-primary"
+            >Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

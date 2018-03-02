@@ -1,0 +1,491 @@
+<main id="AppFrameMain" class="ui-app-frame__main ">
+  <div class="wrapper"
+       data-define="{ notifier: new Shopify.Notifications({ shopName: Shopify.shop.settings.shopName, iconPath: &quot;\/\/cdn.shopify.com\/s\/assets\/admin\/shopify-notification-icon-5bb71743b535cc0810f4fa447c50934f8b99a46d030d55b8467c3831c14f5c36.png&quot; }) }"
+       id="wrapper">
+    <div id="body" class="clearfix" data-tg-refresh="body">
+      <div class="" id="content">
+        <div class="page">
+
+
+          <header class="ui-title-bar-container ui-title-bar-container--full-width">
+            <div class="ui-title-bar">
+              <div class="ui-title-bar__navigation">
+                <div class="ui-breadcrumbs">
+                  <a href="javascript:" [routerLink]="['/products', product?.id]"
+                     class="ui-button ui-button--transparent ui-breadcrumb">
+                    <svg class="next-icon next-icon--size-20 next-icon--no-nudge">
+                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#chevron-left-thinner"></use>
+                    </svg>
+                    <span class="ui-breadcrumb__item">{{ product.title }}</span></a>
+                </div>
+              </div>
+              <div class="ui-title-bar__main-group">
+                <div class="ui-title-bar__heading-group"><span class="ui-title-bar__icon"><svg
+                  class="next-icon next-icon--color-slate-lighter next-icon--size-20"> <use
+                  xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-products"></use> </svg></span>
+                  <h1 class="ui-title-bar__title">Bulk editor</h1></div>
+              </div>
+            </div>
+            <div class="collapsible-header">
+              <div class="collapsible-header__heading"></div>
+            </div>
+          </header>
+          <form [formGroup]="dataForm" (ngSubmit)="submitForm()">
+            <div class="next-grid">
+              <div class="next-grid__cell">
+                <div class="next-card">
+                  <div class="next-card__section">
+                    <div class="ui-stack ui-stack--wrap ui-stack--vertical">
+                      <label id="next-label--columns" refresh="columns">
+                        Currently editing these fields:
+                      </label>
+                      <div class="next-token-list__wrapper" id="current_columns" refresh="columns">
+                        <ul class="next-token-list next-token-list--bulk-editor">
+                          <li ngif="headerTable.length" *ngFor="let header of headerTable;let i= index"
+                              class="next-token">
+                            <span class="next-token__label">{{header.name}}</span>
+                            <a (click)="removeHeaderTable(i)" class="next-token__remove">
+                            <span class="next-token__remove__icon">
+                              <svg class="next-icon next-icon--size-10 next-icon--no-nudge"> <use
+                                xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-remove"></use> </svg>
+                            </span>
+                            </a>
+                          </li>
+                          <li>
+                            <div class="ui-popover__container ui-popover__container--contains-active-popover">
+                              <button (click)="isShowBulkAction = !isShowBulkAction" class="ui-button btn-slim"
+                                      type="button" name="button" id="ui-popover-activator--1"
+                                      aria-expanded="true" aria-haspopup="true" aria-owns="ui-popover--1"
+                                      aria-controls="ui-popover--1">
+                                Add fields
+                                <svg class="next-icon next-icon--size-20">
+                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-disclosure"></use>
+                                </svg>
+                                <div class="tooltip-container">
+                                  <span class="tooltip-label">No more editable fields</span>
+                                </div>
+                              </button>
+                              <div [class.ui-popover--is-active]="isShowBulkAction"
+                                   class="ui-popover ui-popover--reduced-spacing bulk-edit__popover ui-popover--is-positioned-beneath "
+                                   data-popover-horizontally-relative-to-closest=".next-card"
+                                   data-popover-css-vertical-margin="13" data-popover-css-horizontal-margin="16"
+                                   data-popover-css-max-height="300" data-popover-css-max-width="550" id="ui-popover--1"
+                                   aria-labelledby="ui-popover-activator--1" aria-expanded="true" role="dialog"
+                                   style="max-width: none; margin-right: 0px; margin-left: 0px; transform-origin: 275px -5px 0px; left: -221px;">
+                                <div class="ui-popover__tooltip" style="left: 275px;"></div>
+                                <div class="ui-popover__content-wrapper">
+                                  <div class="ui-popover__content" style="max-height: 300px; width: 550px;">
+                                    <div class="ui-popover__pane">
+                                      <div class="ui-popover__section" style="min-width: 350px">
+                                        <div
+                                          class="next-grid next-grid--no-outside-padding next-grid--vertically-centered">
+                                          <div class="next-grid__cell next-grid__cell--quarter">
+                                            Pricing
+                                          </div>
+                                          <div class="next-grid__cell next-grid__cell--vertically-centered">
+                                            <ul class="next-token-list">
+                                              <li class="next-token next-token--clickable "
+                                                  [class.next-token--is-disabled]="checkHeaderTable('price') != -1 "
+                                                  (click)="checkHeaderTable('price') != -1 ? '' : addHeaderTable('price','Price')"
+                                              >
+                                                <span class="next-token__label">Price</span>
+                                              </li>
+                                              <li class="next-token next-token--clickable "
+                                                  [class.next-token--is-disabled]="checkHeaderTable('compare_at_price') != -1 "
+                                                  (click)="checkHeaderTable('compare_at_price') != -1 ? '' : addHeaderTable('compare_at_price','Compare at price')"
+                                              >
+                                                <span class="next-token__label">Compare at price</span>
+                                              </li>
+                                              <li class="next-token next-token--clickable "
+                                                  [class.next-token--is-disabled]="checkHeaderTable('taxable') != -1 "
+                                                  (click)="checkHeaderTable('taxable') != -1 ? '' : addHeaderTable('taxable','Charge taxes')"
+                                              >
+                                                <span class="next-token__label">Charge taxes</span>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="ui-popover__section" style="min-width: 350px">
+                                        <div
+                                          class="next-grid next-grid--no-outside-padding next-grid--vertically-centered">
+                                          <div class="next-grid__cell next-grid__cell--quarter">
+                                            Inventory
+                                          </div>
+                                          <div class="next-grid__cell next-grid__cell--vertically-centered">
+                                            <ul class="next-token-list">
+                                              <li [class.next-token--is-disabled]="checkHeaderTable('sku') != -1 "
+                                                  (click)="checkHeaderTable('sku') != -1 ? '' : addHeaderTable('sku','SKU')"
+                                                  class="next-token next-token--clickable ">
+                                                <span class="next-token__label">SKU</span>
+                                              </li>
+                                              <li [class.next-token--is-disabled]="checkHeaderTable('barcode') != -1 "
+                                                  (click)="checkHeaderTable('barcode') != -1 ? '' : addHeaderTable('barcode','Barcode')"
+                                                  class="next-token next-token--clickable ">
+                                                <span class="next-token__label">Barcode</span>
+                                              </li>
+                                              <li
+                                                [class.next-token--is-disabled]="checkHeaderTable('inventory_quantity') != -1 "
+                                                (click)="checkHeaderTable('inventory_quantity') != -1 ? '' : addHeaderTable('inventory_quantity','Inventory quantity')"
+                                                class="next-token next-token--clickable ">
+                                                <span class="next-token__label">Inventory quantity</span>
+                                              </li>
+                                              <li class="next-token next-token--clickable "
+                                                  [class.next-token--is-disabled]="checkHeaderTable('inventory_policy') != -1 "
+                                                  (click)="checkHeaderTable('inventory_policy') != -1 ? '' : addHeaderTable('inventory_policy','Allow overselling')"
+                                              >
+                                                <span class="next-token__label">Allow overselling</span>
+                                              </li>
+                                              <li class="next-token next-token--clickable "
+                                                  [class.next-token--is-disabled]="checkHeaderTable('inventory_management') != -1 "
+                                                  (click)="checkHeaderTable('inventory_management') != -1 ? '' : addHeaderTable('inventory_management','Inventory tracking')"
+                                              >
+                                                <span class="next-token__label">Inventory tracking</span>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="ui-popover__section" style="min-width: 350px">
+                                        <div
+                                          class="next-grid next-grid--no-outside-padding next-grid--vertically-centered">
+                                          <div class="next-grid__cell next-grid__cell--quarter">
+                                            Shipping
+                                          </div>
+                                          <div class="next-grid__cell next-grid__cell--vertically-centered">
+                                            <ul class="next-token-list">
+                                              <li class="next-token next-token--clickable "
+                                                  [class.next-token--is-disabled]="checkHeaderTable('grams') != -1 "
+                                                  (click)="checkHeaderTable('grams') != -1 ? '' : addHeaderTable('grams','Weight')"
+                                              >
+                                                <span class="next-token__label">Weight</span>
+                                              </li>
+                                              <li class="next-token next-token--clickable "
+                                                  [class.next-token--is-disabled]="checkHeaderTable('requires_shipping') != -1 "
+                                                  (click)="checkHeaderTable('requires_shipping') != -1 ? '' : addHeaderTable('requires_shipping','Requires shipping')"
+                                              >
+                                                <span class="next-token__label">Requires shipping</span>
+                                              </li>
+                                              <li class="next-token next-token--clickable "
+                                                  [class.next-token--is-disabled]="checkHeaderTable('metafields_global_harmonized_system_code') != -1 "
+                                                  (click)="checkHeaderTable('metafields_global_harmonized_system_code') != -1 ? '' : addHeaderTable('metafields_global_harmonized_system_code','HS tariff code')"
+                                              >
+                                                <span class="next-token__label">HS tariff code</span>
+                                              </li>
+                                              <li class="next-token next-token--clickable "
+                                                  [class.next-token--is-disabled]="checkHeaderTable('fulfillment_service') != -1 "
+                                                  (click)="checkHeaderTable('fulfillment_service') != -1 ? '' : addHeaderTable('fulfillment_service','Fulfillment service')"
+                                              >
+                                                <span class="next-token__label">Fulfillment service</span>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <section class="next-card__section next-card__section--no-padding">
+                    <app-alert></app-alert>
+                    <div style="overflow: unset" class="spreadsheet__overflow">
+                      <div class="spreadsheet__container" id="resource_table">
+                        <div class="next-card__section next-card__section--no-padding">
+                          <div *ngIf="dataForm.controls.variants.value.length && headerTable.length"
+                               formArrayName="variants"
+                               class="spreadsheet">
+                            <div class="spreadsheet__header-group">
+                              <div class="spreadsheet__cell spreadsheet__cell--dirty-indicator"></div>
+
+                              <div class="spreadsheet__cell spreadsheet__cell--row-title spreadsheet__cell--resizable"
+                                   title="Title">
+                                Title
+                                <span class="spreadsheet__resize-handle"></span>
+                              </div>
+
+                              <div *ngFor="let header of headerTable"
+                                   class="spreadsheet__cell spreadsheet__cell--resizable spreadsheet__cell--type-string"
+                                   title="{{header.name}}">
+                                {{header.name}}
+                                <span class="spreadsheet__resize-handle"></span>
+                              </div>
+                            </div>
+                            <div *ngFor="let vari of dataForm.controls.variants.controls; let i=index"
+                                 class="spreadsheet__row-group">
+                              <div [formGroupName]="i" class="spreadsheet__row">
+                                <div
+                                  class="spreadsheet__cell spreadsheet__cell--dirty-indicator spreadsheet__cell--row-title">
+                                  <div class="next-spinner next-spinner--is-hidden">
+                                    <svg class="next-icon next-icon--size-12">
+                                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-spinner"></use>
+                                    </svg>
+                                  </div>
+                                </div>
+
+                                <div class="spreadsheet__cell spreadsheet__cell--row-title  productvariant--title">
+                                  <span class="variant-option-value option-1">{{vari.get('option1').value}}</span>
+                                  <span *ngIf="vari.get('option2').value != ''" class="type--subdued"> • </span>
+                                  <span class="variant-option-value option-2">{{vari.get('option2').value}}</span>
+                                  <span *ngIf="vari.get('option3').value != ''" class="type--subdued"> • </span>
+                                  <span class="variant-option-value option-3">{{vari.get('option3').value}}</span>
+                                </div>
+                                <ng-container *ngFor="let header of headerTable">
+                                  <ng-container [ngSwitch]="header.col">
+                                    <div tabindex="-1" *ngSwitchCase="'sku'"
+                                         class="spreadsheet__cell spreadsheet__cell--selectable productvariant--sku spreadsheet__cell--type-string">
+                                      <div class="spreadsheet__drag-selection">
+                                        <div class="next-input-wrapper">
+                                          <input type="text"
+                                                 [(ngModel)]="vari.get(header.col).value"
+                                                 formControlName="{{header.col}}"
+                                                 id="product_variant_sku"
+                                                 class="next-input">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div tabindex="-1" *ngSwitchCase="'price'"
+                                         class="spreadsheet__cell spreadsheet__cell--selectable productvariant--price spreadsheet__cell--type-money">
+                                      <div class="spreadsheet__drag-selection">
+                                        <div class="next-input-wrapper">
+                                          <div class="next-input--stylized next-input--has-content"><span
+                                            class="next-input__add-on next-input__add-on--before">$</span>
+                                            <input
+                                            type="text"
+                                            [(ngModel)]="vari.get(header.col).value"
+                                            formControlName="{{header.col}}"
+                                            id="product_variant_price"
+                                            class="next-input next-input--invisible">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div tabindex="-1" *ngSwitchCase="'compare_at_price'"
+                                         class="spreadsheet__cell spreadsheet__cell--selectable productvariant--compare_at_price spreadsheet__cell--type-money">
+                                      <div class="spreadsheet__drag-selection">
+                                        <div class="next-input-wrapper">
+                                          <div class="next-input--stylized next-input--has-content"><span
+                                            class="next-input__add-on next-input__add-on--before">$</span><input
+                                            type="text"
+                                            [(ngModel)]="vari.get(header.col).value"
+                                            formControlName="{{header.col}}"
+                                            id="product_variant_compare_at_price"
+
+                                            class="next-input next-input--invisible">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div *ngSwitchCase="'inventory_quantity'"
+                                         class="spreadsheet__cell spreadsheet__cell--uneditable spreadsheet__cell--type-inventory_adjustment"
+                                         aria-label="Uneditable">—
+                                    </div>
+                                    <div tabindex="-1" *ngSwitchCase="'taxable'"
+                                         class="spreadsheet__cell spreadsheet__cell--selectable productvariant--taxable spreadsheet__cell--type-boolean">
+                                      <div class="spreadsheet__drag-selection">
+                                        <div class="next-input-wrapper next-input-wrapper--inline"><label
+                                          class="next-label helper--visually-hidden next-label--switch"
+                                          for="product_variant_taxable">Taxable</label>
+                                          <input
+                                            class="next-checkbox" type="checkbox" [(ngModel)]="vari.get(header.col).value"
+                                            formControlName="{{header.col}}" [checked]="vari.get(header.col).value"
+                                            id="product_variant_taxable">
+                                          <span
+                                            class="next-checkbox--styled"><svg
+                                            class="next-icon next-icon--size-10 checkmark"> <use
+                                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            xlink:href="#next-checkmark-thick"></use> </svg>
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div tabindex="-1" *ngSwitchCase="'barcode'"
+                                         class="spreadsheet__cell spreadsheet__cell--selectable productvariant--barcode spreadsheet__cell--type-string">
+                                      <div class="spreadsheet__drag-selection">
+                                        <div class="next-input-wrapper">
+                                          <input type="text" [(ngModel)]="vari.get(header.col).value"
+                                                 formControlName="{{header.col}}"
+                                                 id="product_variant_barcode"
+                                                 class="next-input">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div tabindex="-1" *ngSwitchCase="'inventory_policy'"
+                                         class="spreadsheet__cell spreadsheet__cell--selectable productvariant--inventory_policy spreadsheet__cell--type-boolean">
+                                      <div class="spreadsheet__drag-selection">
+                                        <div class="next-input-wrapper next-input-wrapper--inline">
+
+                                          <input
+                                            class="next-checkbox" type="checkbox" [(ngModel)]="vari.get(header.col).value"
+                                            formControlName="{{header.col}}" [checked]="vari.get(header.col).value != 0"
+                                            id="product_variant_inventory_policy">
+                                          <span
+                                            class="next-checkbox--styled"><svg
+                                            class="next-icon next-icon--size-10 checkmark"> <use
+                                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            xlink:href="#next-checkmark-thick"></use> </svg></span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div tabindex="-1" *ngSwitchCase="'inventory_management'"
+                                         class="spreadsheet__cell spreadsheet__cell--selectable productvariant--inventory_management spreadsheet__cell--type-select">
+                                      <div class="spreadsheet__drag-selection">
+                                        <div class="next-input-wrapper">
+                                          <div class="ui-select__wrapper">
+                                            <select
+                                              formControlName="{{header.col}}"
+                                              id="product_variant_inventory_management"
+                                              class="ui-select">
+                                              <option [selected]="vari.get(header.col).value==''" value="">Don't track inventory
+                                              </option>
+                                              <option [selected]="vari.get(header.col).value=='shopify'" value="shopify">Shopify
+                                                tracks this product's inventory
+                                              </option>
+                                            </select>
+                                            <svg class="next-icon next-icon--size-16">
+                                              <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                   xlink:href="#select-chevron"></use>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div tabindex="-1" *ngSwitchCase="'grams'"
+                                         class="spreadsheet__cell spreadsheet__cell--selectable productvariant--weight spreadsheet__cell--type-weight">
+                                      <div class="spreadsheet__drag-selection">
+                                        <div class="next-input-wrapper">
+                                          <div class="next-field__connected-wrapper">
+                                            <input type="text"
+                                                   [(ngModel)]="vari.grams"
+                                                   formControlName="grams"
+                                                   id="product_variant_weight"
+
+                                                   class="next-field--connected next-input">
+                                            <div
+                                              class="ui-select__wrapper next-field--connected next-field--connected--no-flex next-input--has-content">
+
+                                              <select formControlName="weight_unit"
+                                                      id="product_variant_weight_unit"
+                                                      label_hidden="true"  class="ui-select">
+                                                <option [selected]="vari.get('weight_unit').value=='lb'" value="lb">lb</option>
+                                                <option [selected]="vari.get('weight_unit').value=='oz'" value="oz">oz</option>
+                                                <option [selected]="vari.get('weight_unit').value=='kg'" value="kg">kg</option>
+                                                <option [selected]="vari.get('weight_unit').value=='g'" value="g">g</option>
+                                              </select>
+                                              <svg class="next-icon next-icon--size-16">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                     xlink:href="#select-chevron"></use>
+                                              </svg>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div tabindex="-1" *ngSwitchCase="'requires_shipping'"
+                                         class="spreadsheet__cell spreadsheet__cell--selectable productvariant--requires_shipping spreadsheet__cell--type-boolean">
+                                      <div class="spreadsheet__drag-selection">
+                                        <div class="next-input-wrapper next-input-wrapper--inline">
+                                          <input
+                                            class="next-checkbox" type="checkbox" [checked]="vari.get(header.col).value"
+                                            [(ngModel)]="vari.get(header.col).value"
+                                            formControlName="{{header.col}}"
+                                            id="product_variant_requires_shipping">
+                                          <span class="next-checkbox--styled"><svg
+                                            class="next-icon next-icon--size-10 checkmark"> <use
+                                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            xlink:href="#next-checkmark-thick"></use> </svg></span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div tabindex="-1" *ngSwitchCase="'metafields_global_harmonized_system_code'"
+                                         class="spreadsheet__cell spreadsheet__cell--selectable productvariant--metafields_global_harmonized_system_code spreadsheet__cell--type-string">
+                                      <div class="spreadsheet__drag-selection">
+                                        <div class="next-input-wrapper">
+                                          <input type="text"
+                                                 [(ngModel)]="vari.get(header.col).value"
+                                                 formControlName="{{header.col}}"
+                                                 id="product_variant_metafields_global_harmonized_system_code"
+                                                 class="next-input">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div tabindex="-1" *ngSwitchCase="'fulfillment_service'"
+                                         class="spreadsheet__cell spreadsheet__cell--selectable productvariant--fulfillment_service spreadsheet__cell--type-select">
+                                      <div class="spreadsheet__drag-selection">
+                                        <div class="next-input-wrapper">
+                                          <div class="ui-select__wrapper next-input--has-content">
+                                            <select
+                                              formControlName="{{header.col}}"
+                                              id="product_variant_fulfillment_service" class="ui-select">
+                                              <option [selected]="vari.get(header.col).value=='manual'" value="manual">Manual
+                                              </option>
+                                            </select>
+                                            <svg class="next-icon next-icon--size-16">
+                                              <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                   xlink:href="#select-chevron"></use>
+                                            </svg>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </ng-container>
+                                </ng-container>
+
+
+                              </div>
+
+                            </div>
+                          </div>
+
+                        </div>
+                        <div class="next-card__section">
+                        </div>
+
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+            <div class="ui-page-actions">
+              <div class="ui-page-actions__container">
+                <div class="ui-page-actions__actions ui-page-actions__actions--primary">
+                  <div class="ui-page-actions__button-group">
+                    <a class="btn" data-allow-default="1" [routerLink]="['/products', product?.id]">Cancel</a>
+                    <button class="btn js-btn-primary js-btn-loadable btn-primary has-loading" name="button"
+                            type="submit">Save
+                      product
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="ui-footer-help">
+            <div class="ui-footer-help__content">
+              <div class="ui-footer-help__icon">
+                <svg class="next-icon next-icon--size-24 next-icon--no-nudge" role="img"
+                     aria-labelledby="next-help-circle-ccfe240356f66d35acb1888fb178ec41-title"><title
+                  id="next-help-circle-ccfe240356f66d35acb1888fb178ec41-title">Help</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-help-circle"></use>
+                </svg>
+              </div>
+              <div>
+                <p>
+                  Use your arrow keys to switch between cells.<br>
+                  Hold shift to select multiple cells.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>

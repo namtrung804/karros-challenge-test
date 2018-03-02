@@ -1,0 +1,109 @@
+@import "mixin";
+
+body {
+  background-color: $background-color;
+}
+
+@import "layout_login";
+@import "products";
+@import "_navigation";
+@import "_menu";
+@import "_customers";
+@import "_order";
+@import "_collections";
+@import "_pages";
+@import "_themes";
+.fadeIn {
+  max-height: 100%;
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.fadeOut {
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.fresh-ui th {
+  padding: 0 10px;
+}
+
+.table-filter-container {
+  margin-bottom: 10px;
+}
+
+.ui-popover.ui-popover--align-edge.ui-popover--is-positioned-beneath.ui-popover--is-active {
+  max-width: none;
+  margin-right: 0px;
+  margin-left: 0px;
+  transform-origin: 72px -5px 0px;
+  left: 0px;
+  z-index: 1000;
+}
+
+.wrap-popup {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  left: 0;
+  .ui-layout__section {
+    margin-bottom: 10px;
+    .ui-layout__item {
+      padding-top: 0 !important;
+      padding-left: 0 !important;
+    }
+  }
+
+}
+
+.theme-editor-action-list__item {
+  background: #ffffff !important;
+  border: 0 !important;
+  text-align: center !important;
+  box-shadow: none !important;
+  padding: 10px 15px !important;
+  &:hover, &:focus, &:active, &.is-selected {
+    background: #ffffff !important;
+    color: #31373d;
+    text-decoration: none !important;
+    border: 0 !important;
+    -webkit-box-shadow: inset 3px 0 0 0 $color-focus-bulk !important;
+    border-radius: unset !important;
+    outline: 0;
+  }
+}
+
+.z-index {
+  z-index: 10 !important;
+}
+
+.date-picker-collections {
+  width: 100%;
+  input {
+    border: 1px solid $border-color !important;
+    border-radius: 3px;
+  }
+  .ui-datepicker {
+    position: absolute;
+    top: -212px !important;
+    left: -264px !important;
+  }
+}
+
+.datepicker-collection-detail {
+  width: 263px;
+  border: 1px solid $border-color !important;
+  border-radius: 3px;
+}
+.overflow-unset{
+  overflow-x: unset !important;
+}
+
+.page-bulk-index .next-input-wrapper {
+  margin-top: 0rem !important;
+}

@@ -1,0 +1,421 @@
+m<main id="AppFrameMain" class="ui-app-frame__main ">
+    <div class="wrapper" id="wrapper">
+        <div id="body" class="clearfix">
+            <div class="" id="content">
+                <div class="page">
+                    <header class="ui-title-bar-container ui-title-bar-container--full-width">
+                        <div class="ui-title-bar">
+                            <div class="ui-title-bar__navigation">
+                                <div class="ui-breadcrumbs">
+                                    <a routerLink="/customers" class="ui-button ui-button--transparent ui-breadcrumb">
+                                        <svg class="next-icon next-icon--size-20 next-icon--no-nudge">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                 xlink:href="#chevron-left-thinner"></use>
+                                        </svg>
+                                        <span class="ui-breadcrumb__item">Customers</span></a>
+                                </div>
+                            </div>
+                            <div class="ui-title-bar__main-group">
+                                <div class="ui-title-bar__heading-group">
+                                    <span class="ui-title-bar__icon">
+                                        <svg class="next-icon next-icon--color-slate-lighter next-icon--size-20">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                 xlink:href="#next-customers"></use>
+                                        </svg>
+                                    </span>
+                                    <h1 class="ui-title-bar__title">Bulk editor</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="collapsible-header">
+                            <div class="collapsible-header__heading"></div>
+                        </div>
+                    </header>
+                    <div class="next-grid">
+                        <div class="next-grid__cell">
+                            <div class="next-card">
+                                <div class="next-card__section">
+                                    <div class="ui-stack ui-stack--wrap ui-stack--vertical">
+                                        <label id="next-label--columns" refresh="columns">
+                                            Currently editing these fields:
+                                        </label>
+                                        <div class="next-token-list__wrapper" id="current_columns">
+                                            <ul class="next-token-list next-token-list--bulk-editor">
+                                                <li *ngFor="let field of availableFields; let i=index"
+                                                    class="next-token">
+                                                    <span class="next-token__label">{{field.title}}</span>
+                                                    <a class="next-token__remove"
+                                                       (click)="removeFilter(field.title)">
+                                                            <span class="next-token__remove__icon">
+                                                                <svg class="next-icon next-icon--size-10 next-icon--no-nudge">
+                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                         xlink:href="#next-remove">
+                                                                    </use>
+                                                                </svg>
+                                                            </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <div class="ui-popover__container">
+                                                        <button class="ui-button btn-slim" type="button" name="button"
+                                                                (click)="isShowFieldTags = !isShowFieldTags">
+                                                            Add fields
+                                                            <svg class="next-icon next-icon--size-20">
+                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                     xlink:href="#next-disclosure"></use>
+                                                            </svg>
+                                                            <div class="tooltip-container">
+                                                                <span class="tooltip-label">No more editable fields</span>
+                                                            </div>
+                                                        </button>
+                                                        <div class="ui-popover ui-popover--reduced-spacing bulk-edit__popover"
+                                                             [class.ui-popover--is-active]="isShowFieldTags"
+                                                             [ngStyle]="{'max-width': 'none', 'margin-left' : '0', 'margin-right' : '0', 'z-index' : '1000', 'left' : '-192px'}">
+                                                            <div class="ui-popover__tooltip"></div>
+                                                            <div class="ui-popover__content-wrapper">
+                                                                <div class="ui-popover__content"
+                                                                     [ngStyle]="{'max-height': '263px', 'width': '550px'}">
+                                                                    <div class="ui-popover__pane">
+                                                                        <div class="ui-popover__section"
+                                                                             style="min-width: 350px">
+                                                                            <div class="next-grid next-grid--no-outside-padding next-grid--vertically-centered">
+                                                                                <div class="next-grid__cell next-grid__cell--quarter">
+                                                                                    Attribution
+                                                                                </div>
+                                                                                <div class="next-grid__cell next-grid__cell--vertically-centered">
+                                                                                    <ul class="next-token-list">
+                                                                                        <ng-container
+                                                                                                *ngFor="let field of editFields; let i=index">
+                                                                                            <li *ngIf="field.type_group === 'Attribution'"
+                                                                                                class="next-token next-token--clickable"
+                                                                                                [class.next-token--is-disabled]="hasField(field.title) !== -1"
+                                                                                                (click)="hasField(field.title) !== -1 ? '' : addFilter(field.title)">
+                                                                                                <span class="next-token__label">{{field.title}}</span>
+                                                                                            </li>
+                                                                                        </ng-container>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <section class="next-card__section next-card__section--no-padding">
+                                    <div class="spreadsheet__overflow" [ngStyle]="{'overflow':'unset'}">
+                                        <div class="spreadsheet__container" id="resource_table">
+                                            <div class="next-card__section next-card__section--no-padding">
+                                                <div class="spreadsheet">
+                                                    <div class="spreadsheet__header-group">
+                                                        <div class="spreadsheet__cell spreadsheet__cell--dirty-indicator"></div>
+
+                                                        <div class="spreadsheet__cell spreadsheet__cell--row-title spreadsheet__cell--resizable"
+                                                             title="Title">
+                                                            Customer
+                                                            <span class="spreadsheet__resize-handle"></span>
+                                                        </div>
+                                                        <ng-container
+                                                                *ngFor="let field of availableFields; let i=index">
+                                                            <div class="spreadsheet__cell spreadsheet__cell--resizable spreadsheet__cell--type-{{field.type}}"
+                                                                 title="{{field.title}}">
+                                                                {{field.title}}
+                                                                <span class="spreadsheet__resize-handle"></span>
+                                                            </div>
+                                                        </ng-container>
+                                                    </div>
+                                                    <form [formGroup]="customerForm" id="customer_"
+                                                          class="spreadsheet__row-group"
+                                                          (submit)="submitBulk();"
+                                                          no_submit_on_enter="true">
+                                                        <button class="ui-button ui-button--primary js-btn-primary js-btn-loadable bulk-submit btn-primary has-loading"
+                                                                type="submit" name="commit">Save
+                                                        </button>
+                                                        <ng-container formArrayName="customers">
+                                                            <ng-container
+                                                                    *ngFor="let item of customerForm.get('customers')['controls']; let i=index"
+                                                                    [formGroupName]="i">
+                                                                <div class="spreadsheet__row">
+                                                                    <div class="spreadsheet__cell spreadsheet__cell--dirty-indicator spreadsheet__cell--row-title">
+                                                                        <div class="next-spinner next-spinner--is-hidden">
+                                                                            <svg class="next-icon next-icon--size-12">
+                                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                     xlink:href="#next-spinner"></use>
+                                                                            </svg>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="spreadsheet__cell spreadsheet__cell--row-title  customer--name">
+                                                                        {{item.value.first_name}}
+                                                                        {{item.value.last_name}}
+                                                                    </div>
+                                                                    <ng-container
+                                                                            *ngFor="let field of availableFields; let i=index">
+                                                                        <ng-container
+                                                                                *ngIf="field.title !== 'Title'">
+                                                                            <ng-container
+                                                                                    [ngSwitch]="field.title">
+                                                                                <div *ngSwitchCase="'Email'"
+                                                                                     tabindex="-1"
+                                                                                     class="spreadsheet__cell spreadsheet__cell--selectable customer--email">
+                                                                                    <div class="spreadsheet__drag-selection">
+                                                                                        <div class="next-input-wrapper">
+                                                                                            <label class="next-label helper--visually-hidden"
+                                                                                                   for="customer_email">Customer[email]</label>
+                                                                                            <input formControlName="email"
+                                                                                                   type="text"
+                                                                                                   name="customer[email]"
+                                                                                                   id="customer_email"
+                                                                                                   size="1"
+                                                                                                   class="next-input">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div *ngSwitchCase="'First Name'"
+                                                                                     tabindex="-1"
+                                                                                     class="spreadsheet__cell spreadsheet__cell--selectable customer--first_name spreadsheet__cell--type-string">
+                                                                                    <div class="spreadsheet__drag-selection">
+                                                                                        <div class="next-input-wrapper">
+                                                                                            <label class="next-label helper--visually-hidden"
+                                                                                                   for="customer_first_name">Customer[firstname]</label>
+                                                                                            <input formControlName="first_name"
+                                                                                                   type="text"
+                                                                                                   name="customer[first_name]"
+                                                                                                   id="customer_first_name"
+                                                                                                   size="1"
+                                                                                                   class="next-input">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div *ngSwitchCase="'Last Name'"
+                                                                                     tabindex="-1"
+                                                                                     class="spreadsheet__cell spreadsheet__cell--selectable customer--last_name spreadsheet__cell--type-string">
+                                                                                    <div class="spreadsheet__drag-selection">
+                                                                                        <div class="next-input-wrapper">
+                                                                                            <label class="next-label helper--visually-hidden"
+                                                                                                   for="customer_last_name">Customer[lastname]</label>
+                                                                                            <input formControlName="last_name"
+                                                                                                   type="text"
+                                                                                                   name="customer[last_name]"
+                                                                                                   id="customer_last_name"
+                                                                                                   size="1"
+                                                                                                   class="next-input">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div *ngSwitchCase="'Tags'"
+                                                                                     tabindex="-1"
+                                                                                     class="spreadsheet__cell spreadsheet__cell--selectable customer--tags spreadsheet__cell--type-tags">
+                                                                                    <div class="spreadsheet__drag-selection">
+                                                                                        <div class="ui-popover__container ui-popover__container--full-width-container ui-popover--spreadsheet ui-popover__container--contains-active-popover">
+                                                                                            <ul (click)="showingTagsPop('TagsPop_' + item.value.id)"
+                                                                                                class="next-token-list js-addtags spreadsheet__tag-list"
+                                                                                                id="ui-popover-activator--12"
+                                                                                                aria-expanded="true"
+                                                                                                aria-haspopup="true"
+                                                                                                aria-owns="ui-popover--12"
+                                                                                                aria-controls="ui-popover--12">
+                                                                                                <li>&nbsp;</li>
+                                                                                            </ul>
+                                                                                            <div class="ui-popover ui-popover--align-edge ui-popover--is-positioned-beneath"
+                                                                                                 [class.ui-popover--is-active]="hasTagsPop('TagsPop_' + item.value.id) !== -1"
+                                                                                                 tabindex="-1"
+                                                                                                 id="ui-popover--12"
+                                                                                                 aria-labelledby="ui-popover-activator--12"
+                                                                                                 aria-expanded="true"
+                                                                                                 role="dialog"
+                                                                                                 [ngStyle]="{'max-width' : 'none', 'margin-right' : '0px', 'margin-left': '0px', 'transform-origin': '189px -5px 0px', 'left': '0px'}">
+                                                                                                <div class="ui-popover__tooltip"
+                                                                                                     style="left: 189px;"></div>
+                                                                                                <div class="ui-popover__content-wrapper">
+                                                                                                    <div class="ui-popover__content"
+                                                                                                         style="max-height: 239px; width: 346px;">
+                                                                                                        <div class="ui-popover__pane">
+                                                                                                            <div class="ui-popover__section">
+                                                                                                                <div class="tokenized">
+                                                                                                                    <label class="next-label">
+                                                                                                                        <div class="next-label ">
+                                                                                                                            Tags
+                                                                                                                        </div>
+                                                                                                                        <div class="next-token-list__wrapper">
+                                                                                                                            <ul class="next-token-list next-token-list--is-input tagit ui-widget ui-widget-content ui-corner-all">
+                                                                                                                                <li class="tagit-new">
+                                                                                                                                    <span role="status"
+                                                                                                                                          aria-live="polite"
+                                                                                                                                          class="ui-helper-hidden-accessible">
+                                                                                                                                    </span>
+                                                                                                                                    <input type="text"
+                                                                                                                                           class="ui-widget-content ui-autocomplete-input"
+                                                                                                                                           placeholder="Select your tags"
+                                                                                                                                           autocomplete="off">
+                                                                                                                                </li>
+                                                                                                                            </ul>
+                                                                                                                            <div class="tooltip-error attached-to-bottom hide">
+                                                                                                                                <ul class="error-list">
+                                                                                                                                    <li bind="errorMessage"></li>
+                                                                                                                                </ul>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </label>
+                                                                                                                    <div class="previous-tags">
+                                                                                                                        <p class="sb st">
+                                                                                                                            Add
+                                                                                                                            existing
+                                                                                                                            tags:</p>
+                                                                                                                        <ul class="next-token-list js-addtags">
+                                                                                                                            <li class="next-token next-token--clickable js-tag"
+                                                                                                                                data-tag="social">
+                                                                                                                                <span class="next-token__label js-tag-text">social</span>
+                                                                                                                            </li>
+                                                                                                                            <li class="next-token next-token--clickable js-tag"
+                                                                                                                                data-tag="asdasdd">
+                                                                                                                                <span class="next-token__label js-tag-text">asdasdd</span>
+                                                                                                                            </li>
+                                                                                                                            <li class="next-token next-token--clickable js-tag"
+                                                                                                                                data-tag="asdasd">
+                                                                                                                                <span class="next-token__label js-tag-text">asdasd</span>
+                                                                                                                            </li>
+                                                                                                                            <li class="next-token next-token--clickable js-tag"
+                                                                                                                                data-tag="seller">
+                                                                                                                                <span class="next-token__label js-tag-text">Seller</span>
+                                                                                                                            </li>
+                                                                                                                            <li class="next-token next-token--clickable js-tag"
+                                                                                                                                data-tag="asdasdsa">
+                                                                                                                                <span class="next-token__label js-tag-text">asdasdsa</span>
+                                                                                                                            </li>
+                                                                                                                        </ul>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div *ngSwitchCase="'Accepts marketing'"
+                                                                                     tabindex="-1"
+                                                                                     class="spreadsheet__cell spreadsheet__cell--selectable customer--accepts_marketing spreadsheet__cell--type-boolean">
+                                                                                    <div class="spreadsheet__drag-selection">
+                                                                                        <div class="next-input-wrapper next-input-wrapper--inline">
+                                                                                            <label class="next-label helper--visually-hidden next-label--switch"
+                                                                                                   for="customer_accepts_marketing">Accepts
+                                                                                                marketing</label>
+                                                                                            <input class="next-checkbox"
+                                                                                                   type="checkbox"
+                                                                                                   checked="checked"
+                                                                                                   fromControlName="accept_marketing"
+                                                                                                   name="customer[accepts_marketing]"
+                                                                                                   id="customer_accepts_marketing">
+                                                                                            <span class="next-checkbox--styled">
+                                                                                                <svg class="next-icon next-icon--size-10 checkmark">
+                                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                                         xlink:href="#next-checkmark-thick">
+                                                                                                    </use>
+                                                                                                </svg>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div *ngSwitchCase="'Tax exempt'"
+                                                                                     tabindex="-1"
+                                                                                     class="spreadsheet__cell spreadsheet__cell--selectable customer--tax_exempt spreadsheet__cell--type-boolean spreadsheet__cell--focused spreadsheet__cell--visually-focused">
+                                                                                    <div class="spreadsheet__drag-selection">
+                                                                                        <div class="next-input-wrapper next-input-wrapper--inline">
+                                                                                            <label class="next-label helper--visually-hidden next-label--switch"
+                                                                                                   for="customer_tax_exempt">Tax
+                                                                                                exempt
+                                                                                            </label>
+                                                                                            <input class="next-checkbox"
+                                                                                                type="checkbox"
+                                                                                               formControlName="tax_exempt"
+                                                                                                name="customer[tax_exempt]"
+                                                                                                id="customer_tax_exempt">
+                                                                                            <span class="next-checkbox--styled">
+                                                                                                <svg class="next-icon next-icon--size-10 checkmark">
+                                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                                         xlink:href="#next-checkmark-thick">
+                                                                                                    </use>
+                                                                                                </svg>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </ng-container>
+                                                                        </ng-container>
+                                                                    </ng-container>
+                                                                </div>
+                                                            </ng-container>
+                                                        </ng-container>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="next-card__section">
+                                            </div>
+                                            <div class="spreadsheet-scroller">
+                                                <div class="spreadsheet-scroller__scroll-area">
+                                                    <div class="spreadsheet-scroller__scroll-bar"
+                                                         style="width: 1623px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-footer-help">
+                        <div class="ui-footer-help__content">
+                            <div class="ui-footer-help__icon">
+                                <svg class="next-icon next-icon--size-24 next-icon--no-nudge" role="img"
+                                     aria-labelledby="next-help-circle-caf4fba5d183360d5dd0211c976a3d31-title"><title
+                                        id="next-help-circle-caf4fba5d183360d5dd0211c976a3d31-title">Help</title>
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         xlink:href="#next-help-circle"></use>
+                                </svg>
+                            </div>
+                            <div>
+                                <p>
+                                    Use your arrow keys to switch between cells.<br>
+                                    Hold shift to select multiple cells.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Flash message-->
+                    <div class="ui-flash-wrapper" [class.ui-flash-wrapper--is-visible]="isShowFlashMessage"
+                         id="UIFlashWrapper">
+                        <div class="ui-flash ui-flash--nav-offset" id="UIFlashMessage" data-tg-refresh-always="true"
+                             data-flash-has-message="true">
+                            <p class="ui-flash__message" tabindex="-1" aria-live="off" role="status">
+                                {{flash_message}}</p>
+                            <div class="ui-flash__close-button">
+                                <button class="ui-button ui-button--transparent ui-button--icon-only"
+                                        aria-label="Close message" type="button" name="button">
+                                    <svg class="next-icon next-icon--color-white next-icon--size-12">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-remove">
+                                            <svg id="next-remove" width="100%" height="100%">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                                                    <path
+                                                            d="M18.263 16l10.07-10.07c.625-.625.625-1.636 0-2.26s-1.638-.627-2.263 0L16 13.737 5.933 3.667c-.626-.624-1.637-.624-2.262 0s-.624 1.64 0 2.264L13.74 16 3.67 26.07c-.626.625-.626 1.636 0 2.26.312.313.722.47 1.13.47s.82-.157 1.132-.47l10.07-10.068 10.068 10.07c.312.31.722.468 1.13.468s.82-.157 1.132-.47c.626-.625.626-1.636 0-2.26L18.262 16z"></path>
+                                                </svg>
+                                            </svg>
+                                        </use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--END Flash message-->
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

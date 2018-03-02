@@ -1,0 +1,31 @@
+/* SCSS File */
+.page-orders-index {
+  table {
+    tbody {
+      tr {
+        td {
+          .next-input-wrapper {
+            position: relative;
+            top: -18px;
+          }
+        }
+      }
+    }
+  }
+  .page-orders-fulfill-and-ship-index {
+    .next-input--stylized {
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+  }
+}
+
+.is-cancelled {
+  color: $title-color;
+  &:hover{
+    color: $title-color !important;
+  }
+  &.total {
+    text-decoration: line-through;
+  }
+}

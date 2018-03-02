@@ -1,0 +1,10 @@
+@import "../../../node_modules/dragula/dist/dragula.css";
+th.is-sortable {min-width: 80px;}
+.disable-inputs-when-hidden .dropdown-container>select {
+  max-width: 170px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.disable-inputs-when-hidden .dropdown-container>select option {
+  max-width: 170px;
+}

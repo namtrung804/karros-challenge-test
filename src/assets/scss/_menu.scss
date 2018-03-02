@@ -1,0 +1,55 @@
+div[bind-show="true"] {
+  display: inline!important;
+}
+div[bind-show="false"] {
+  display: none!important;
+}
+//menu list table
+.ui-datatable .ui-paginator {
+  margin: 0;
+  text-align: center;
+  padding: .125em;
+  .ui-state-default {
+    border: 1px solid #d6d6d6;
+    background: #ffffff;
+    color: #555555;
+  }
+  .ui-paginator-page.ui-state-active {
+    background: #186ba0;
+    color: #ffffff;
+    border-color: #156090;
+  }
+  a.ui-state-disabled {
+    outline: 0 none;
+  }
+  .ui-state-disabled, .ui-widget:disabled {
+    opacity: 0.35;
+    filter: Alpha(Opacity=35);
+    background-image: none;
+    cursor: default !important;
+  }
+  .ui-paginator-page {
+    cursor: pointer;
+  }
+  .ui-paginator-current, .ui-paginator-first, .ui-paginator-last, .ui-paginator-next,
+  .ui-paginator-page, .ui-paginator-pages, .ui-paginator-prev {
+    display: inline-block;
+    padding: .125em .375em;
+    zoom: 1;
+    margin-left: .063em;
+    margin-right: .063em;
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  .ui-corner-all {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+  }
+  a {
+    color: #555555;
+  }
+  .ui-widget, .ui-widget * {
+    box-sizing: border-box;
+  }
+}

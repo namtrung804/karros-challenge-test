@@ -1,0 +1,945 @@
+<main id="AppFrameMain" class="ui-app-frame__main ">
+    <div class="wrapper"  id="wrapper">
+        <div id="body" class="clearfix" data-tg-refresh="body">
+            <div class="" id="content">
+                <div id="settings-general" class="page">
+                    <form [formGroup]="generalForm" autocomplete="off" class="edit_shop" id="edit_shop_14064164">
+                        <header class="ui-title-bar-container ">
+                            <div class="ui-title-bar ui-title-bar--separator">
+                                <div class="ui-title-bar__navigation">
+                                    <div class="ui-breadcrumbs">
+                                        <a routerLink="/settings" class="ui-breadcrumb">
+                                            <svg class="next-icon next-icon--size-20 next-icon--no-nudge">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#chevron-left-thinner">
+                                                    <svg id="chevron-left-thinner" width="100%" height="100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12 16c-.256 0-.512-.098-.707-.293l-5-5c-.39-.39-.39-1.023 0-1.414l5-5c.39-.39 1.023-.39 1.414 0s.39 1.023 0 1.414L8.414 10l4.293 4.293c.39.39.39 1.023 0 1.414-.195.195-.45.293-.707.293z"></path></svg></svg>
+                                                </use>
+                                            </svg>
+                                            <span class="ui-breadcrumb__item">Settings</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ui-title-bar__main-group">
+                                    <div class="ui-title-bar__heading-group">
+                                        <span class="ui-title-bar__icon">
+                                            <svg class="next-icon next-icon--color-slate-lighter next-icon--size-20">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-settings"></use>
+                                            </svg>
+                                        </span>
+                                        <h1 class="ui-title-bar__title">General</h1>
+                                    </div>
+                                <div  class="action-bar">
+                                    <div class="ui-title-bar__mobile-primary-actions">
+                                        <div class="ui-title-bar__actions">
+                                            <button class="ui-button ui-button--primary js-btn-loadable js-btn-primary ui-title-bar__action btn-primary has-loading" type="submit" name="button" disabled="disabled">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-title-bar__actions-group"><div class="ui-title-bar__actions">
+                                <button class="ui-button ui-button--primary js-btn-loadable js-btn-primary ui-title-bar__action btn-primary has-loading" type="submit" name="button" disabled="disabled">Save</button></div></div></div>
+                            <div class="collapsible-header">
+                                <div class="collapsible-header__heading">
+
+                                </div>
+                            </div>
+                        </header>
+                        <section class="ui-annotated-section-container"><div class="ui-annotated-section">
+                            <div class="ui-annotated-section__annotation">
+                                <div class="ui-annotated-section__title">
+                                    <h2 class="ui-heading">Store details</h2>
+                                </div>
+                                <div class="ui-annotated-section__description">
+                                    <p>Shopify and your customers will use this information to contact you.</p>
+                                </div>
+                            </div>
+                            <div class="ui-annotated-section__content">
+                                <div class="next-card">
+                                    <div class="section-content">
+                                        <div class="next-card__section" formGroupName="store_detail">
+                                            <div class="ui-form__section">
+                                                <div class="next-input-wrapper">
+                                                    <label class="next-label" for="shop_name">Store name</label>
+                                                    <input formControlName="name" class="next-input" size="30" type="text" name="shop[name]" id="shop_name">
+                                                </div>
+                                                <div class="ui-form__group"  context="customerEmailCheck">
+                                                    <div class="next-input-wrapper">
+                                                        <label class="next-label" for="shop_email">Account email</label>
+                                                        <input formControlName="account_email" class="next-input" aria-describedby="help-357ac2bdf06ab45cc34ed609a417cf90" size="30" type="text" value="yd.kim@tripath.co.kr" name="shop[email]" id="shop_email">
+                                                        <p id="help-357ac2bdf06ab45cc34ed609a417cf90" class="next-input__help-text">We'll use this address if we need to contact you about your account.</p>
+                                                    </div>
+                                                    <div class="next-input-wrapper">
+                                                        <label class="next-label" for="shop_customer_email">Customer email</label>
+                                                        <input formControlName="customer_email"  class="next-input" aria-describedby="help-a4df7ec53990e3c34411396828a96846" size="30" type="text" name="shop[customer_email]" id="shop_customer_email">
+                                                        <p id="help-a4df7ec53990e3c34411396828a96846" class="next-input__help-text">
+                                                            <span class="">Your customers will see this address if you email them</span>
+                                                            <span class="hide">Email will be sent from
+                                                                <a href="mailto:no-reply@shopify.com">no-reply@shopify.com</a> when you use
+                                                                <span bind="emailDomainFormatted()">a Tripath</span> address. Customer replies will still go directly to you. For a better email experience, use a
+                                                                <a href="https://mybeautyfriend.com/admin/settings/domains">custom domain</a>.
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </section>
+                        <section class="ui-annotated-section-container">
+                            <div class="ui-annotated-section ">
+                                <div class="ui-annotated-section__annotation">
+                                    <div class="ui-annotated-section__title">
+                                        <h2 class="ui-heading">Store address</h2>
+                                    </div>
+                                    <div class="ui-annotated-section__description">
+                                        <p>This address will appear on your invoices. You can edit the address used to calculate shipping rates in your
+                                            <a href="javascript:">shipping settings</a>.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="ui-annotated-section__content">
+                                    <div class="next-card">
+                                        <div class="section-content">
+                                            <div class="next-card__section">
+                                                <div formGroupName="store_address" class="ui-form__section">
+                                                    <div class="next-input-wrapper" >
+                                                        <label class="next-label" for="shop_company_name">Legal name of business</label>
+                                                        <input formControlName="company_name" class="next-input" size="30" type="text" name="shop[company_name]" id="shop_company_name">
+                                                    </div>
+                                                    <div class="next-input-wrapper"><label class="next-label" for="shop_phone">Phone</label>
+                                                        <input formControlName="phone" class="next-input" size="30" type="tel" name="shop[phone]" id="shop_phone">
+                                                    </div>
+                                                    <div class="next-input-wrapper">
+                                                        <label class="next-label" for="shop_address1">Street</label>
+                                                        <input formControlName="address1" class="next-input" size="30" type="text" name="shop[address1]" id="shop_address1">
+                                                    </div>
+                                                    <div class="next-input-wrapper">
+                                                        <label class="next-label" for="shop_address2">Apt, suite, etc. (optional)</label>
+                                                        <input formControlName="address2" class="next-input" size="30" type="text" name="shop[address2]" id="shop_address2">
+                                                    </div>
+                                                    <div class="ui-form__group">
+                                                        <div class="next-input-wrapper">
+                                                            <label class="next-label" for="shop_city">City</label>
+                                                            <input formControlName="city" class="next-input" size="30" type="text" value="Seoul" name="shop[city]" id="shop_city">
+                                                        </div>
+                                                        <div class="next-input-wrapper">
+                                                            <label class="next-label" for="shop_zip">Postal / ZIP code</label>
+                                                            <input formControlName="zip" class="next-input" size="30" type="text" value="08591" name="shop[zip]" id="shop_zip">
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui-form__group" >
+                                                        <div class="next-input-wrapper">
+                                                            <label class="next-label" for="shop_country">Country</label>
+                                                            <div class="ui-select__wrapper next-input--has-content">
+                                                                <select class="ui-select js-country-select" name="shop[country]" id="shop_country">
+                                                                    <option value="AF">Afghanistan</option>
+                                                                    <option value="AX">Aland Islands</option>
+                                                                    <option value="AL">Albania</option>
+                                                                    <option value="DZ">Algeria</option>
+                                                                    <option value="AD">Andorra</option>
+                                                                    <option value="AO">Angola</option>
+                                                                    <option value="AI">Anguilla</option>
+                                                                    <option value="AG">Antigua And Barbuda</option>
+                                                                    <option value="AR">Argentina</option>
+                                                                    <option value="AM">Armenia</option>
+                                                                    <option value="AW">Aruba</option>
+                                                                    <option value="AU">Australia</option>
+                                                                    <option value="AT">Austria</option>
+                                                                    <option value="AZ">Azerbaijan</option>
+                                                                    <option value="BS">Bahamas</option>
+                                                                    <option value="BH">Bahrain</option>
+                                                                    <option value="BD">Bangladesh</option>
+                                                                    <option value="BB">Barbados</option>
+                                                                    <option value="BY">Belarus</option>
+                                                                    <option value="BE">Belgium</option>
+                                                                    <option value="BZ">Belize</option>
+                                                                    <option value="BJ">Benin</option>
+                                                                    <option value="BM">Bermuda</option>
+                                                                    <option value="BT">Bhutan</option>
+                                                                    <option value="BO">Bolivia</option>
+                                                                    <option value="BA">Bosnia And Herzegovina</option>
+                                                                    <option value="BW">Botswana</option>
+                                                                    <option value="BV">Bouvet Island</option>
+                                                                    <option value="BR">Brazil</option>
+                                                                    <option value="IO">British Indian Ocean Territory</option>
+                                                                    <option value="BN">Brunei</option>
+                                                                    <option value="BG">Bulgaria</option>
+                                                                    <option value="BF">Burkina Faso</option>
+                                                                    <option value="BI">Burundi</option>
+                                                                    <option value="KH">Cambodia</option>
+                                                                    <option value="CA">Canada</option>
+                                                                    <option value="CV">Cape Verde</option>
+                                                                    <option value="KY">Cayman Islands</option>
+                                                                    <option value="CF">Central African Republic</option>
+                                                                    <option value="TD">Chad</option>
+                                                                    <option value="CL">Chile</option>
+                                                                    <option value="CN">China</option>
+                                                                    <option value="CX">Christmas Island</option>
+                                                                    <option value="CC">Cocos (Keeling) Islands</option>
+                                                                    <option value="CO">Colombia</option>
+                                                                    <option value="KM">Comoros</option>
+                                                                    <option value="CG">Congo</option>
+                                                                    <option value="CD">Congo, The Democratic Republic Of The</option>
+                                                                    <option value="CK">Cook Islands</option>
+                                                                    <option value="CR">Costa Rica</option>
+                                                                    <option value="HR">Croatia</option>
+                                                                    <option value="CU">Cuba</option>
+                                                                    <option value="CW">Curaçao</option>
+                                                                    <option value="CY">Cyprus</option>
+                                                                    <option value="CZ">Czech Republic</option>
+                                                                    <option value="CI">Côte d'Ivoire</option>
+                                                                    <option value="DK">Denmark</option>
+                                                                    <option value="DJ">Djibouti</option>
+                                                                    <option value="DM">Dominica</option>
+                                                                    <option value="DO">Dominican Republic</option>
+                                                                    <option value="EC">Ecuador</option>
+                                                                    <option value="EG">Egypt</option>
+                                                                    <option value="SV">El Salvador</option>
+                                                                    <option value="GQ">Equatorial Guinea</option>
+                                                                    <option value="ER">Eritrea</option>
+                                                                    <option value="EE">Estonia</option>
+                                                                    <option value="ET">Ethiopia</option>
+                                                                    <option value="FK">Falkland Islands (Malvinas)</option>
+                                                                    <option value="FO">Faroe Islands</option>
+                                                                    <option value="FJ">Fiji</option>
+                                                                    <option value="FI">Finland</option>
+                                                                    <option value="FR">France</option>
+                                                                    <option value="GF">French Guiana</option>
+                                                                    <option value="PF">French Polynesia</option>
+                                                                    <option value="TF">French Southern Territories</option>
+                                                                    <option value="GA">Gabon</option>
+                                                                    <option value="GM">Gambia</option>
+                                                                    <option value="GE">Georgia</option>
+                                                                    <option value="DE">Germany</option>
+                                                                    <option value="GH">Ghana</option>
+                                                                    <option value="GI">Gibraltar</option>
+                                                                    <option value="GR">Greece</option>
+                                                                    <option value="GL">Greenland</option>
+                                                                    <option value="GD">Grenada</option>
+                                                                    <option value="GP">Guadeloupe</option>
+                                                                    <option value="GT">Guatemala</option>
+                                                                    <option value="GG">Guernsey</option>
+                                                                    <option value="GN">Guinea</option>
+                                                                    <option value="GW">Guinea Bissau</option>
+                                                                    <option value="GY">Guyana</option>
+                                                                    <option value="HT">Haiti</option>
+                                                                    <option value="HM">Heard Island And Mcdonald Islands</option>
+                                                                    <option value="VA">Holy See (Vatican City State)</option>
+                                                                    <option value="HN">Honduras</option>
+                                                                    <option value="HK">Hong Kong</option>
+                                                                    <option value="HU">Hungary</option>
+                                                                    <option value="IS">Iceland</option>
+                                                                    <option value="IN">India</option>
+                                                                    <option value="ID">Indonesia</option>
+                                                                    <option value="IR">Iran, Islamic Republic Of</option>
+                                                                    <option value="IQ">Iraq</option>
+                                                                    <option value="IE">Ireland</option>
+                                                                    <option value="IM">Isle Of Man</option>
+                                                                    <option value="IL">Israel</option>
+                                                                    <option value="IT">Italy</option>
+                                                                    <option value="JM">Jamaica</option>
+                                                                    <option value="JP">Japan</option>
+                                                                    <option value="JE">Jersey</option>
+                                                                    <option value="JO">Jordan</option>
+                                                                    <option value="KZ">Kazakhstan</option>
+                                                                    <option value="KE">Kenya</option>
+                                                                    <option value="KI">Kiribati</option>
+                                                                    <option value="KP">Korea, Democratic People's Republic Of</option>
+                                                                    <option value="XK">Kosovo</option>
+                                                                    <option value="KW">Kuwait</option>
+                                                                    <option value="KG">Kyrgyzstan</option>
+                                                                    <option value="LA">Lao People's Democratic Republic</option>
+                                                                    <option value="LV">Latvia</option>
+                                                                    <option value="LB">Lebanon</option>
+                                                                    <option value="LS">Lesotho</option>
+                                                                    <option value="LR">Liberia</option>
+                                                                    <option value="LY">Libyan Arab Jamahiriya</option>
+                                                                    <option value="LI">Liechtenstein</option>
+                                                                    <option value="LT">Lithuania</option>
+                                                                    <option value="LU">Luxembourg</option>
+                                                                    <option value="MO">Macao</option>
+                                                                    <option value="MK">Macedonia, Republic Of</option>
+                                                                    <option value="MG">Madagascar</option>
+                                                                    <option value="MW">Malawi</option>
+                                                                    <option value="MY">Malaysia</option>
+                                                                    <option value="MV">Maldives</option>
+                                                                    <option value="ML">Mali</option>
+                                                                    <option value="MT">Malta</option>
+                                                                    <option value="MQ">Martinique</option>
+                                                                    <option value="MR">Mauritania</option>
+                                                                    <option value="MU">Mauritius</option>
+                                                                    <option value="YT">Mayotte</option>
+                                                                    <option value="MX">Mexico</option>
+                                                                    <option value="MD">Moldova, Republic of</option>
+                                                                    <option value="MC">Monaco</option>
+                                                                    <option value="MN">Mongolia</option>
+                                                                    <option value="ME">Montenegro</option>
+                                                                    <option value="MS">Montserrat</option>
+                                                                    <option value="MA">Morocco</option>
+                                                                    <option value="MZ">Mozambique</option>
+                                                                    <option value="MM">Myanmar</option>
+                                                                    <option value="NA">Namibia</option>
+                                                                    <option value="NR">Nauru</option>
+                                                                    <option value="NP">Nepal</option>
+                                                                    <option value="NL">Netherlands</option>
+                                                                    <option value="AN">Netherlands Antilles</option>
+                                                                    <option value="NC">New Caledonia</option>
+                                                                    <option value="NZ">New Zealand</option>
+                                                                    <option value="NI">Nicaragua</option>
+                                                                    <option value="NE">Niger</option>
+                                                                    <option value="NG">Nigeria</option>
+                                                                    <option value="NU">Niue</option>
+                                                                    <option value="NF">Norfolk Island</option>
+                                                                    <option value="NO">Norway</option>
+                                                                    <option value="OM">Oman</option>
+                                                                    <option value="PK">Pakistan</option>
+                                                                    <option value="PS">Palestinian Territory, Occupied</option>
+                                                                    <option value="PA">Panama</option>
+                                                                    <option value="PG">Papua New Guinea</option>
+                                                                    <option value="PY">Paraguay</option>
+                                                                    <option value="PE">Peru</option>
+                                                                    <option value="PH">Philippines</option>
+                                                                    <option value="PN">Pitcairn</option>
+                                                                    <option value="PL">Poland</option>
+                                                                    <option value="PT">Portugal</option>
+                                                                    <option value="QA">Qatar</option>
+                                                                    <option value="CM">Republic of Cameroon</option>
+                                                                    <option value="RE">Reunion</option>
+                                                                    <option value="RO">Romania</option>
+                                                                    <option value="RU">Russia</option>
+                                                                    <option value="RW">Rwanda</option>
+                                                                    <option value="BL">Saint Barthélemy</option>
+                                                                    <option value="SH">Saint Helena</option>
+                                                                    <option value="KN">Saint Kitts And Nevis</option>
+                                                                    <option value="LC">Saint Lucia</option>
+                                                                    <option value="MF">Saint Martin</option>
+                                                                    <option value="PM">Saint Pierre And Miquelon</option>
+                                                                    <option value="WS">Samoa</option>
+                                                                    <option value="SM">San Marino</option>
+                                                                    <option value="ST">Sao Tome And Principe</option>
+                                                                    <option value="SA">Saudi Arabia</option>
+                                                                    <option value="SN">Senegal</option>
+                                                                    <option value="RS">Serbia</option>
+                                                                    <option value="SC">Seychelles</option>
+                                                                    <option value="SL">Sierra Leone</option>
+                                                                    <option value="SG">Singapore</option>
+                                                                    <option value="SX">Sint Maarten</option>
+                                                                    <option value="SK">Slovakia</option>
+                                                                    <option value="SI">Slovenia</option>
+                                                                    <option value="SB">Solomon Islands</option>
+                                                                    <option value="SO">Somalia</option>
+                                                                    <option value="ZA">South Africa</option>
+                                                                    <option value="GS">South Georgia And The South Sandwich Islands</option>
+                                                                    <option selected="selected" value="KR">South Korea</option>
+                                                                    <option value="SS">South Sudan</option>
+                                                                    <option value="ES">Spain</option>
+                                                                    <option value="LK">Sri Lanka</option>
+                                                                    <option value="VC">St. Vincent</option>
+                                                                    <option value="SD">Sudan</option>
+                                                                    <option value="SR">Suriname</option>
+                                                                    <option value="SJ">Svalbard And Jan Mayen</option>
+                                                                    <option value="SZ">Swaziland</option>
+                                                                    <option value="SE">Sweden</option>
+                                                                    <option value="CH">Switzerland</option>
+                                                                    <option value="SY">Syria</option>
+                                                                    <option value="TW">Taiwan</option>
+                                                                    <option value="TJ">Tajikistan</option>
+                                                                    <option value="TZ">Tanzania, United Republic Of</option>
+                                                                    <option value="TH">Thailand</option>
+                                                                    <option value="TL">Timor Leste</option>
+                                                                    <option value="TG">Togo</option>
+                                                                    <option value="TK">Tokelau</option>
+                                                                    <option value="TO">Tonga</option>
+                                                                    <option value="TT">Trinidad and Tobago</option>
+                                                                    <option value="TN">Tunisia</option>
+                                                                    <option value="TR">Turkey</option>
+                                                                    <option value="TM">Turkmenistan</option>
+                                                                    <option value="TC">Turks and Caicos Islands</option>
+                                                                    <option value="TV">Tuvalu</option>
+                                                                    <option value="UG">Uganda</option>
+                                                                    <option value="UA">Ukraine</option>
+                                                                    <option value="AE">United Arab Emirates</option>
+                                                                    <option value="GB">United Kingdom</option>
+                                                                    <option value="US">United States</option>
+                                                                    <option value="UM">United States Minor Outlying Islands</option>
+                                                                    <option value="UY">Uruguay</option>
+                                                                    <option value="UZ">Uzbekistan</option>
+                                                                    <option value="VU">Vanuatu</option>
+                                                                    <option value="VE">Venezuela</option>
+                                                                    <option value="VN">Vietnam</option>
+                                                                    <option value="VG">Virgin Islands, British</option>
+                                                                    <option value="WF">Wallis And Futuna</option>
+                                                                    <option value="EH">Western Sahara</option>
+                                                                    <option value="YE">Yemen</option>
+                                                                    <option value="ZM">Zambia</option>
+                                                                    <option value="ZW">Zimbabwe</option></select>
+                                                                <svg class="next-icon next-icon--size-16">
+                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron">
+                                                                        <svg id="select-chevron" width="100%" height="100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 16l-4-4h8l-4 4zm0-12L6 8h8l-4-4z"></path></svg></svg>
+                                                                    </use>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <div class="next-input-wrapper">
+                                                            <label class="next-label" for="shop_province">Province</label>
+                                                            <div class="ui-select__wrapper next-input--has-content">
+                                                                <select class="ui-select js-province-select" name="shop[province]" id="shop_province">
+                                                                    <option value="Busan">Busan</option>
+                                                                    <option value="Chungbuk">Chungbuk</option>
+                                                                    <option value="Chungnam">Chungnam</option>
+                                                                    <option value="Daegu">Daegu</option>
+                                                                    <option value="Daejeon">Daejeon</option>
+                                                                    <option value="Gangwon">Gangwon</option>
+                                                                    <option value="Gwangju">Gwangju</option>
+                                                                    <option value="Gyeongbuk">Gyeongbuk</option>
+                                                                    <option value="Gyeonggi">Gyeonggi</option>
+                                                                    <option value="Gyeongnam">Gyeongnam</option>
+                                                                    <option value="Incheon">Incheon</option>
+                                                                    <option value="Jeju">Jeju</option>
+                                                                    <option value="Jeonbuk">Jeonbuk</option>
+                                                                    <option value="Jeonnam">Jeonnam</option>
+                                                                    <option value="Sejong">Sejong</option>
+                                                                    <option selected="selected" value="Seoul">Seoul</option>
+                                                                    <option value="Ulsan">Ulsan</option>
+                                                                </select>
+                                                                <svg class="next-icon next-icon--size-16">
+                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron">
+                                                                        <svg id="select-chevron" width="100%" height="100%"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M10 16l-4-4h8l-4 4zm0-12L6 8h8l-4-4z"></path></svg></svg>
+                                                                    </use>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="ui-annotated-section-container">
+                            <div class="ui-annotated-section " id="StandardsAndFormats">
+                                <div class="ui-annotated-section__annotation">
+                                    <div class="ui-annotated-section__title">
+                                        <h2 class="ui-heading">Standards and formats</h2>
+                                    </div>
+                                    <div class="ui-annotated-section__description">
+                                        <p>Standards and formats are used to calculate product prices, shipping weights, and order times.</p>
+                                    </div>
+                                </div>
+                                <div class="ui-annotated-section__content">
+                                    <section class="ui-card">
+                                        <div class="section-content" >
+                                            <div class="ui-card__section">
+                                                <div class="ui-type-container">
+                                                    <div class="ui-form__section">
+                                                        <div class="next-input-wrapper">
+                                                            <label class="next-label" for="shop_timezone">Timezone</label>
+                                                            <div class="ui-select__wrapper next-input--has-content">
+                                                                <select class="ui-select" name="shop[timezone]" id="shop_timezone">
+                                                                    <option value="American Samoa">(GMT-11:00) American Samoa</option>
+                                                                    <option value="International Date Line West">(GMT-11:00) International Date Line West</option>
+                                                                    <option value="Midway Island">(GMT-11:00) Midway Island</option>
+                                                                    <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                                                                    <option value="Alaska">(GMT-09:00) Alaska</option>
+                                                                    <option value="America/Anchorage">(GMT-09:00) America/Anchorage</option>
+                                                                    <option value="America/Los_Angeles">(GMT-08:00) America/Los_Angeles</option>
+                                                                    <option value="America/Tijuana">(GMT-08:00) America/Tijuana</option>
+                                                                    <option value="America/Vancouver">(GMT-08:00) America/Vancouver</option>
+                                                                    <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                                                                    <option value="Tijuana">(GMT-08:00) Tijuana</option>
+                                                                    <option value="America/Denver">(GMT-07:00) America/Denver</option>
+                                                                    <option value="America/Edmonton">(GMT-07:00) America/Edmonton</option>
+                                                                    <option value="America/Mazatlan">(GMT-07:00) America/Mazatlan</option>
+                                                                    <option value="America/Phoenix">(GMT-07:00) America/Phoenix</option>
+                                                                    <option value="Arizona">(GMT-07:00) Arizona</option>
+                                                                    <option value="Chihuahua">(GMT-07:00) Chihuahua</option>
+                                                                    <option value="Mazatlan">(GMT-07:00) Mazatlan</option>
+                                                                    <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                                                                    <option value="America/Chicago">(GMT-06:00) America/Chicago</option>
+                                                                    <option value="America/Mexico_City">(GMT-06:00) America/Mexico_City</option>
+                                                                    <option value="America/Monterrey">(GMT-06:00) America/Monterrey</option>
+                                                                    <option value="America/Regina">(GMT-06:00) America/Regina</option>
+                                                                    <option value="America/Winnipeg">(GMT-06:00) America/Winnipeg</option>
+                                                                    <option value="Central America">(GMT-06:00) Central America</option>
+                                                                    <option value="Central Time (US &amp; Canada)">(GMT-06:00) Central Time (US &amp; Canada)</option>
+                                                                    <option value="Guadalajara">(GMT-06:00) Guadalajara</option>
+                                                                    <option value="Mexico City">(GMT-06:00) Mexico City</option>
+                                                                    <option value="Monterrey">(GMT-06:00) Monterrey</option>
+                                                                    <option value="Saskatchewan">(GMT-06:00) Saskatchewan</option>
+                                                                    <option value="America/Bogota">(GMT-05:00) America/Bogota</option>
+                                                                    <option value="America/Guayaquil">(GMT-05:00) America/Guayaquil</option>
+                                                                    <option value="America/Indianapolis">(GMT-05:00) America/Indianapolis</option>
+                                                                    <option value="America/Montreal">(GMT-05:00) America/Montreal</option>
+                                                                    <option value="America/New_York">(GMT-05:00) America/New_York</option>
+                                                                    <option value="America/Toronto">(GMT-05:00) America/Toronto</option>
+                                                                    <option value="Bogota">(GMT-05:00) Bogota</option>
+                                                                    <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                                                                    <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                                                                    <option value="Lima">(GMT-05:00) Lima</option>
+                                                                    <option value="Quito">(GMT-05:00) Quito</option>
+                                                                    <option value="America/Halifax">(GMT-04:00) America/Halifax</option>
+                                                                    <option value="America/Martinique">(GMT-04:00) America/Martinique</option>
+                                                                    <option value="America/Puerto_Rico">(GMT-04:00) America/Puerto_Rico</option>
+                                                                    <option value="Atlantic Time (Canada)">(GMT-04:00) Atlantic Time (Canada)</option>
+                                                                    <option value="Caracas">(GMT-04:00) Caracas</option>
+                                                                    <option value="Chile/Continental">(GMT-04:00) Chile/Continental</option>
+                                                                    <option value="Georgetown">(GMT-04:00) Georgetown</option>
+                                                                    <option value="La Paz">(GMT-04:00) La Paz</option>
+                                                                    <option value="Santiago">(GMT-04:00) Santiago</option>
+                                                                    <option value="Newfoundland">(GMT-03:30) Newfoundland</option>
+                                                                    <option value="America/Fortaleza">(GMT-03:00) America/Fortaleza</option>
+                                                                    <option value="America/Sao_Paulo">(GMT-03:00) America/Sao_Paulo</option>
+                                                                    <option value="Brasilia">(GMT-03:00) Brasilia</option>
+                                                                    <option value="Buenos Aires">(GMT-03:00) Buenos Aires</option>
+                                                                    <option value="Greenland">(GMT-03:00) Greenland</option>
+                                                                    <option value="Montevideo">(GMT-03:00) Montevideo</option>
+                                                                    <option value="Mid-Atlantic">(GMT-02:00) Mid-Atlantic</option>
+                                                                    <option value="Azores">(GMT-01:00) Azores</option>
+                                                                    <option value="Cape Verde Is.">(GMT-01:00) Cape Verde Is.</option>
+                                                                    <option value="Africa/Casablanca">(GMT+00:00) Africa/Casablanca</option>
+                                                                    <option value="Atlantic/Reykjavik">(GMT+00:00) Atlantic/Reykjavik</option>
+                                                                    <option value="Casablanca">(GMT+00:00) Casablanca</option>
+                                                                    <option value="Dublin">(GMT+00:00) Dublin</option>
+                                                                    <option value="Edinburgh">(GMT+00:00) Edinburgh</option>
+                                                                    <option value="Europe/Dublin">(GMT+00:00) Europe/Dublin</option>
+                                                                    <option value="Europe/Lisbon">(GMT+00:00) Europe/Lisbon</option>
+                                                                    <option value="Europe/London">(GMT+00:00) Europe/London</option>
+                                                                    <option value="Lisbon">(GMT+00:00) Lisbon</option>
+                                                                    <option value="London">(GMT+00:00) London</option>
+                                                                    <option value="Monrovia">(GMT+00:00) Monrovia</option>
+                                                                    <option value="UTC">(GMT+00:00) UTC</option>
+                                                                    <option value="Africa/Lagos">(GMT+01:00) Africa/Lagos</option>
+                                                                    <option value="Amsterdam">(GMT+01:00) Amsterdam</option>
+                                                                    <option value="Belgrade">(GMT+01:00) Belgrade</option>
+                                                                    <option value="Berlin">(GMT+01:00) Berlin</option>
+                                                                    <option value="Bern">(GMT+01:00) Bern</option>
+                                                                    <option value="Bratislava">(GMT+01:00) Bratislava</option>
+                                                                    <option value="Brussels">(GMT+01:00) Brussels</option>
+                                                                    <option value="Budapest">(GMT+01:00) Budapest</option>
+                                                                    <option value="Copenhagen">(GMT+01:00) Copenhagen</option>
+                                                                    <option value="Europe/Amsterdam">(GMT+01:00) Europe/Amsterdam</option>
+                                                                    <option value="Europe/Berlin">(GMT+01:00) Europe/Berlin</option>
+                                                                    <option value="Europe/Copenhagen">(GMT+01:00) Europe/Copenhagen</option>
+                                                                    <option value="Europe/Madrid">(GMT+01:00) Europe/Madrid</option>
+                                                                    <option value="Europe/Oslo">(GMT+01:00) Europe/Oslo</option>
+                                                                    <option value="Europe/Paris">(GMT+01:00) Europe/Paris</option>
+                                                                    <option value="Europe/Rome">(GMT+01:00) Europe/Rome</option>
+                                                                    <option value="Europe/Stockholm">(GMT+01:00) Europe/Stockholm</option>
+                                                                    <option value="Europe/Tirane">(GMT+01:00) Europe/Tirane</option>
+                                                                    <option value="Europe/Zurich">(GMT+01:00) Europe/Zurich</option>
+                                                                    <option value="Ljubljana">(GMT+01:00) Ljubljana</option>
+                                                                    <option value="Madrid">(GMT+01:00) Madrid</option>
+                                                                    <option value="Paris">(GMT+01:00) Paris</option>
+                                                                    <option value="Prague">(GMT+01:00) Prague</option>
+                                                                    <option value="Rome">(GMT+01:00) Rome</option>
+                                                                    <option value="Sarajevo">(GMT+01:00) Sarajevo</option>
+                                                                    <option value="Skopje">(GMT+01:00) Skopje</option>
+                                                                    <option value="Stockholm">(GMT+01:00) Stockholm</option>
+                                                                    <option value="Vienna">(GMT+01:00) Vienna</option>
+                                                                    <option value="Warsaw">(GMT+01:00) Warsaw</option>
+                                                                    <option value="West Central Africa">(GMT+01:00) West Central Africa</option>
+                                                                    <option value="Zagreb">(GMT+01:00) Zagreb</option>
+                                                                    <option value="Zurich">(GMT+01:00) Zurich</option>
+                                                                    <option value="Africa/Cairo">(GMT+02:00) Africa/Cairo</option>
+                                                                    <option value="Africa/Johannesburg">(GMT+02:00) Africa/Johannesburg</option>
+                                                                    <option value="Africa/Lusaka">(GMT+02:00) Africa/Lusaka</option>
+                                                                    <option value="Asia/Beirut">(GMT+02:00) Asia/Beirut</option>
+                                                                    <option value="Asia/Jerusalem">(GMT+02:00) Asia/Jerusalem</option>
+                                                                    <option value="Athens">(GMT+02:00) Athens</option>
+                                                                    <option value="Bucharest">(GMT+02:00) Bucharest</option>
+                                                                    <option value="Cairo">(GMT+02:00) Cairo</option>
+                                                                    <option value="Europe/Athens">(GMT+02:00) Europe/Athens</option>
+                                                                    <option value="Europe/Bucharest">(GMT+02:00) Europe/Bucharest</option>
+                                                                    <option value="Europe/Helsinki">(GMT+02:00) Europe/Helsinki</option>
+                                                                    <option value="Europe/Sofia">(GMT+02:00) Europe/Sofia</option>
+                                                                    <option value="Europe/Vilnius">(GMT+02:00) Europe/Vilnius</option>
+                                                                    <option value="Harare">(GMT+02:00) Harare</option>
+                                                                    <option value="Helsinki">(GMT+02:00) Helsinki</option>
+                                                                    <option value="Jerusalem">(GMT+02:00) Jerusalem</option>
+                                                                    <option value="Kaliningrad">(GMT+02:00) Kaliningrad</option>
+                                                                    <option value="Kyiv">(GMT+02:00) Kyiv</option>
+                                                                    <option value="Pretoria">(GMT+02:00) Pretoria</option>
+                                                                    <option value="Riga">(GMT+02:00) Riga</option>
+                                                                    <option value="Sofia">(GMT+02:00) Sofia</option>
+                                                                    <option value="Tallinn">(GMT+02:00) Tallinn</option>
+                                                                    <option value="Vilnius">(GMT+02:00) Vilnius</option>
+                                                                    <option value="Asia/Bahrain">(GMT+03:00) Asia/Bahrain</option>
+                                                                    <option value="Asia/Istanbul">(GMT+03:00) Asia/Istanbul</option>
+                                                                    <option value="Asia/Qatar">(GMT+03:00) Asia/Qatar</option>
+                                                                    <option value="Asia/Riyadh">(GMT+03:00) Asia/Riyadh</option>
+                                                                    <option value="Baghdad">(GMT+03:00) Baghdad</option>
+                                                                    <option value="Istanbul">(GMT+03:00) Istanbul</option>
+                                                                    <option value="Kuwait">(GMT+03:00) Kuwait</option>
+                                                                    <option value="Minsk">(GMT+03:00) Minsk</option>
+                                                                    <option value="Moscow">(GMT+03:00) Moscow</option>
+                                                                    <option value="Nairobi">(GMT+03:00) Nairobi</option>
+                                                                    <option value="Riyadh">(GMT+03:00) Riyadh</option>
+                                                                    <option value="St. Petersburg">(GMT+03:00) St. Petersburg</option>
+                                                                    <option value="Volgograd">(GMT+03:00) Volgograd</option>
+                                                                    <option value="Tehran">(GMT+03:30) Tehran</option>
+                                                                    <option value="Abu Dhabi">(GMT+04:00) Abu Dhabi</option>
+                                                                    <option value="Asia/Dubai">(GMT+04:00) Asia/Dubai</option>
+                                                                    <option value="Baku">(GMT+04:00) Baku</option>
+                                                                    <option value="Muscat">(GMT+04:00) Muscat</option>
+                                                                    <option value="Samara">(GMT+04:00) Samara</option>
+                                                                    <option value="Tbilisi">(GMT+04:00) Tbilisi</option>
+                                                                    <option value="Yerevan">(GMT+04:00) Yerevan</option>
+                                                                    <option value="Kabul">(GMT+04:30) Kabul</option>
+                                                                    <option value="Asia/Karachi">(GMT+05:00) Asia/Karachi</option>
+                                                                    <option value="Ekaterinburg">(GMT+05:00) Ekaterinburg</option>
+                                                                    <option value="Islamabad">(GMT+05:00) Islamabad</option>
+                                                                    <option value="Karachi">(GMT+05:00) Karachi</option>
+                                                                    <option value="Tashkent">(GMT+05:00) Tashkent</option>
+                                                                    <option value="Asia/Calcutta">(GMT+05:30) Asia/Calcutta</option>
+                                                                    <option value="Asia/Colombo">(GMT+05:30) Asia/Colombo</option>
+                                                                    <option value="Chennai">(GMT+05:30) Chennai</option>
+                                                                    <option value="Kolkata">(GMT+05:30) Kolkata</option>
+                                                                    <option value="Mumbai">(GMT+05:30) Mumbai</option>
+                                                                    <option value="New Delhi">(GMT+05:30) New Delhi</option>
+                                                                    <option value="Sri Jayawardenepura">(GMT+05:30) Sri Jayawardenepura</option>
+                                                                    <option value="Kathmandu">(GMT+05:45) Kathmandu</option>
+                                                                    <option value="Almaty">(GMT+06:00) Almaty</option>
+                                                                    <option value="Astana">(GMT+06:00) Astana</option>
+                                                                    <option value="Dhaka">(GMT+06:00) Dhaka</option>
+                                                                    <option value="Urumqi">(GMT+06:00) Urumqi</option>
+                                                                    <option value="Rangoon">(GMT+06:30) Rangoon</option>
+                                                                    <option value="Asia/Bangkok">(GMT+07:00) Asia/Bangkok</option>
+                                                                    <option value="Asia/Jakarta">(GMT+07:00) Asia/Jakarta</option>
+                                                                    <option value="Asia/Phnom_Penh">(GMT+07:00) Asia/Phnom_Penh</option>
+                                                                    <option value="Bangkok">(GMT+07:00) Bangkok</option>
+                                                                    <option selected="selected" value="Hanoi">(GMT+07:00) Hanoi</option>
+                                                                    <option value="Jakarta">(GMT+07:00) Jakarta</option>
+                                                                    <option value="Krasnoyarsk">(GMT+07:00) Krasnoyarsk</option>
+                                                                    <option value="Novosibirsk">(GMT+07:00) Novosibirsk</option>
+                                                                    <option value="Asia/Chongqing">(GMT+08:00) Asia/Chongqing</option>
+                                                                    <option value="Asia/Hong_Kong">(GMT+08:00) Asia/Hong_Kong</option>
+                                                                    <option value="Asia/Kuala_Lumpur">(GMT+08:00) Asia/Kuala_Lumpur</option>
+                                                                    <option value="Asia/Manila">(GMT+08:00) Asia/Manila</option>
+                                                                    <option value="Asia/Shanghai">(GMT+08:00) Asia/Shanghai</option>
+                                                                    <option value="Asia/Singapore">(GMT+08:00) Asia/Singapore</option>
+                                                                    <option value="Asia/Taipei">(GMT+08:00) Asia/Taipei</option>
+                                                                    <option value="Australia/West">(GMT+08:00) Australia/West</option>
+                                                                    <option value="Beijing">(GMT+08:00) Beijing</option>
+                                                                    <option value="Chongqing">(GMT+08:00) Chongqing</option>
+                                                                    <option value="Hong Kong">(GMT+08:00) Hong Kong</option>
+                                                                    <option value="Irkutsk">(GMT+08:00) Irkutsk</option>
+                                                                    <option value="Kuala Lumpur">(GMT+08:00) Kuala Lumpur</option>
+                                                                    <option value="Perth">(GMT+08:00) Perth</option>
+                                                                    <option value="Singapore">(GMT+08:00) Singapore</option>
+                                                                    <option value="Taipei">(GMT+08:00) Taipei</option>
+                                                                    <option value="Ulaanbaatar">(GMT+08:00) Ulaanbaatar</option>
+                                                                    <option value="Asia/Tokyo">(GMT+09:00) Asia/Tokyo</option>
+                                                                    <option value="Osaka">(GMT+09:00) Osaka</option>
+                                                                    <option value="Sapporo">(GMT+09:00) Sapporo</option>
+                                                                    <option value="Seoul">(GMT+09:00) Seoul</option>
+                                                                    <option value="Tokyo">(GMT+09:00) Tokyo</option>
+                                                                    <option value="Yakutsk">(GMT+09:00) Yakutsk</option>
+                                                                    <option value="Adelaide">(GMT+09:30) Adelaide</option>
+                                                                    <option value="Australia/South">(GMT+09:30) Australia/South</option>
+                                                                    <option value="Darwin">(GMT+09:30) Darwin</option>
+                                                                    <option value="Australia/Canberra">(GMT+10:00) Australia/Canberra</option>
+                                                                    <option value="Australia/NSW">(GMT+10:00) Australia/NSW</option>
+                                                                    <option value="Australia/Queensland">(GMT+10:00) Australia/Queensland</option>
+                                                                    <option value="Australia/Tasmania">(GMT+10:00) Australia/Tasmania</option>
+                                                                    <option value="Australia/Victoria">(GMT+10:00) Australia/Victoria</option>
+                                                                    <option value="Brisbane">(GMT+10:00) Brisbane</option>
+                                                                    <option value="Canberra">(GMT+10:00) Canberra</option>
+                                                                    <option value="Guam">(GMT+10:00) Guam</option>
+                                                                    <option value="Hobart">(GMT+10:00) Hobart</option>
+                                                                    <option value="Melbourne">(GMT+10:00) Melbourne</option>
+                                                                    <option value="Pacific/Guam">(GMT+10:00) Pacific/Guam</option>
+                                                                    <option value="Pacific/Saipan">(GMT+10:00) Pacific/Saipan</option>
+                                                                    <option value="Port Moresby">(GMT+10:00) Port Moresby</option>
+                                                                    <option value="Sydney">(GMT+10:00) Sydney</option>
+                                                                    <option value="Vladivostok">(GMT+10:00) Vladivostok</option>
+                                                                    <option value="Magadan">(GMT+11:00) Magadan</option>
+                                                                    <option value="New Caledonia">(GMT+11:00) New Caledonia</option>
+                                                                    <option value="Solomon Is.">(GMT+11:00) Solomon Is.</option>
+                                                                    <option value="Srednekolymsk">(GMT+11:00) Srednekolymsk</option>
+                                                                    <option value="Auckland">(GMT+12:00) Auckland</option>
+                                                                    <option value="Fiji">(GMT+12:00) Fiji</option>
+                                                                    <option value="Kamchatka">(GMT+12:00) Kamchatka</option>
+                                                                    <option value="Marshall Is.">(GMT+12:00) Marshall Is.</option>
+                                                                    <option value="Pacific/Auckland">(GMT+12:00) Pacific/Auckland</option>
+                                                                    <option value="Wellington">(GMT+12:00) Wellington</option>
+                                                                    <option value="Chatham Is.">(GMT+12:45) Chatham Is.</option>
+                                                                    <option value="Nuku'alofa">(GMT+13:00) Nuku'alofa</option>
+                                                                    <option value="Samoa">(GMT+13:00) Samoa</option>
+                                                                    <option value="Tokelau Is.">(GMT+13:00) Tokelau Is.</option>
+                                                                </select>
+                                                                <svg class="next-icon next-icon--size-16">
+                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ui-form__group">
+                                                            <div class="next-input-wrapper">
+                                                                <label class="next-label" for="shop_unit_system">Unit system</label>
+                                                                <div class="ui-select__wrapper next-input--has-content">
+                                                                    <select class="ui-select" name="shop[unit_system]" id="shop_unit_system">
+                                                                        <option value="imperial">Imperial system</option>
+                                                                        <option selected="selected" value="metric">Metric system</option>
+                                                                    </select>
+                                                                    <svg class="next-icon next-icon--size-16">
+                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="next-input-wrapper">
+                                                                <label class="next-label" for="shop_weight_unit">Default weight unit</label>
+                                                                <div class="ui-select__wrapper next-input--has-content">
+                                                                    <select class="ui-select" name="shop[weight_unit]" id="shop_weight_unit">
+                                                                        <option selected="selected" value="kg">Kilogram (kg)</option>
+                                                                        <option value="g">Gram (g)</option></select>
+                                                                    <svg class="next-icon next-icon--size-16">
+                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="next-input-wrapper">
+                                                                <div class="ui-form__label-wrapper">
+                                                                    <label class="next-label" for="shop_currency">Currency</label>
+                                                                    <button class="ui-button btn--link" (click)="showMoneyFormat = !showMoneyFormat" type="button" name="button">Change formatting</button>
+                                                            </div>
+                                                                <div class="ui-select__wrapper next-input--has-content">
+                                                                    <select data-lass="ui-select" name="shop[currency]" id="shop_currency">
+                                                                        <option selected="selected" value="USD">United States Dollars (USD)</option>
+                                                                        <option value="EUR">Euro (EUR)</option>
+                                                                        <option value="GBP">United Kingdom Pounds (GBP)</option>
+                                                                        <option value="CAD">Canadian Dollars (CAD)</option>
+                                                                        <option value="AFN">Afghan Afghani (AFN)</option>
+                                                                        <option value="ALL">Albanian Lek (ALL)</option>
+                                                                        <option value="DZD">Algerian Dinar (DZD)</option>
+                                                                        <option value="AOA">Angolan Kwanza (AOA)</option>
+                                                                        <option value="ARS">Argentine Pesos (ARS)</option>
+                                                                        <option value="AMD">Armenian Dram (AMD)</option>
+                                                                        <option value="AWG">Aruban Florin (AWG)</option>
+                                                                        <option value="AUD">Australian Dollars (AUD)</option>
+                                                                        <option value="BBD">Barbadian Dollar (BBD)</option>
+                                                                        <option value="AZN">Azerbaijani Manat (AZN)</option>
+                                                                        <option value="BDT">Bangladesh Taka (BDT)</option>
+                                                                        <option value="BSD">Bahamian Dollar (BSD)</option>
+                                                                        <option value="BHD">Bahraini Dinar (BHD)</option>
+                                                                        <option value="BYR">Belarusian Ruble (BYR)</option>
+                                                                        <option value="BZD">Belize Dollar (BZD)</option>
+                                                                        <option value="BTN">Bhutanese Ngultrum (BTN)</option>
+                                                                        <option value="BAM">Bosnia and Herzegovina Convertible Mark (BAM)</option>
+                                                                        <option value="BRL">Brazilian Real (BRL)</option>
+                                                                        <option value="BOB">Bolivian Boliviano (BOB)</option>
+                                                                        <option value="BWP">Botswana Pula (BWP)</option>
+                                                                        <option value="BND">Brunei Dollar (BND)</option>
+                                                                        <option value="BGN">Bulgarian Lev (BGN)</option>
+                                                                        <option value="MMK">Burmese Kyat (MMK)</option>
+                                                                        <option value="KHR">Cambodian Riel</option>
+                                                                        <option value="CVE">Cape Verdean escudo (CVE)</option>
+                                                                        <option value="KYD">Cayman Dollars (KYD)</option>
+                                                                        <option value="XAF">Central African CFA Franc (XAF)</option>
+                                                                        <option value="CLP">Chilean Peso (CLP)</option>
+                                                                        <option value="CNY">Chinese Yuan Renminbi (CNY)</option>
+                                                                        <option value="COP">Colombian Peso (COP)</option>
+                                                                        <option value="KMF">Comorian Franc (KMF)</option>
+                                                                        <option value="CDF">Congolese franc (CDF)</option>
+                                                                        <option value="CRC">Costa Rican Colones (CRC)</option>
+                                                                        <option value="HRK">Croatian Kuna (HRK)</option>
+                                                                        <option value="CZK">Czech Koruny (CZK)</option>
+                                                                        <option value="DKK">Danish Kroner (DKK)</option>
+                                                                        <option value="DOP">Dominican Peso (DOP)</option>
+                                                                        <option value="XCD">East Caribbean Dollar (XCD)</option>
+                                                                        <option value="EGP">Egyptian Pound (EGP)</option>
+                                                                        <option value="ETB">Ethiopian Birr (ETB)</option>
+                                                                        <option value="XPF">CFP Franc (XPF)</option>
+                                                                        <option value="FJD">Fijian Dollars (FJD)</option>
+                                                                        <option value="GMD">Gambian Dalasi (GMD)</option>
+                                                                        <option value="GHS">Ghanaian Cedi (GHS)</option>
+                                                                        <option value="GTQ">Guatemalan Quetzal (GTQ)</option>
+                                                                        <option value="GYD">Guyanese Dollar (GYD)</option>
+                                                                        <option value="GEL">Georgian Lari (GEL)</option>
+                                                                        <option value="HTG">Haitian Gourde (HTG)</option>
+                                                                        <option value="HNL">Honduran Lempira (HNL)</option>
+                                                                        <option value="HKD">Hong Kong Dollars (HKD)</option>
+                                                                        <option value="HUF">Hungarian Forint (HUF)</option>
+                                                                        <option value="ISK">Icelandic Kronur (ISK)</option>
+                                                                        <option value="INR">Indian Rupees (INR)</option>
+                                                                        <option value="IDR">Indonesian Rupiah (IDR)</option>
+                                                                        <option value="ILS">Israeli New Shekel (NIS)</option>
+                                                                        <option value="JMD">Jamaican Dollars (JMD)</option>
+                                                                        <option value="JPY">Japanese Yen (JPY)</option>
+                                                                        <option value="JEP">Jersey Pound</option>
+                                                                        <option value="JOD">Jordanian Dinar (JOD)</option>
+                                                                        <option value="KZT">Kazakhstani Tenge (KZT)</option>
+                                                                        <option value="KES">Kenyan Shilling (KES)</option>
+                                                                        <option value="KWD">Kuwaiti Dinar (KWD)</option>
+                                                                        <option value="KGS">Kyrgyzstani Som (KGS)</option>
+                                                                        <option value="LAK">Laotian Kip (LAK)</option>
+                                                                        <option value="LVL">Latvian Lati (LVL)</option>
+                                                                        <option value="LBP">Lebanese Pounds (LBP)</option>
+                                                                        <option value="LSL">Lesotho Loti (LSL)</option>
+                                                                        <option value="LRD">Liberian Dollar (LRD)</option>
+                                                                        <option value="MGA">Malagasy Ariary (MGA)</option>
+                                                                        <option value="MKD">Macedonia Denar (MKD)</option>
+                                                                        <option value="MOP">Macanese Pataca (MOP)</option>
+                                                                        <option value="MWK">Malawian Kwacha (MWK)</option>
+                                                                        <option value="MVR">Maldivian Rufiyaa (MVR)</option>
+                                                                        <option value="MXN">Mexican Pesos (MXN)</option>
+                                                                        <option value="MYR">Malaysian Ringgits (MYR)</option>
+                                                                        <option value="MUR">Mauritian Rupee (MUR)</option>
+                                                                        <option value="MDL">Moldovan Leu (MDL)</option>
+                                                                        <option value="MAD">Moroccan Dirham</option>
+                                                                        <option value="MNT">Mongolian Tugrik</option>
+                                                                        <option value="MZN">Mozambican Metical</option>
+                                                                        <option value="NAD">Namibian Dollar</option>
+                                                                        <option value="NPR">Nepalese Rupee (NPR)</option>
+                                                                        <option value="ANG">Netherlands Antillean Guilder</option>
+                                                                        <option value="NZD">New Zealand Dollars (NZD)</option>
+                                                                        <option value="NIO">Nicaraguan Córdoba (NIO)</option>
+                                                                        <option value="NGN">Nigerian Naira (NGN)</option>
+                                                                        <option value="NOK">Norwegian Kroner (NOK)</option>
+                                                                        <option value="OMR">Omani Rial (OMR)</option>
+                                                                        <option value="PKR">Pakistani Rupee (PKR)</option>
+                                                                        <option value="PGK">Papua New Guinean Kina (PGK)</option>
+                                                                        <option value="PYG">Paraguayan Guarani (PYG)</option>
+                                                                        <option value="PEN">Peruvian Nuevo Sol (PEN)</option>
+                                                                        <option value="PHP">Philippine Peso (PHP)</option>
+                                                                        <option value="PLN">Polish Zlotych (PLN)</option>
+                                                                        <option value="QAR">Qatari Rial (QAR)</option>
+                                                                        <option value="RON">Romanian Lei (RON)</option>
+                                                                        <option value="RUB">Russian Rubles (RUB)</option>
+                                                                        <option value="RWF">Rwandan Franc (RWF)</option>
+                                                                        <option value="WST">Samoan Tala (WST)</option>
+                                                                        <option value="SAR">Saudi Riyal (SAR)</option>
+                                                                        <option value="STD">Sao Tome And Principe Dobra (STD)</option>
+                                                                        <option value="RSD">Serbian dinar (RSD)</option>
+                                                                        <option value="SCR">Seychellois Rupee (SCR)</option>
+                                                                        <option value="SGD">Singapore Dollars (SGD)</option>
+                                                                        <option value="SDG">Sudanese Pound (SDG)</option>
+                                                                        <option value="SYP">Syrian Pound (SYP)</option>
+                                                                        <option value="ZAR">South African Rand (ZAR)</option>
+                                                                        <option value="KRW">South Korean Won (KRW)</option>
+                                                                        <option value="SSP">South Sudanese Pound (SSP)</option>
+                                                                        <option value="SBD">Solomon Islands Dollar (SBD)</option>
+                                                                        <option value="LKR">Sri Lankan Rupees (LKR)</option>
+                                                                        <option value="SRD">Surinamese Dollar (SRD)</option>
+                                                                        <option value="SZL">Swazi Lilangeni (SZL)</option>
+                                                                        <option value="SEK">Swedish Kronor (SEK)</option>
+                                                                        <option value="CHF">Swiss Francs (CHF)</option>
+                                                                        <option value="TWD">Taiwan Dollars (TWD)</option>
+                                                                        <option value="THB">Thai baht (THB)</option>
+                                                                        <option value="TZS">Tanzanian Shilling (TZS)</option>
+                                                                        <option value="TTD">Trinidad and Tobago Dollars (TTD)</option>
+                                                                        <option value="TND">Tunisian Dinar (TND)</option>
+                                                                        <option value="TRY">Turkish Lira (TRY)</option>
+                                                                        <option value="TMT">Turkmenistani Manat (TMT)</option>
+                                                                        <option value="UGX">Ugandan Shilling (UGX)</option>
+                                                                        <option value="UAH">Ukrainian Hryvnia (UAH)</option>
+                                                                        <option value="AED">United Arab Emirates Dirham (AED)</option>
+                                                                        <option value="UYU">Uruguayan Pesos (UYU)</option>
+                                                                        <option value="UZS">Uzbekistan som (UZS)</option>
+                                                                        <option value="VUV">Vanuatu Vatu (VUV)</option>
+                                                                        <option value="VEF">Venezuelan Bolivares (VEF)</option>
+                                                                        <option value="VND">Vietnamese đồng (VND)</option>
+                                                                        <option value="XOF">West African CFA franc (XOF)</option>
+                                                                        <option value="YER">Yemeni Rial (YER)</option>
+                                                                        <option value="ZMW">Zambian Kwacha (ZMW)</option>
+                                                                    </select>
+                                                                    <svg class="next-icon next-icon--size-16">
+                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ui-banner ui-banner--status-warning hide" >
+                                                                <div class="ui-banner__ribbon">
+                                                                    <svg class="next-icon next-icon--size-20 next-icon--no-nudge">
+                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#alert-circle"></use>
+                                                                    </svg>
+                                                                </div>
+                                                                <div class="ui-banner__content">
+                                                                    <h2 class="ui-banner__title">Currency not supported</h2>
+                                                                    <div class="ui-type-container ui-type-container--spacing-tight">
+                                                                        <p>PayPal Express does not support the currency you selected. Disable the gateway or change your store's
+                                                                    currency to a <a href="https://developer.paypal.com/docs/classic/api/currency_codes/#paypal" target="_blank" rel="noopener noreferrer">PayPal supported currency</a>.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="next-card__section hide" [class.hide]="!showMoneyFormat">
+                                                <h2 class="next-heading next-heading--small next-heading--half-margin">Currency Formatting</h2>
+                                                <p class="type--subdued">
+                                                    Change how currencies are displayed on your store. {{amount}} will be replaced with the price of your product.
+                                                </p>
+                                                <div class="ui-form__section">
+                                                    <div class="next-input-wrapper">
+                                                        <label class="next-label" for="shop_money_with_currency_format">HTML with currency</label>
+                                                        <input value="{{amount}} USD" placeholder="{{amount}} USD" class="next-input" size="30" type="text" name="shop[money_with_currency_format]" id="shop_money_with_currency_format"></div>
+
+                                                    <div class="next-input-wrapper">
+                                                        <label class="next-label" for="shop_money_format">HTML without currency</label>
+                                                        <input value="{{amount}}" placeholder="{{amount}}" class="next-input" size="30" type="text" name="shop[money_format]" id="shop_money_format">
+                                                    </div>
+
+                                                    <div class="next-input-wrapper">
+                                                        <label class="next-label" for="shop_money_with_currency_in_emails_format">Email with currency</label>
+                                                        <input value="{{amount}} USD" placeholder="{{amount}} USD" class="next-input" size="30" type="text" name="shop[money_with_currency_in_emails_format]" id="shop_money_with_currency_in_emails_format">
+                                                    </div>
+
+                                                    <div class="next-input-wrapper">
+                                                        <label class="next-label" for="shop_money_in_emails_format">Email without currency</label>
+                                                        <input value="{{amount}}" placeholder="{{amount}}" class="next-input" size="30" type="text" name="shop[money_in_emails_format]" id="shop_money_in_emails_format">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="next-card__section">
+                                                <div>
+                                                    <h2 class="next-heading next-heading--small next-heading--half-margin">Edit order ID format (optional)</h2>
+                                                    <p class="type--subdued">Order numbers start at #1001 by default. While you can't change the order number itself, you can add a prefix or suffix to create IDs like "EN1001" or "1001-A."</p>
+                                                </div>
+                                                <div class="ui-form__section">
+                                                    <div class="ui-form__group" formGroupName="standards_formats">
+                                                        <div class="next-input-wrapper">
+                                                            <label class="next-label" for="shop_order_number_format_prefix">Prefix</label>
+                                                            <input formControlName="prefix" class="next-input" size="30" type="text" name="shop[order_number_format_prefix]" id="shop_order_number_format_prefix">
+                                                        </div>
+
+                                                        <div class="next-input-wrapper">
+                                                            <label class="next-label" for="shop_order_number_format_suffix">Suffix</label>
+                                                            <input formControlName="suffix" class="next-input" size="30" type="text" name="shop[order_number_format_suffix]" id="shop_order_number_format_suffix">
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui-form__element ui-form__section--help-text">
+                                                        <p class="next-input__help-text">Your order ID will appear as
+                                                            <em>
+                                                                <span class="orderFormat">#1001, #1002, #1003 ...</span>
+                                                            </em>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="ui-page-actions">
+                            <div class="ui-page-actions__container">
+                                <div class="ui-page-actions__actions ui-page-actions__actions--primary">
+                                    <div class="ui-page-actions__button-group">
+                                    <button class="ui-button ui-button--primary js-btn-primary js-btn-loadable btn-primary has-loading" type="submit" name="commit">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
