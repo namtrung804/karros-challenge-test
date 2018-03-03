@@ -5,14 +5,14 @@ import {TranslateService} from "@ngx-translate/core";
 import {UserService} from "../../services/user.service";
 import {AuthenticationService} from "../../services/authentication.service";
 import {AlertService} from "../../services/alert.service";
-import {AppConfig} from "../../config/app.config";
 import {ValidationService} from "../../services/validation.service";
 import {AppComponent} from "../app.component";
+import {CHECK_EMAIL_REGEX} from "../../config/global-const";
 
 @Component({
   selector: 'forgot-password',
   templateUrl: 'forgot-password.component.html',
-  styleUrls: ['../../../assets/css/dialog-fresh.css'],
+  // styleUrls: ['../../../assets/css/dialog-fresh.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class ForgotPasswordComponent implements OnInit {
@@ -29,7 +29,6 @@ export class ForgotPasswordComponent implements OnInit {
               private formBuilder: FormBuilder,
               private elementRef: ElementRef,
               private translate: TranslateService,
-              private config: AppConfig,
               private validationService: ValidationService,
               private appComponent: AppComponent) {
 
@@ -51,7 +50,7 @@ export class ForgotPasswordComponent implements OnInit {
     this.dataForm = this.formBuilder.group({
       'email': [null, [
         Validators.required,
-        Validators.pattern(this.config.checkEmailRegex),
+        Validators.pattern(CHECK_EMAIL_REGEX),
       ]
       ],
     });

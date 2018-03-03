@@ -14,7 +14,7 @@ import {ModalDirective} from "ngx-bootstrap";
 import {Pagination} from "../../../models/pagination";
 import {ProductTypeVendor} from "../../../models/product-type-vendor";
 import {ProductService} from "../../../services/product.service";
-import {AppConfig} from "../../../config/app.config";
+
 import {AccountService} from "../../../services/account.service";
 import {Account} from "../../../models/account";
 import {CustomValidators} from "ng2-validation";
@@ -22,6 +22,7 @@ import * as _ from "lodash";
 import {ProductImages} from "../../../models/product-images";
 import * as moment from "moment";
 import {AuthenticationService} from "../../../services/authentication.service";
+import {LocalStoreManagerService} from "../../../services/local-store-manager.service";
 
 @Component({
   selector: 'app-account-detail',
@@ -44,15 +45,15 @@ export class AccountDetailComponent implements OnInit {
               private alertService: AlertService,
               private formBuilder: FormBuilder,
               private elementRef: ElementRef,
-              private config: AppConfig,
               private validationService: ValidationService,
               private authenticationService: AuthenticationService,
               private accountService: AccountService,
               private pageScrollService: PageScrollService,
               @Inject(DOCUMENT) private document: any,
-              private appComponent: AppComponent) {
+              private appComponent: AppComponent,
+              private localStoreManagerService: LocalStoreManagerService) {
     this.appComponent.bodyClass = 'page-users-show';
-    this.adminUser = JSON.parse(sessionStorage.getItem('adminUser'));
+    this.adminUser = this.localStoreManagerService.getData('adminUser');
 
   }
 

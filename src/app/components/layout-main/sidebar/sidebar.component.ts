@@ -6,7 +6,7 @@ import * as moment from 'moment';
 import {UserService} from "../../../services/user.service";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {AlertService} from "../../../services/alert.service";
-import {AppConfig} from "../../../config/app.config";
+
 import {ValidationService} from "../../../services/validation.service";
 
 @Component({
@@ -23,7 +23,6 @@ export class SidebarComponent implements OnInit {
               private formBuilder: FormBuilder,
               private elementRef: ElementRef,
               private translate: TranslateService,
-              private config: AppConfig,
               private validationService: ValidationService) {
 
   }

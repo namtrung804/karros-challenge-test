@@ -6,7 +6,6 @@ import {LazyLoadEvent} from 'primeng/primeng';
 import {ModalDirective} from 'ngx-bootstrap/modal';
 import {Location} from '@angular/common';
 
-import {AppConfig} from '../../../config/app.config';
 
 import {AuthenticationService} from '../../../services/authentication.service';
 import {AlertService} from '../../../services/alert.service';
@@ -19,6 +18,7 @@ import {PageFilter} from '../../../models/page-filter';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {Subject} from 'rxjs/Subject';
 import * as moment from 'moment';
+import {HeaderMainComponent} from '../../layout-main/header-main/header-main.component';
 
 @Component({
   selector: 'app-page-list',
@@ -45,6 +45,8 @@ export class PageListComponent implements OnInit {
   filterArray: any = [];
   selectedFilter: string;
 
+  @ViewChild(HeaderMainComponent)
+  private HeaderMainComponent: HeaderMainComponent;
   constructor(private pageService: PageService,
               private router: Router, private route: ActivatedRoute, private location: Location,
               private authenticationService: AuthenticationService,
@@ -52,7 +54,6 @@ export class PageListComponent implements OnInit {
               private fb: FormBuilder,
               private elementRef: ElementRef,
               private translate: TranslateService,
-              private config: AppConfig,
               private validationService: ValidationService,
               private appComponent: AppComponent) {
     this.appComponent.bodyClass = 'page-pages-index';
@@ -145,11 +146,11 @@ export class PageListComponent implements OnInit {
   }
 
   bulkSelectedItem(ops: string) {
-    let model = {operation: ops, page_ids: []};
+    const model = {operation: ops, page_ids: []};
     model.page_ids = this.selectList;
 
-    let flashMessageList = {
-      destroy: 'Deleted page!',
+    const flashMessageList = {
+      destroy: 'Deleted ' + this.selectList.length + ' page!',
       publish: 'Published ' + this.selectList.length + ' page!',
       unpublish: 'Hid ' + this.selectList.length + ' page!'
     };
@@ -160,8 +161,7 @@ export class PageListComponent implements OnInit {
             this.refreshSelectList();
             this.getDataPage();
             this.isModalShowDelete = false;
-            this.isShowFlashMessage = true;
-            this.flash_message = flashMessageList[ops];
+            this.HeaderMainComponent.showFlashMessage(flashMessageList[ops]);
             setTimeout(() => {
               this.isShowFlashMessage = false;
             }, 4000);

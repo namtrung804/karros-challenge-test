@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {Subject} from 'rxjs/Subject';
 import {Http} from "@angular/http";
 import {TranslateService} from "@ngx-translate/core";
-import {AppConfig} from "../config/app.config";
+
 import {FormArray, FormControl} from "@angular/forms";
 import * as _ from "lodash";
 
@@ -13,7 +13,7 @@ export class ValidationService {
   private keepAfterNavigationChange = false;
 
   constructor(private http: Http,
-              private config: AppConfig,
+              
               private router: Router,
               private translate: TranslateService) {
   }

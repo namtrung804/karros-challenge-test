@@ -3,7 +3,7 @@
     <div id="body" class="clearfix">
       <div class="" id="content">
         <div id="pages-new" class="page">
-          <form [formGroup]="pageForm" class="new_page" id="new_page" (ngSubmit)="submitFormPage()">
+          <form [formGroup]="dataForm" class="new_page" id="new_page" (ngSubmit)="submitForm()">
             <header class="ui-title-bar-container">
               <div class="ui-title-bar">
                 <div class="ui-title-bar__navigation">
@@ -29,7 +29,7 @@
                                                 </use>
                                             </svg>
                                         </span>
-                    <h1 class="ui-title-bar__title">Add page</h1>
+                    <h1 class="ui-title-bar__title">{{ page.id ? page.title : 'Add page'}}</h1>
                   </div>
                   <div class="action-bar">
                     <div class="ui-title-bar__mobile-primary-actions">
@@ -57,7 +57,10 @@
               </div>
             </header>
             <div class="ui-layout">
-              <div class="ui-layout__sections" formGroupName="page">
+              <div class="ui-layout__sections">
+                <div class="ui-layout__section">
+                  <app-alert></app-alert>
+                </div>
                 <div class="ui-layout__section ui-layout__section--primary">
                   <div class="ui-layout__item">
                     <div class="next-card">
@@ -77,7 +80,7 @@
                                 (input)="changeTitle($event.target.value)"
                                 placeholder="e.g. Contact us, Sizing chart, FAQs"
                                 class="next-input" size="30"
-                                type="text" name="page[title]">
+                                type="text">
                             </div>
                             <div class="ui-form__element">
                               <label for="page-content">Content</label>
@@ -94,9 +97,9 @@
                                             aria-label="Show Editor"
                                             aria-pressed="true"
                                             type="button">
-                                                                                        <span class="tooltip-container">
-                                                                                            <span class="tooltip-label">Show editor</span>
-                                                                                        </span>
+                                            <span class="tooltip-container">
+                                                <span class="tooltip-label">Show editor</span>
+                                            </span>
                                             <svg class="next-icon next-icon--color-slate next-icon--size-12">
                                               <use xmlns:xlink="http://www.w3.org/1999/xlink"
                                                    xlink:href="#rte-html">
@@ -113,18 +116,17 @@
                                   <label class="next-label helper--visually-hidden"
                                          for="page-content">Body html</label>
                                   <textarea class="ui-text-area s-none rte-plainview"
-                                            id="page-content" name="page[body_html]"
+                                            id="page-content"
                                             aria-hidden="true"
                                             style="display: none;">
-                                                                    </textarea>
+                                  </textarea>
                                 </div>
 
                                 <div class="editor-container" id="page-content_parent">
-                                                                    <textarea [froalaEditor]
-                                                                              formControlName="body_html"
-                                                                              (input)="changeBodyHTML($event.target.value)"
-                                                                              [(ngModel)]="page.body_html">
-                                                                    </textarea>
+                                  <textarea [froalaEditor]
+                                            formControlName="body_html"
+                                            (input)="changeBodyHTML($event.target.value)">
+                                  </textarea>
                                 </div>
 
                               </div>
@@ -175,39 +177,34 @@
                       </div>
                       <div class="ui-card__section" [class.hide]="!editSearchEngine">
                         <div class="ui-type-container">
-
                           <div class="ui-form__section">
                             <div class="next-input-wrapper">
                               <div class="ui-form__label-wrapper">
                                 <label class="next-label" for="seo-title-tag">Page
                                   title
                                 </label>
-                                <span class="type--subdued">{{page.metafields_global_title_tag.length}} of 70 characters used</span>
+                                <span class="type--subdued">{{ page.metafields_global_title_tag ? page.metafields_global_title_tag.length : '0' }} of 70 characters used</span>
                               </div>
                               <input id="seo-title-tag"
                                      editable-placeholder="true" class="next-input"
                                      size="30" type="text"
-                                     name="page[metafields_global_title_tag]"
                                      placeholder=""
                                      maxlength="70"
-                                     formControlName="metafields_global_title_tag"
-                                     [(ngModel)]="page.metafields_global_title_tag">
+                                     formControlName="metafields_global_title_tag">
                             </div>
-
                             <div class="next-input-wrapper">
                               <div class="ui-form__label-wrapper">
                                 <label class="next-label" for="seo-description-tag">Meta
                                   description
                                 </label>
-                                <span class="type--subdued">{{page.metafields_global_description_tag.length}} of 160 characters used</span>
+                                <span class="type--subdued">{{ page.metafields_global_description_tag.length }} of 160 characters used</span>
                               </div>
                               <textarea id="seo-description-tag"
                                         editable-placeholder="true" class="ui-text-area"
                                         name="page[metafields_global_description_tag]"
                                         placeholder=""
                                         maxlength="160"
-                                        formControlName="metafields_global_description_tag"
-                                        [(ngModel)]="page.metafields_global_description_tag">
+                                        formControlName="metafields_global_description_tag">
                                                             </textarea>
                             </div>
                             <div class="ui-form__section">
@@ -218,13 +215,11 @@
                                 </label>
                                 <div class="next-input--stylized">
                                   <span class="next-input__add-on next-input__add-on--before">https://mybeautyfriend.com/pages/</span>
-                                  <input id="object-handle"
+                                  <input formControlName="handle" id="object-handle"
                                          editable-placeholder="true"
                                          class="next-input next-input--invisible"
-                                         size="30" type="text" name="page[handle]"
-                                         placeholder=""
-                                         formControlName="handle"
-                                         [(ngModel)]="page.handle">
+                                         size="30" type="text"
+                                         placeholder="">
                                 </div>
                               </div>
 
@@ -254,15 +249,14 @@
                                              for="ispublished-visible"> Visible
                                         <span class="type--subdued"
                                               [class.hide]="page.published == 0 || publishDate == null">(as of
-                                                                                    <span>{{publishDate | date: 'long'}}</span>)
-                                                                                </span>
+                                          <span>{{publishDate | date: 'long'}}</span>)
+                                        </span>
                                       </label>
                                       <input type="radio" name="published"
                                              id="ispublished-visible"
                                              value="1"
                                              class="next-radio"
                                              formControlName="published"
-                                             [(ngModel)]="page.published"
                                              [checked]="page.published === 1"
                                              (click)="setVisibleDate();">
                                       <span class="next-radio--styled"></span>
@@ -274,15 +268,14 @@
                                              for="ispublished-hidden"> Hidden
                                         <span class="type--subdued"
                                               [class.hide]="page.published == 1 || !publishDate ">
-                                                                                    (will become visible on
-                                                                                    <span>{{publishDate | date: 'long'}}</span>)
-                                                                                </span>
+                                          (will become visible on
+                                          <span>{{publishDate | date: 'long'}}</span>)
+                                        </span>
                                       </label>
                                       <input type="radio" name="published"
                                              id="ispublished-hidden"
                                              value="0"
                                              formControlName="published"
-                                             [(ngModel)]="page.published"
                                              [checked]="page.published === 0"
                                              class="next-radio"
                                              (click)="setHiddenDate();">
@@ -303,19 +296,19 @@
                           <div id="publishable_fields" [class.hide]="!isShowSetLink">
                             <div class="ui-form__section">
                               <div class="next-input-wrapper">
-                                <label class="next-label"
-                                       for="publishDate">Publish
-                                  Date</label>
-                                <p-calendar [(ngModel)]="publishDate" showTime="true"
-                                            formControlName="published_at"
-                                            hourFormat="12" showButtonBar="true"
-                                            [defaultDate]="ToDay"
-                                            [minDate]="ToDay"
-                                            [inputId]="'publishDate'"
-                                            [showIcon]="true"
-                                            [locale]="vi"
-                                            [placeholder]="publishDate ? (publishDate) : 'Select a date...'">
-                                </p-calendar>
+                               <!-- <p-calendar
+                                  [(ngModel)]="publishDate"
+                                  formControlName="published_at"
+                                  showTime="true"
+                                  hourFormat="12"
+                                  showButtonBar="true"
+                                  [defaultDate]="ToDay"
+                                  [minDate]="ToDay"
+                                  [inputId]="'publishDate'"
+                                  [showIcon]="true"
+                                  [locale]="vi"
+                                  [placeholder]="publishDate ? publishDate : 'Select a date...'">
+                                </p-calendar>-->
                               </div>
                               <div class="ui-form__element">
                                 <button class="ui-button btn--link"
@@ -342,16 +335,20 @@
                             suffix
                           </label>
                           <div class="ui-select__wrapper">
-                            <select class="ui-select"
-                                    name="page[template_suffix]"
-                                    id="page_template_suffix"
-                                    formControlName="template_suffix"
-                                    [(ngModel)]="page.template_suffix">
-                              <option value="">page</option>
-                              <option value="contact">page.contact</option>
-                              <option value="full-width">page.full-width</option>
-                              <option value="sidebar-left">page.sidebar-left</option>
-                              <option value="sidebar-right">page.sidebar-right</option>
+                            <select formControlName="template_suffix" class="ui-select"
+                                    id="page_template_suffix" #template>
+                              <option value="" [selected]="page.template_suffix == ''">page</option>
+                              <option value="contact" [selected]="page.template_suffix == 'contact'">page.contact
+                              </option>
+                              <option value="full-width" [selected]="page.template_suffix == 'full-width'">
+                                page.full-width
+                              </option>
+                              <option value="sidebar-left" [selected]="page.template_suffix == 'sidebar-left'">
+                                page.sidebar-left
+                              </option>
+                              <option value="sidebar-right" [selected]="page.template_suffix == 'sidebar-right'">
+                                page.sidebar-right
+                              </option>
                             </select>
                             <svg class="next-icon next-icon--size-16">
                               <use xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -438,7 +435,6 @@
             <!--END Flash message-->
           </form>
         </div>
-
       </div>
     </div>
   </div>

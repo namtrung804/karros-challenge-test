@@ -6,7 +6,7 @@ import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {AlertService} from "../../../services/alert.service";
-import {AppConfig} from "../../../config/app.config";
+
 import {ValidationService} from "../../../services/validation.service";
 import {AppComponent} from "../../app.component";
 
@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
               private formBuilder: FormBuilder,
               private elementRef: ElementRef,
               private translate: TranslateService,
-              private config: AppConfig,
               private validationService: ValidationService,
               private appComponent: AppComponent) {
     this.appComponent.bodyClass = 'page-home-index';

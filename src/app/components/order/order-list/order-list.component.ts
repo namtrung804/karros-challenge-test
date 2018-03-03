@@ -7,7 +7,7 @@ import {AuthenticationService} from "../../../services/authentication.service";
 import {AlertService} from "../../../services/alert.service";
 import {FormBuilder} from "@angular/forms";
 import {TranslateService} from "@ngx-translate/core";
-import {AppConfig} from "../../../config/app.config";
+
 import {ValidationService} from "../../../services/validation.service";
 import {AppComponent} from "../../app.component";
 import {OrderService} from "../../../services/order.service";
@@ -50,7 +50,6 @@ export class OrderListComponent implements OnInit {
               private formBuilder: FormBuilder,
               private elementRef: ElementRef,
               private translate: TranslateService,
-              private config: AppConfig,
               private validationService: ValidationService,
               private orderService: OrderService,
               private pageScrollService: PageScrollService,

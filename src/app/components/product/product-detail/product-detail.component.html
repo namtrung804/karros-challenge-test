@@ -1,3 +1,8 @@
+<header-main
+  [isShowBar]="isShowBar"
+  [isChanged]="isChanged"
+  (reloadData)="saveOnHeader($event)">
+</header-main>
 <main id="AppFrameMain" class="ui-app-frame__main ">
   <div class="wrapper"
        id="wrapper">
@@ -1436,9 +1441,8 @@
                   </div>
                   <div class="ui-layout__item">
                     <section class="ui-card ui-card--type-aside">
-                      <header class="ui-card__header"><h2 class="ui-heading">Organization</h2></header>
-
-
+                      <header class="ui-card__header">
+                        <h2 class="ui-heading">Organization</h2></header>
                       <div class="ui-card__section">
                         <div class="ui-type-container">
                           <div class="next-input-wrapper">
@@ -1744,123 +1748,13 @@
 
                         </div>
                       </div>
-                      <div
-                        (clickOutside)="isShowProductTag=false"
-                        [attachOutsideOnClick]="true"
-                        class="ui-card__section">
-                        <div class="ui-type-container">
-                          <div class="next-grid next-grid--no-outside-padding">
-                            <div class="next-grid__cell">
-                              <label for="tags" class="next-label">Tags</label>
-                            </div>
-                            <div class="next-grid__cell next-grid__cell--no-flex">
-                              <a (click)="popupProductTag.show()">View all tags</a>
-                            </div>
-                          </div>
-
-                          <div
-                            id="tags-event-bus">
-                            <a href="javascript:"
-                               type="text/html" class="modal_source" style="display: none"></a>
-                            <div class="ui-popover__container ui-popover__container--full-width-container">
-                              <div>
-                                <div class="">
-                                  <input (click)="isShowProductTag = true" class="next-input js-no-dirty"
-                                         placeholder="Vintage, cotton, summer" id="tags"
-                                         size="30" #productTagSearch
-                                         (keyup)="boxSearchTags.next(productTagSearch.value)"
-                                         aria-expanded="false" aria-haspopup="false" aria-owns="popover-dropdown-8"
-                                         aria-controls="popover-announce-selected" role="combobox"
-                                         aria-autocomplete="list" aria-activedescendant="selected-option-7" type="text">
-                                </div>
-
-                                <div class="tooltip-error attached-to-bottom hide">
-                                  <ul class="error-list">
-                                    <li></li>
-                                  </ul>
-                                </div>
-                              </div>
-
-                              <div [class.ui-popover--is-active]="isShowProductTag"
-                                   class="ui-popover ui-popover--full-width ui-popover--no-focus ui-popover--is-positioned-beneath "
-                                   data-popover-horizontally-relative-to-closest=".next-card"
-                                   data-popover-css-vertical-margin="13" data-popover-css-horizontal-margin="16"
-                                   data-popover-css-max-height="300" data-popover-css-max-width="10000"
-                                   id="ui-popover--16"
-                                   aria-labelledby="tags" aria-expanded="true" role="dialog"
-                                   data-popover-preferred-position="top"
-                                   style="margin-right: 0px; margin-left: 0px; transform-origin: 50% -5px 0px;z-index: 1000">
-                                <div class="ui-popover__tooltip"></div>
-                                <div class="ui-popover__content-wrapper">
-                                  <div class="ui-popover__content" style="max-height: 293.5px;">
-                                    <div class="ui-popover__pane scroll-shadow--bottom">
-                                      <ul
-                                        class="js-autocomplete-suggestions next-list next-list--compact next-list--toggles"
-                                        role="listbox" id="popover-dropdown-32">
-                                        <li *ngIf="tagSearch == ''" role="option">
-                                          <h3 class="next-heading next-heading--micro-uppercase-bordered">Frequently
-                                            used tags</h3>
-                                        </li>
-                                        <li *ngIf="tagSearch!= ''" role="option">
-                                          <a (click)="addTag(tagSearch,true)"
-                                             class="next-list__item next-list__item--promoted-action" selectable="">
-                                            <div class="next-grid next-grid--no-outside-padding next-grid--compact">
-                                              <div
-                                                class="next-grid__cell next-grid__cell--no-flex next-grid__cell--vertically-centered">
-                                                <svg style="overflow: visible; /* fixes clipping in Chrome */"
-                                                     class="next-icon next-icon--size-12 next-icon next-icon--12 block">
-                                                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                       xlink:href="#next-add-circle"></use>
-                                                </svg>
-                                              </div>
-                                              <div class="next-grid__cell">
-                                                <strong>Add</strong> "{{tagSearch}}"
-                                              </div>
-                                            </div>
-                                          </a>
-                                        </li>
-
-                                        <li ngif="productTag.length" *ngFor="let tag of productTag" role="option">
-                                          <a (click)="addTag(tag)" class="next-list__item" selectable=""
-                                          >
-                                            {{tag}}
-                                          </a>
-                                        </li>
-                                      </ul>
-                                      <div class="ui-popover__section hide">
-                                        <p class="type--subdued tc">
-    <span class="next-spinner">
-      <svg class="next-icon next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                      xlink:href="#next-spinner"></use> </svg>
-    </span>
-                                          Loading…
-                                        </p>
-                                      </div>
-
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <ul *ngIf="product?.tags.length" class="js-tag-list next-token-list st">
-                              <li *ngFor="let tag of product.tags" class="next-token">
-                                <span class="next-token__label">{{tag}}</span>
-
-                                <a (click)="addTag(tag)" class="next-token__remove">
-                                  <span class="next-token__remove__icon">
-                                    <svg class="next-icon next-icon--size-10 next-icon--no-nudge">
-                                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-remove"></use>
-                                    </svg>
-                                  </span>
-                                </a>
-                              </li>
-                              <!-- Tags list will go here -->
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
                     </section>
                   </div>
+                  <app-popup-manager-tags
+                    [tagsExists]="product.tags"
+                    [dataTags]="productTagTemp"
+                    (reloadData)="reloadData($event)">
+                  </app-popup-manager-tags>
                 </div>
               </div>
             </div>
@@ -2144,9 +2038,6 @@
     </form>
   </div>
 </div>
-<app-popup-manager-images
-  (reload-data)="reloadData($event)"
-></app-popup-manager-images>
 <div (onHidden)="popupDuplicateVariant.hide()" [config]="{ show: false }" bsModal
      #popupDuplicateVariant="bs-modal"
      class="wrap-popup">

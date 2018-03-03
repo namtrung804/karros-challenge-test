@@ -6,7 +6,7 @@ import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ModalDirective} from "ngx-bootstrap";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AlertService} from "../../../services/alert.service";
-import {AppConfig} from "../../../config/app.config";
+
 import {ValidationService} from "../../../services/validation.service";
 import {CollectionService} from "../../../services/collection.service";
 import {PageScrollInstance, PageScrollService} from "ng2-page-scroll";
@@ -60,7 +60,6 @@ export class CollectionDetailComponent implements OnInit {
               private alertService: AlertService,
               private formBuilder: FormBuilder,
               private elementRef: ElementRef,
-              private config: AppConfig,
               private validationService: ValidationService,
               private productService: ProductService,
               private collectionService: CollectionService,

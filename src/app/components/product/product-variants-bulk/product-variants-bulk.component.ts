@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ValidationService} from "../../../services/validation.service";
 import {AlertService} from "../../../services/alert.service";
-import {AppConfig} from "../../../config/app.config";
+
 import {DOCUMENT} from "@angular/common";
 import {PageScrollInstance, PageScrollService} from "ng2-page-scroll";
 import {AppComponent} from "../../app.component";
@@ -47,7 +47,6 @@ export class ProductVariantsBulkComponent implements OnInit {
               private alertService: AlertService,
               private formBuilder: FormBuilder,
               private elementRef: ElementRef,
-              private config: AppConfig,
               private validationService: ValidationService,
               private productService: ProductService,
               private pageScrollService: PageScrollService,

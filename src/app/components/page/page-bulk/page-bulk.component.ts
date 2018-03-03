@@ -4,7 +4,7 @@ import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Page} from '../../../models/page';
 import {PageService} from '../../../services/page.service';
-import {AppConfig} from "../../../config/app.config";
+
 import {DOCUMENT} from "@angular/common";
 import {ValidationService} from "../../../services/validation.service";
 import {PageScrollInstance, PageScrollService} from "ng2-page-scroll";
@@ -47,7 +47,6 @@ export class PageBulkComponent implements OnInit {
               private alertService: AlertService,
               private formBuilder: FormBuilder,
               private elementRef: ElementRef,
-              private config: AppConfig,
               private validationService: ValidationService,
               private pageService: PageService,
               private pageScrollService: PageScrollService,

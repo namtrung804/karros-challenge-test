@@ -5,7 +5,8 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {AuthenticationService} from "../services/authentication.service";
-import {AppConfig} from "../config/app.config";
+
+import {LocalStoreManagerService} from "../services/local-store-manager.service";
 
 declare let ga: any;
 
@@ -14,12 +15,12 @@ export class AuthGuard implements CanActivate {
 
   constructor(private router: Router,
               private authenticationService: AuthenticationService,
-              private config: AppConfig) {
+              private localStoreManagerService: LocalStoreManagerService) {
 
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (!sessionStorage.getItem('accessToken')) {
+    if (!this.localStoreManagerService.getData('accessToken')) {
       this.router.navigate(['/login'], {queryParams: {returnUrl: state.url}});
       return false;
     }

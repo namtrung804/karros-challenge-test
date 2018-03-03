@@ -7,19 +7,25 @@ import {PageService} from '../../../services/page.service';
 import {ProductService} from '../../../services/product.service';
 
 import {AppComponent} from '../../app.component';
+import {AlertService} from '../../../services/alert.service';
+import {ValidationService} from '../../../services/validation.service';
 
 @Component({
   selector: 'app-page-detail',
   templateUrl: './page-detail.component.html'
 })
 export class PageDetailComponent implements OnInit {
+  // Form
   page: any = new Page();
-  pageForm: FormGroup;
+  dataForm: FormGroup;
+  validationMessages: any;
   loading = false;
+  // popup
   editSearchEngine = false;
   isShowDelete = false;
   isShowFlashMessage = false;
   isShowSetLink = false;
+
   flash_message = '';
   pageId: number;
   publishDate: Date;
@@ -30,6 +36,8 @@ export class PageDetailComponent implements OnInit {
               private router: Router, private route: ActivatedRoute,
               private pageService: PageService,
               private productService: ProductService,
+              private alertService: AlertService,
+              private validationService: ValidationService,
               private appComponent: AppComponent) {
 
   }
@@ -58,58 +66,56 @@ export class PageDetailComponent implements OnInit {
         }
       }
     );
-    this.buildForm();
   }
 
-  buildForm(): void {
-    this.pageForm = this.fb.group({
-      page: this.fb.group({
-        title: [null, [
-          Validators.required
-        ]
-        ],
-        body_html: [null, [
-          Validators.required
-        ]
-        ],
-        handle: [null, [
-          Validators.required
-        ]
-        ],
-        published: [null, [
-          Validators.required,
-        ]
-        ],
-        published_at: [null, [
-          Validators.required,
-        ]
-        ],
-        metafields_global_title_tag: [null, [
-          Validators.required,
-          Validators.maxLength(70)
-        ]
-        ],
-        metafields_global_description_tag: [null, [
-          Validators.required,
-          Validators.maxLength(160)
-        ]
-        ],
-        author: [null, [
-          Validators.required
-        ]
-        ],
-        template_suffix: ['', [
-          Validators.required
-        ]
-        ],
-      }),
+  buildForm(data: any = []): void {
+    this.validationMessages = {
+      'title': {
+        'required': 'Title can\'t be blank',
+      }
+    };
+    this.dataForm = this.fb.group({
+      title: [data!.title
+      ],
+      body_html: [data!.body_html
+      ],
+      handle: [data!.handle
+      ],
+      published: [data!.published
+      ],
+      published_at: [data!.published_at
+      ],
+      metafields_global_title_tag: [data!.metafields_global_title_tag, [
+        Validators.required,
+        Validators.maxLength(70)
+      ]
+      ],
+      metafields_global_description_tag: [data!.metafields_global_description_tag, [
+        Validators.required,
+        Validators.maxLength(160)
+      ]
+      ],
+      author: [data!.author
+      ],
+      template_suffix: [data!.template_suffix
+      ],
     });
+    this.page = data;
     this.onChangesForm();
   }
 
+  getData(pageId: number) {
+    this.pageService.getById(pageId).subscribe(
+      data => {
+        this.buildForm(data.page);
+        this.publishDate = new Date(data.page.published_at);
+      }
+    );
+  }
+
   focusTitle() {
-    const title = this.pageForm.get('page').get('title');
-    const handle = this.pageForm.get('page').get('handle');
+    const title = this.dataForm.get('title');
+    const handle = this.dataForm.get('handle');
 
     if (title.value === handle.value.replace('-', ' ')) {
       title.valueChanges.subscribe(data => {
@@ -137,10 +143,10 @@ export class PageDetailComponent implements OnInit {
   }
 
   onChangesForm() {
-    this.pageForm.valueChanges.subscribe(data => {
-      if (data.page.body_html !== '') {
+    this.dataForm.valueChanges.subscribe(data => {
+      if (data.body_html !== '') {
         const bodyHTML = document.createElement('p');
-        bodyHTML.innerHTML = data.page.body_html;
+        bodyHTML.innerHTML = data.body_html;
 
         this.page.metafields_global_description_tag = (bodyHTML.outerText);
         if (this.page.metafields_global_description_tag.length > 160) {
@@ -150,8 +156,14 @@ export class PageDetailComponent implements OnInit {
     })
   }
 
-  submitFormPage() {
-    const model = this.pageForm.get('page').value;
+  submitForm() {
+    const validation = this.validationService.validation(this.dataForm, this.validationMessages);
+    if (validation !== '') {
+      this.alertService.error(validation);
+      return;
+    }
+    this.loading = true;
+    const model = this.dataForm.value;
     if (this.pageId) {
       this.pageService.update(model, this.pageId).subscribe(
         data => {
@@ -184,15 +196,6 @@ export class PageDetailComponent implements OnInit {
         }
       )
     }
-  }
-
-  getData(pageId: number) {
-    this.pageService.getById(pageId).subscribe(
-      data => {
-        this.page = data.page;
-        this.publishDate = new Date(this.page.published_at);
-      }
-    );
   }
 
   submitDeletePage(pageID: number) {

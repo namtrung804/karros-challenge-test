@@ -1,3 +1,5 @@
+<header-main>
+</header-main>
 <main id="AppFrameMain" class="ui-app-frame__main ">
   <div class="wrapper"
        id="wrapper">
@@ -548,27 +550,4 @@
     </form>
   </div>
 </div>
-<!--TODO : tạo module như alert-->
-<div class="ui-flash-wrapper" [class.ui-flash-wrapper--is-visible]="isShowFlashMessage"
-     id="UIFlashWrapper">
-  <div class="ui-flash ui-flash--nav-offset" id="UIFlashMessage" data-tg-refresh-always="true"
-       data-flash-has-message="true">
-    <p class="ui-flash__message" tabindex="-1" aria-live="off" role="status">
-      {{ flash_message }}</p>
-    <div class="ui-flash__close-button">
-      <button class="ui-button ui-button--transparent ui-button--icon-only"
-              aria-label="Close message" type="button" name="button">
-        <svg class="next-icon next-icon--color-white next-icon--size-12">
-          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-remove">
-            <svg id="next-remove" width="100%" height="100%">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                <path
-                  d="M18.263 16l10.07-10.07c.625-.625.625-1.636 0-2.26s-1.638-.627-2.263 0L16 13.737 5.933 3.667c-.626-.624-1.637-.624-2.262 0s-.624 1.64 0 2.264L13.74 16 3.67 26.07c-.626.625-.626 1.636 0 2.26.312.313.722.47 1.13.47s.82-.157 1.132-.47l10.07-10.068 10.068 10.07c.312.31.722.468 1.13.468s.82-.157 1.132-.47c.626-.625.626-1.636 0-2.26L18.262 16z"></path>
-              </svg>
-            </svg>
-          </use>
-        </svg>
-      </button>
-    </div>
-  </div>
-</div>
+

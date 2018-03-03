@@ -13,28 +13,32 @@ import {CustomerListComponent} from './customer-list/customer-list.component';
 import {CustomerCreateComponent} from './customer-create/customer-create.component';
 import {CustomerDetailComponent} from './customer-detail/customer-detail.component';
 import {CustomerBulkComponent} from './customer-bulk/customer-bulk.component';
-import {PopupManagerTagsComponent} from './popup-manager-tags/popup-manager-tags.component';
 import {AlertModule} from '../alert/alert.module';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
+import {SharedModuleModule} from '../shared-module/shared-module.module';
+import {ClickOutsideModule} from 'ng-click-outside';
+
 
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        RouterModule,
-        LayoutMainModule,
-        AlertModule,
-        CheckboxModule,
-        DataTableModule,
-        SharedModule,
-        Ng2PageScrollModule,
-        ModalModule.forRoot(),
-        CustomerRoutingModule
-    ],
-    declarations: [CustomerComponent, CustomerListComponent, CustomerCreateComponent,
-        CustomerDetailComponent, CustomerBulkComponent, PopupManagerTagsComponent]
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    LayoutMainModule,
+    AlertModule,
+    CheckboxModule,
+    DataTableModule,
+    SharedModule,
+    Ng2PageScrollModule,
+    SharedModuleModule,
+    ClickOutsideModule,
+    ModalModule.forRoot(),
+    CustomerRoutingModule
+  ],
+  declarations: [CustomerComponent, CustomerListComponent, CustomerCreateComponent,
+    CustomerDetailComponent, CustomerBulkComponent],
 })
 export class CustomerModule {
 }

@@ -1,0 +1,19 @@
+export class Business {
+    id: string = '';
+    name: string = '';
+    image_url: string = '';
+    is_claimed: boolean = true;
+    is_closed: boolean = true;
+    url: string = '';
+    phone: string = '';
+    display_phone: string = '';
+    review_count: number = 0;
+    categories: any;
+    rating: number = 0;
+    location: any;
+    coordinates: any;
+    photos: any;
+    price: string = '';
+    hours: any;
+    transactions: any;
+}

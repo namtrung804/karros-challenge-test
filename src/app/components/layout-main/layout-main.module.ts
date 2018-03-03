@@ -8,13 +8,15 @@ import {RouterModule} from "@angular/router";
 import {LayoutMainComponent} from './layout-main.component';
 import {ModalModule} from 'ngx-bootstrap';
 import {ClickOutsideModule} from "ng-click-outside";
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     ClickOutsideModule,
-    ModalModule
+    ModalModule,
+    TranslateModule
   ],
   declarations: [
     LayoutMainComponent,

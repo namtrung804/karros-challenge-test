@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import {Observable} from "rxjs";
 import * as moment from 'moment';
 import {HttpClient} from "@angular/common/http";
-import {AppConfig} from "../config/app.config";
+
 import {AuthenticationService} from "./authentication.service";
 import {JSONObject} from "../models/JSONObject";
 import {User} from "../models/user";
@@ -18,18 +18,18 @@ require('lodash.product');
 @Injectable()
 export class ProductService {
   constructor(private http: HttpClient,
-              private config: AppConfig,
+
               private authentication: AuthenticationService) {
   }
 
   create(product: any): Observable<any> {
-    return this.http.post<JSONObject>(this.config.apiUrl + '/products.json', JSON.stringify({product: product})).map((response) => {
+    return this.http.post<JSONObject>('/products.json', JSON.stringify({product: product})).map((response) => {
       return response;
     });
   }
 
   update(product: any, id: number): Observable<any> {
-    return this.http.put<JSONObject>(this.config.apiUrl + '/products/' + id + '.json', JSON.stringify({product: product}))
+    return this.http.put<JSONObject>('/products/' + id + '.json', JSON.stringify({product: product}))
       .map((response) => {
         return response;
       });
@@ -37,7 +37,7 @@ export class ProductService {
 
   getAllProducts(page: number, param: any = []): Observable<any> {
     let string = this.queryStringParams(param);
-    return this.http.get<JSONObject>(this.config.apiUrl + `/products.json?page=${page}&order=created_at_desc${string}`)
+    return this.http.get<JSONObject>(`/products.json?page=${page}&order=created_at_desc${string}`)
       .map((response) => {
         if (response.code == 200) {
           return response;
@@ -48,7 +48,7 @@ export class ProductService {
 
   getAllProductType(param: any = []): Observable<any> {
     let string = this.queryStringParams(param);
-    return this.http.get<JSONObject>(this.config.apiUrl + '/product_types.json?' + string)
+    return this.http.get<JSONObject>('/product_types.json?' + string)
       .map((response) => {
         if (response.code == 200) {
           return response.product_types;
@@ -59,7 +59,7 @@ export class ProductService {
 
   getAllProductVendor(param: any = []): Observable<any> {
     let string = this.queryStringParams(param);
-    return this.http.get<JSONObject>(this.config.apiUrl + '/vendors.json?' + string)
+    return this.http.get<JSONObject>('/vendors.json?' + string)
       .map((response) => {
         if (response.code == 200) {
           return response.vendors;
@@ -69,7 +69,7 @@ export class ProductService {
   }
 
   getProductByID(id: number): Observable<Product> {
-    return this.http.get<JSONObject>(this.config.apiUrl + '/products/' + id + '.json')
+    return this.http.get<JSONObject>('/products/' + id + '.json')
       .map((response) => {
         if (response.code == 200) {
           return response.product;
@@ -79,28 +79,28 @@ export class ProductService {
   }
 
   uploadImage(data: any, productId: number): Observable<any> {
-    return this.http.post<JSONObject>(this.config.apiUrl + '/products/' + productId + '/images.json', data)
+    return this.http.post<JSONObject>('/products/' + productId + '/images.json', data)
       .map((response) => {
         return response;
       });
   }
 
   deleteImage(imageID: number, productId: number): Observable<any> {
-    return this.http.delete<JSONObject>(this.config.apiUrl + '/products/' + productId + '/images/' + imageID + '.json')
+    return this.http.delete<JSONObject>('/products/' + productId + '/images/' + imageID + '.json')
       .map((response) => {
         return response;
       });
   }
 
   reoderImage(data: any, productId: number, imageId: number): Observable<any> {
-    return this.http.post<JSONObject>(this.config.apiUrl + '/products/' + productId + '/images/' + imageId + '/reorder.json', data)
+    return this.http.post<JSONObject>('/products/' + productId + '/images/' + imageId + '/reorder.json', data)
       .map((response) => {
         return response;
       });
   }
 
   productBulkAction(data: any): Observable<any> {
-    return this.http.put<JSONObject>(this.config.apiUrl + '/products/set.json', JSON.stringify(data))
+    return this.http.put<JSONObject>('/products/set.json', JSON.stringify(data))
       .map((response) => {
         return response;
       });
@@ -108,7 +108,7 @@ export class ProductService {
 
   getAllTag(param: any = []): Observable<any> {
     let string = this.queryStringParams(param);
-    return this.http.get<JSONObject>(this.config.apiUrl + '/tags/products.json?' + string)
+    return this.http.get<JSONObject>('/tags/products.json?' + string)
       .map((response) => {
         if (response.code == 200) {
           return response.tags;
@@ -119,28 +119,28 @@ export class ProductService {
 
   // Variant
   deleteVariant(variantID: number, productId: number): Observable<any> {
-    return this.http.delete<JSONObject>(this.config.apiUrl + '/products/' + productId + '/product_variants/' + variantID + '.json')
+    return this.http.delete<JSONObject>('/products/' + productId + '/product_variants/' + variantID + '.json')
       .map((response) => {
         return response;
       });
   }
 
   updateVariant(data: Variant, productId: number): Observable<any> {
-    return this.http.put<JSONObject>(this.config.apiUrl + '/products/' + productId + '/product_variants/' + data.id + '.json', JSON.stringify({product_variant: data}))
+    return this.http.put<JSONObject>('/products/' + productId + '/product_variants/' + data.id + '.json', JSON.stringify({product_variant: data}))
       .map((response) => {
         return response;
       });
   }
 
   addVariant(data: Variant, productId: number): Observable<any> {
-    return this.http.post<JSONObject>(this.config.apiUrl + '/products/' + productId + '/product_variants.json', JSON.stringify({product_variant: data}))
+    return this.http.post<JSONObject>('/products/' + productId + '/product_variants.json', JSON.stringify({product_variant: data}))
       .map((response) => {
         return response;
       });
   }
 
   variantsBulkAction(data: any, productId: number): Observable<any> {
-    return this.http.post<JSONObject>(this.config.apiUrl + '/products/' + productId + '/product_variants/set.json', JSON.stringify(data))
+    return this.http.post<JSONObject>('/products/' + productId + '/product_variants/set.json', JSON.stringify(data))
       .map((response) => {
         return response;
       });

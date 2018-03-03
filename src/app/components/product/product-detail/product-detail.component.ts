@@ -4,7 +4,6 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {AuthenticationService} from '../../../services/authentication.service';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
-import {AppConfig} from '../../../config/app.config';
 import {ValidationService} from '../../../services/validation.service';
 import {AppComponent} from '../../app.component';
 import 'rxjs/add/operator/switchMap';
@@ -21,13 +20,16 @@ import {Variant} from '../../../models/variant';
 import {ModalDirective} from 'ngx-bootstrap';
 import {CollectionService} from '../../../services/collection.service';
 import {Collection} from '../../../models/collection';
-import {CollectionRules} from '../../../models/collection-rules';
+
 import {ProductTypeVendor} from '../../../models/product-type-vendor';
 import {OPTIONS, ProductOption} from '../../../models/product-option';
 import {CustomValidators} from 'ng2-validation';
-import {Subject} from "rxjs/Subject";
-import {debounceTime, distinctUntilChanged} from "rxjs/operators";
-import {PopupManagerImagesComponent} from "../../shared-module/popup-manager-images/popup-manager-images.component";
+import {Subject} from 'rxjs/Subject';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
+
+import {PopupManagerImagesComponent} from '../../shared-module/popup-manager-images/popup-manager-images.component';
+import {PopupManagerTagsComponent} from '../../shared-module/popup-manager-tags/popup-manager-tags.component';
+import {HeaderMainComponent} from '../../layout-main/header-main/header-main.component';
 
 const _ = require('lodash');
 require('lodash.product');
@@ -97,8 +99,18 @@ export class ProductDetailComponent implements OnInit {
     value: ''
   };
   isDragValue: boolean = false;
+
   @ViewChild(PopupManagerImagesComponent)
   private PopupManagerImagesComponent: PopupManagerImagesComponent;
+
+  // show header main
+  isShowBar = false;
+  isChanged = false;
+
+  @ViewChild(HeaderMainComponent)
+  private HeaderMainComponent: HeaderMainComponent;
+  @ViewChild(PopupManagerTagsComponent)
+  private PopupManagerTagsComponent: PopupManagerTagsComponent;
 
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute,
               private authenticationService: AuthenticationService,
@@ -106,7 +118,6 @@ export class ProductDetailComponent implements OnInit {
               private formBuilder: FormBuilder,
               private elementRef: ElementRef,
               private translate: TranslateService,
-              private config: AppConfig,
               private validationService: ValidationService,
               private productService: ProductService,
               private pageScrollService: PageScrollService,
@@ -134,7 +145,7 @@ export class ProductDetailComponent implements OnInit {
     // search vendor
     this.searchVendor();
     // search tags
-    this.searchTag();
+    // this.searchTag();
     // search Collections
     this.searchCollections();
   }
@@ -940,6 +951,8 @@ export class ProductDetailComponent implements OnInit {
           this.getData(this.product.id);
           this.scrollToTop();
           this.alertService.success('Update product success');
+          this.HeaderMainComponent.isShowBar = false;
+          this.HeaderMainComponent.isChanged = false;
         },
         error => {
           this.scrollToTop();
@@ -949,11 +962,6 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
-  reloadData(event: any) {
-    if (event.reload) {
-      this.getData(this.product.id);
-    }
-  }
 
   uploadImage(productID: number) {
     const files: Array<File> = this.filesToUpload;
@@ -1068,7 +1076,8 @@ export class ProductDetailComponent implements OnInit {
         this.collectionsCustom = this.collectionsCustomTemp;
         return;
       }
-      this.collectionsCustom = this.collectionsCustomTemp.filter((item: any, index: number) => item.title != null && item.title.toLowerCase().indexOf(value.toLowerCase()) > -1);
+      this.collectionsCustom = this.collectionsCustomTemp.filter((item: any, index: number) => item.title != null
+        && item.title.toLowerCase().indexOf(value.toLowerCase()) > -1);
     });
   }
 
@@ -1091,10 +1100,12 @@ export class ProductDetailComponent implements OnInit {
       this.isShowProductType = true;
       this.productTypeSearch = value;
       if (!value) {
-        this.productType = this.productTypeTemp.filter((item: any, index: number) => item.title != null && this.product.product_type.indexOf(item.title) == -1);
+        this.productType = this.productTypeTemp.filter((item: any, index: number) => item.title != null
+          && this.product.product_type.indexOf(item.title) == -1);
         return;
       }
-      this.productType = this.productTypeTemp.filter((item: any, index: number) => this.product.product_type.indexOf(item.title) == -1 && item.title != null && item.title.toLowerCase().indexOf(value.toLowerCase()) > -1);
+      this.productType = this.productTypeTemp.filter((item: any, index: number) => this.product.product_type.indexOf(item.title) == -1
+        && item.title != null && item.title.toLowerCase().indexOf(value.toLowerCase()) > -1);
     });
   }
 
@@ -1123,10 +1134,12 @@ export class ProductDetailComponent implements OnInit {
       this.isShowVendor = true;
       this.vendorSearch = value;
       if (!value) {
-        this.productVendor = this.productVendorTemp.filter((item: any, index: number) => item.title != null && this.product.vendor.indexOf(item.title) == -1);
+        this.productVendor = this.productVendorTemp.filter((item: any, index: number) => item.title != null
+          && this.product.vendor.indexOf(item.title) == -1);
         return;
       }
-      this.productVendor = this.productVendorTemp.filter((item: any, index: number) => this.product.vendor.indexOf(item.title) == -1 && item.title != null && item.title.toLowerCase().indexOf(value.toLowerCase()) > -1);
+      this.productVendor = this.productVendorTemp.filter((item: any, index: number) => this.product.vendor.indexOf(item.title) == -1
+        && item.title != null && item.title.toLowerCase().indexOf(value.toLowerCase()) > -1);
     });
   }
 
@@ -1141,46 +1154,33 @@ export class ProductDetailComponent implements OnInit {
 
   // End Product Type / Product Vendor
 
+  // Tags modal
   // Product Tag
   getAllProductTag() {
     this.productService.getAllTag().subscribe(
       data => {
         this.productTagTemp = data;
-        this.productTag = this.productTagTemp.filter((item: any, index: number) => item != null && this.product.tags.indexOf(item) == -1);
       }
     )
   }
 
-  addTag(tag: string, close: boolean = false) {
-    if (this.product.tags.indexOf(tag) != -1) {
-      this.product.tags = this.product.tags.filter((item: any) => item != tag);
-    } else {
-      this.product.tags.push(tag);
-    }
-    this.productTag = this.productTagTemp.filter((item: any, index: number) => item != null && this.product.tags.indexOf(item) == -1);
-    if (close) {
-      this.tagSearch = '';
-      this.isShowProductTag = false;
-      this.productTagSearch.nativeElement.value = ''
+  reloadData(event: any) {
+    if (event.isChanged) {
+      this.product.tags = event.tagsExists;
+      this.isShowBar = event.isShowBar;
+      this.isChanged = event.isChanged;
     }
   }
 
-  searchTag() {
-    this.boxSearchTags.pipe(
-      debounceTime(500),
-      distinctUntilChanged(),
-    ).subscribe((value) => {
-      this.isShowProductTag = true;
-      this.tagSearch = value;
-      if (!value) {
-        this.productTag = this.productTagTemp.filter((item: any, index: number) => item != null && this.product.tags.indexOf(item) == -1);
-        return;
-      }
-      this.productTag = this.productTagTemp.filter((item: any, index: number) => this.product.tags.indexOf(item) == -1 && item != null && item.toLowerCase().indexOf(value.toLowerCase()) > -1);
-    });
+  saveOnHeader(event: any) {
+    if (event.update) {
+      this.submitForm();
+      this.isShowBar = false;
+      this.isChanged = false;
+    }
+    if (event.DiscardChanges) {
+      this.getData(this.product.id);
+    }
   }
-
-  // End Product Tag
-
-
+  // END Tags modal
 }

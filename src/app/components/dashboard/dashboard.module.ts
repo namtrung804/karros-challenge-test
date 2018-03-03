@@ -6,16 +6,18 @@ import { DashboardComponent } from './dashboard.component';
 import {LayoutMainModule} from "../layout-main/layout-main.module";
 import { HomeComponent } from './home/home.component';
 import {AuthGuard} from "../../guards/auth.guard";
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    LayoutMainModule
+    LayoutMainModule,
+    TranslateModule
   ],
   declarations: [DashboardComponent, HomeComponent],
   providers: [
     AuthGuard
-  ],
+  ]
 })
 export class DashboardModule { }

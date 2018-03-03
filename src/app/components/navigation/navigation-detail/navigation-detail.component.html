@@ -2,7 +2,7 @@
     <div id="body" class="clearfix">
         <div class="" id="content">
             <div id="linklist-new" class="page">
-                <form [formGroup]="menuForm" (ngSubmit)="idMenu ? submitUpdateMenu() : submitAddMenu();"
+                <form [formGroup]="menuForm" (ngSubmit)="menuId ? submitUpdateMenu() : submitAddMenu();"
                       class="new_link_list"
                       id="new_link_list">
                     <header class="ui-title-bar-container ">
@@ -62,7 +62,7 @@
                                         <div class="next-card__section">
                                             <div class="next-input-wrapper">
                                                 <label class="next-label">Name</label>
-                                                <input formControlName="title" #menutitle id="link-name" [disabled]="link_lists.handle === 'main-menu' || link_lists.handle === 'footer-menu'"
+                                                <input formControlName="title" #menutitle id="link-name" [disabled]="menu.handle === 'main-menu' || menu.handle === 'footer-menu'"
                                                        class="next-input large ssb" placeholder="Sidebar menu" size="30"
                                                        type="text">
                                             </div>
@@ -389,7 +389,7 @@
                                                     (click)="isShowDelete = false;" name="button">Close modal
                                             </button>
                                         </header>
-                                        <form (submit)="submitDeleteMenu(link_lists.id);">
+                                        <form (submit)="submitDeleteMenu(menu.id);">
                                             <div class="body">
                                                 <p>Are you sure you want to delete the menu
                                                     <strong>{{ menutitle.value }}</strong>? This action cannot be
@@ -403,7 +403,7 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <button class="ui-button btn-destroy" [class.hide]="link_lists.handle === 'main-menu' || link_lists.handle === 'footer-menu'" type="button" (click)="isShowDelete = true;"
+                                    <button class="ui-button btn-destroy" [class.hide]="menu.handle === 'main-menu' || menu.handle === 'footer-menu'" type="button" (click)="isShowDelete = true;"
                                             name="button">Delete menu
                                     </button>
                                 </div>
@@ -445,6 +445,7 @@
                     </div>
                     <!--END Flash message-->
                 </form>
+              {{ menuForm.value | json }}
             </div>
         </div>
     </div>

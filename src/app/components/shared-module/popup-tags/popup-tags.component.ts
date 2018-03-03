@@ -5,7 +5,7 @@ import {FormBuilder} from "@angular/forms";
 import {TranslateService} from "@ngx-translate/core";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {ValidationService} from "../../../services/validation.service";
-import {AppConfig} from "../../../config/app.config";
+
 import {CollectionService} from "../../../services/collection.service";
 import {UserService} from "../../../services/user.service";
 import {Product} from "../../../models/product";
@@ -33,7 +33,6 @@ export class PopupTagsComponent implements OnInit {
               private formBuilder: FormBuilder,
               private elementRef: ElementRef,
               private translate: TranslateService,
-              private config: AppConfig,
               private validationService: ValidationService,
               private productService: ProductService,
               private pageScrollService: PageScrollService,

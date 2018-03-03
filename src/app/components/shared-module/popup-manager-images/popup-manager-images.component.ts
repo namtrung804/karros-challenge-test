@@ -9,7 +9,7 @@ import {DOCUMENT} from "@angular/common";
 import {PageScrollService} from "ng2-page-scroll";
 import {AppComponent} from "../../app.component";
 import {CollectionService} from "../../../services/collection.service";
-import {AppConfig} from "../../../config/app.config";
+
 import {ProductService} from "../../../services/product.service";
 import {ValidationService} from "../../../services/validation.service";
 import {Variant} from "../../../models/variant";
@@ -40,7 +40,6 @@ export class PopupManagerImagesComponent implements OnInit {
               private formBuilder: FormBuilder,
               private elementRef: ElementRef,
               private translate: TranslateService,
-              private config: AppConfig,
               private validationService: ValidationService,
               private productService: ProductService,
               private pageScrollService: PageScrollService,

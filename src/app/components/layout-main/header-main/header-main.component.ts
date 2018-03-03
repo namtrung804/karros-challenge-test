@@ -1,4 +1,7 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, ViewEncapsulation} from '@angular/core';
+import {
+  Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, ViewChild,
+  ViewEncapsulation
+} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap';
 import {AppComponent} from "../../app.component";
 import {UserService} from "../../../services/user.service";
@@ -6,9 +9,10 @@ import {TranslateService} from "@ngx-translate/core";
 import {ValidationService} from "../../../services/validation.service";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {AlertService} from "../../../services/alert.service";
-import {AppConfig} from "../../../config/app.config";
+
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
+import {LocalStoreManagerService} from "../../../services/local-store-manager.service";
 
 const _ = require('lodash');
 require('lodash.product');
@@ -16,10 +20,10 @@ require('lodash.product');
 @Component({
   selector: 'header-main',
   templateUrl: 'header-main.component.html',
-  styleUrls: ['../../../../assets/css/admin_style.css'],
+  // styleUrls: ['../../../../assets/css/admin_style.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class HeaderMainComponent implements OnInit {
+export class HeaderMainComponent implements OnChanges {
   loading = false;
   flash_message: string = '';
   @Output() reloadData = new EventEmitter<any>();
@@ -32,21 +36,15 @@ export class HeaderMainComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute,
               private authenticationService: AuthenticationService,
-              private alertService: AlertService,
-              private formBuilder: FormBuilder,
-              private elementRef: ElementRef,
-              private translate: TranslateService,
-              private config: AppConfig,
-              private validationService: ValidationService,
-              private appComponent: AppComponent) {
-    this.adminUser = JSON.parse(sessionStorage.getItem('adminUser'));
+              private localStoreManagerService: LocalStoreManagerService) {
+    this.adminUser = this.localStoreManagerService.getData('adminUser');
   }
 
-  ngOnInit() {
-  }
-
-  showBar(isShowBar: boolean) {
-    this.isShowBar = isShowBar;
+  ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
+    for (const propName in changes) {
+      const changedProp = changes[propName];
+      this[propName] = changedProp.currentValue;
+    }
   }
 
   showFlashMessage(msg: string) {
@@ -66,6 +64,7 @@ export class HeaderMainComponent implements OnInit {
     this.reloadData.emit({DiscardChanges: true});
     this.popupContext.hide();
     this.isShowBar = false;
+    this.isChanged = false;
   }
 
   logout() {

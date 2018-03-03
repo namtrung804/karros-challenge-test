@@ -10,8 +10,9 @@ import {CollectionService} from "../../../services/collection.service";
 import {Subject} from "rxjs/Subject";
 import {ModalDirective} from "ngx-bootstrap";
 import {Pagination} from "../../../models/pagination";
-import {AppConfig} from "../../../config/app.config";
+
 import {AccountService} from "../../../services/account.service";
+import {LocalStoreManagerService} from "../../../services/local-store-manager.service";
 
 @Component({
   selector: 'app-account-list',
@@ -26,14 +27,14 @@ export class AccountListComponent implements OnInit {
               private alertService: AlertService,
               private formBuilder: FormBuilder,
               private elementRef: ElementRef,
-              private config: AppConfig,
               private validationService: ValidationService,
               private accountService: AccountService,
               private pageScrollService: PageScrollService,
               @Inject(DOCUMENT) private document: any,
-              private appComponent: AppComponent) {
+              private appComponent: AppComponent,
+              private localStoreManagerService: LocalStoreManagerService) {
     this.appComponent.bodyClass = 'page-settings-accounts-index';
-    this.adminUser = JSON.parse(sessionStorage.getItem('adminUser'));
+    this.adminUser = this.localStoreManagerService.getData('adminUser');
   }
 
   ngOnInit() {

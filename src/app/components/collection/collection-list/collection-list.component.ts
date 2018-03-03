@@ -7,7 +7,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../../services/authentication.service";
 import {AlertService} from "../../../services/alert.service";
 import {FormBuilder} from "@angular/forms";
-import {AppConfig} from "../../../config/app.config";
+
 import {ValidationService} from "../../../services/validation.service";
 import {AppComponent} from "../../app.component";
 import {CollectionService} from "../../../services/collection.service";
@@ -39,7 +39,6 @@ export class CollectionListComponent implements OnInit {
               private alertService: AlertService,
               private formBuilder: FormBuilder,
               private elementRef: ElementRef,
-              private config: AppConfig,
               private validationService: ValidationService,
               private collectionService: CollectionService,
               private pageScrollService: PageScrollService,

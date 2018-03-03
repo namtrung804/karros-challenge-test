@@ -10,33 +10,39 @@ import {Subject} from 'rxjs/Subject';
 import {PageScrollInstance, PageScrollService} from 'ng2-page-scroll';
 import {AlertService} from '../../../services/alert.service';
 import {ValidationService} from '../../../services/validation.service';
-import {AppConfig} from '../../../config/app.config';
 import {DOCUMENT} from '@angular/common';
 import {HeaderMainComponent} from '../../layout-main/header-main/header-main.component';
+import {CHECK_EMAIL_REGEX} from "../../../config/global-const";
 
+const countries = require('country-list')();
 @Component({
   selector: 'app-customer-create',
   templateUrl: './customer-create.component.html'
 })
 export class CustomerCreateComponent implements OnInit {
+  // Form data
   customerForm: FormGroup;
+  validationMessages: any = [];
+  // Country data
+  countries: any;
+  countriesList: any = [];
   loading = false;
   loadingResults = false;
+  // Tags
   customerTagTemp: any = [];
   customerTag: any = [];
   FreqTags: any = [];
   tagTerms = new Subject<string>();
   newTag: any = [];
   errorMessageTag = false;
-  validationMessages: any = [];
-  isShowBar = true;
+  // Popup variables
+  isShowBar = false;
   isChanged = false;
   @ViewChild(HeaderMainComponent)
   private HeaderMainComponent: HeaderMainComponent;
   constructor(private fb: FormBuilder,
               private router: Router, private route: ActivatedRoute,
               private customerService: CustomerService,
-              private config: AppConfig,
               private validationService: ValidationService,
               private alertService: AlertService,
               private pageScrollService: PageScrollService,
@@ -48,8 +54,11 @@ export class CustomerCreateComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
     this.getAllCustomerTags();
+    this.countries = countries;
+    this.countriesList = this.countries.getData();
     this.customerForm.valueChanges.subscribe(data => {
       this.isChanged = true;
+      this.isShowBar = true;
     })
   }
 
@@ -79,7 +88,7 @@ export class CustomerCreateComponent implements OnInit {
         last_name: [null],
         email: [null, [
           Validators.required,
-          Validators.pattern(this.config.checkEmailRegex)
+          Validators.pattern(CHECK_EMAIL_REGEX)
         ]
         ],
         phone: [null],
@@ -107,7 +116,6 @@ export class CustomerCreateComponent implements OnInit {
   }
 
   submitForm() {
-    console.log('test');
     const validation = this.validationService.validation(this.customerForm.get('customer'), this.validationMessages);
     if (validation !== '') {
       this.scrollToTop();
@@ -137,8 +145,8 @@ export class CustomerCreateComponent implements OnInit {
   };
 
   update(event) {
-    if (event.update){
-      console.log('ok');
+    if (event.update) {
+      this.submitForm();
     }
   }
 
@@ -165,6 +173,7 @@ export class CustomerCreateComponent implements OnInit {
 
   addTag(value: any) {
     this.isChanged = true;
+    this.isShowBar = true;
     value = value.split(',')[0];
     if (this.newTag.includes(value)) {
       this.errorMessageTag = true;

@@ -1,13 +1,14 @@
 <header-main
   [isShowBar]="isShowBar"
-  (reloadData)="update($event)">
+  [isChanged]="isChanged"
+  (reloadData)="saveOnHeader($event)">
 </header-main>
 <main id="AppFrameMain" class="ui-app-frame__main ">
   <div class="wrapper" id="wrapper">
     <div id="body" class="clearfix">
       <div class="" id="content">
         <div id="customers-show" class="page">
-          <form [formGroup]="CustomerForm" class="edit_customer"
+          <form [formGroup]="dataForm" class="edit_customer"
                 id="edit_customer_{{customer.id}}">
             <!--HEADER-->
             <header class="ui-title-bar-container">
@@ -218,25 +219,25 @@
               </div>
             </header>
             <!--END HEADER-->
-            <!--Contact to email-->
-            <div class="modal_source hide">
+            <!--Contact to email
+           <!-- <div class="modal_source hide">
               <header>
                 <h2>Send account invite</h2>
-                <button class="ui-button close-modal btn--link" type="button" name="button">Close
+                <button class="ui-button close-modal btn&#45;&#45;link" type="button" name="button">Close
                   modal
                 </button>
               </header>
               <form id="email_contact_form" autocomplete="off" class="new_customer_invite">
                 <div class="body">
                   <div id="preview-email-template"></div>
-                  <div class="next-grid next-grid--no-outside-padding">
+                  <div class="next-grid next-grid&#45;&#45;no-outside-padding">
                     <div class="next-grid__cell">
-                      <div class="next-grid next-grid--no-outside-padding">
+                      <div class="next-grid next-grid&#45;&#45;no-outside-padding">
                         <div class="next-grid__cell">
                           <div class="next-input-wrapper">
                             <label class="next-label" for="customer_invite_to">To</label>
                             <input readonly="readonly" disabled="disabled"
-                                   class="next-input next-input--disabled next-input--readonly"
+                                   class="next-input next-input&#45;&#45;disabled next-input&#45;&#45;readonly"
                                    size="30" type="text" value="nganhuynh110@gmail.com"
                                    name="customer_invite[to]" id="customer_invite_to"/>
                           </div>
@@ -266,14 +267,14 @@
                                   hang.dan@tripath.vn
                                 </option>
                               </select>
-                              <svg class="next-icon next-icon--size-16">
+                              <svg class="next-icon next-icon&#45;&#45;size-16">
                                 <use xlink:href="#select-chevron"/>
                               </svg>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="next-grid next-grid--no-outside-padding">
+                      <div class="next-grid next-grid&#45;&#45;no-outside-padding">
                         <div class="next-grid__cell">
                           <div class="next-input-wrapper">
                             <label class="next-label"
@@ -285,7 +286,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="next-grid next-grid--no-outside-padding">
+                      <div class="next-grid next-grid&#45;&#45;no-outside-padding">
                         <div class="next-grid__cell">
                           <div class="next-input-wrapper">
                             <label class="next-label" for="customer_invite_custom_message">Custom
@@ -296,35 +297,35 @@
                           </div>
                         </div>
                       </div>
-                      <div class="next-grid next-grid--no-outside-padding">
+                      <div class="next-grid next-grid&#45;&#45;no-outside-padding">
                         <div class="next-grid__cell">
-                                      <span class="type--subdued">This template can be edited in
-                                        <a class="type--subdued" href="#">Notifications</a>.</span>
+                                      <span class="type&#45;&#45;subdued">This template can be edited in
+                                        <a class="type&#45;&#45;subdued" href="#">Notifications</a>.</span>
                         </div>
                       </div>
-                      <div class="next-grid next-grid--no-outside-padding">
-                        <div class="next-grid__cell next-grid__cell--no-flex">Send bcc to:</div>
-                        <div class="next-grid__cell next-grid__cell--no-flex">
+                      <div class="next-grid next-grid&#45;&#45;no-outside-padding">
+                        <div class="next-grid__cell next-grid__cell&#45;&#45;no-flex">Send bcc to:</div>
+                        <div class="next-grid__cell next-grid__cell&#45;&#45;no-flex">
                           <div class="next-input-wrapper">
-                            <label class="next-label next-label--switch" for="shop_email">yd.kim@tripath.co.kr</label>
+                            <label class="next-label next-label&#45;&#45;switch" for="shop_email">yd.kim@tripath.co.kr</label>
                             <input id="shop_email" class="next-checkbox" type="checkbox"
                                    value="yd.kim@tripath.co.kr"
                                    name="customer_invite[bcc][]"/>
-                            <span class="next-checkbox--styled">
-                                                    <svg class="next-icon next-icon--size-10 checkmark"> <use
+                            <span class="next-checkbox&#45;&#45;styled">
+                                                    <svg class="next-icon next-icon&#45;&#45;size-10 checkmark"> <use
                                                       xlink:href="#next-checkmark-thick"/> </svg>
                                                 </span>
                           </div>
                         </div>
-                        <div class="next-grid__cell next-grid__cell--no-flex">
+                        <div class="next-grid__cell next-grid__cell&#45;&#45;no-flex">
                           <div class="next-input-wrapper">
-                            <label class="next-label next-label--switch"
+                            <label class="next-label next-label&#45;&#45;switch"
                                    for="current_user_email">lam.nguyen@dwork.vn</label>
                             <input id="current_user_email" class="next-checkbox"
                                    type="checkbox" value="lam.nguyen@dwork.vn"
                                    name="customer_invite[bcc][]"/>
-                            <span class="next-checkbox--styled">
-                                                <svg class="next-icon next-icon--size-10 checkmark">
+                            <span class="next-checkbox&#45;&#45;styled">
+                                                <svg class="next-icon next-icon&#45;&#45;size-10 checkmark">
                                                   <use xlink:href="#next-checkmark-thick"/> </svg>
                                               </span>
                           </div>
@@ -334,8 +335,8 @@
                   </div>
                 </div>
                 <div class="buttons">
-                  <div class="next-grid next-grid--no-outside-padding">
-                    <div class="next-grid__cell next-grid__cell--no-flex">
+                  <div class="next-grid next-grid&#45;&#45;no-outside-padding">
+                    <div class="next-grid__cell next-grid__cell&#45;&#45;no-flex">
                       <button class="ui-button fl" type="button" name="button">Back</button>
                     </div>
                     <div class="next-grid__cell">
@@ -344,15 +345,15 @@
                       <button class="ui-button btn-primary" type="button" name="button">Review
                         email
                       </button>
-                      <button class="ui-button ui-button--primary" type="submit" name="commit">
+                      <button class="ui-button ui-button&#45;&#45;primary" type="submit" name="commit">
                         Send notification
                       </button>
                     </div>
                   </div>
                 </div>
               </form>
-            </div>
-            <!--END Contact to email-->
+            </div>-->
+            <!--END Contact to email&ndash;&gt;-->
             <!--UI LAYOUT-->
             <div class="ui-layout">
               <div class="ui-layout__sections">
@@ -379,7 +380,7 @@
                         <div id="customer-notes" class="ppt">
                           <label class="next-label" for="note">Customer Note</label>
                           <div class="next-input-wrapper">
-                            <textarea #note formControlName="note" [value]="customer.note"
+                            <textarea formControlName="note" [(ngModel)]="customer.note"
                                       expanding="true"
                                       placeholder="Add a note"
                                       class="ui-text-area ui-text-area--expanding"
@@ -424,7 +425,9 @@
                       <header class="ui-card__header">
                         <h2 class="ui-heading">Recent orders</h2>
                       </header>
-                      <div class="ui-card__section" *ngIf="customer.order_count > 0">
+                      <!--Has order-->
+                      <!--<div class="ui-card__section" *ngIf="customer.order_count === 0">-->
+                      <div class="ui-card__section">
                         <div class="ui-type-container ui-type-container--spacing-extra-tight">
                           <div class="ui-stack ui-stack--wrap ui-stack--vertical ui-stack--spacing-none">
                             <div class="ui-stack ui-stack--wrap">
@@ -436,15 +439,14 @@
                                     customer.last_order_name }}</a>
                                 </div>
                               </div>
-                              <p class="type--subdued">{{ order.created_at }}</p>
+                              <p class="type--subdued">{{ order.created_at | date: 'dd MMM h:mma yyyy'}}</p>
                             </div>
                           </div>
-                          <p>{{ order.total_price }}<span
+                          <p>{{ order.total_price }} {{ order.currency }}<span
                             class="text-emphasis-subdued"> from</span> Online Store
                           </p>
-                          <span class="badge badge--status-attention badge--progress-incomplete">{{ order.fulfillment_status }}</span>
+                          <span class="badge badge--status-complete badge--progress-complete">{{ order.fulfillment_status }}</span>
                         </div>
-                        <!--TODO: Data to ORDER-->
                         <div class="recent-orders__card-contents">
                           <div class="ui-stack ui-stack--wrap ui-stack--alignment-leading">
                             <div class="ui-stack-item recent-orders__product"
@@ -453,7 +455,7 @@
                                 <div class="aspect-ratio aspect-ratio--square aspect-ratio--square--50">
                                   <img title="{{ item.title }}"
                                        class="block aspect-ratio__content"
-                                       src="{{ item.img }}"
+                                       src="{{ item.image_url }}"
                                        alt="{{ item.title }}">
                                 </div>
                                 <div class="ui-stack-item ui-stack-item--fill recent-orders__product-name">
@@ -474,6 +476,7 @@
                           </a>
                         </div>
                       </div>
+                      <!--Empty order-->
                       <div class="ui-card__section" *ngIf="customer.order_count === 0">
                         <div class="ui-type-container">
                           <div
@@ -2816,7 +2819,7 @@
                                         <div class="next-grid__cell next-grid__cell--no-flex">
                                           <button class="ui-button btn--link"
                                                   type="button"
-                                                  (click)="popupCustomerAddress.show(); isShowChange = false;"
+                                                  (click)="addAddress()"
                                                   name="button">Add new
                                             address
                                           </button>
@@ -2850,7 +2853,7 @@
                                               customer.default_address?.zip
                                               }}
                                               <br>{{
-                                              customer.default_address?.country
+                                              countries.getName(customer.default_address?.country)
                                               }}
                                               <br>
                                               {{
@@ -2884,7 +2887,7 @@
                                                 {{ address?.address1 }}
                                                 <br>{{ address?.city }}
                                                 {{ address?.zip }}
-                                                <br>{{ address?.country
+                                                <br>{{ countries.getName(address?.country)
                                                 }}
                                                 <br>
                                                 {{ address?.phone }}
@@ -2903,7 +2906,7 @@
                                             </div>
                                             <div class="next-grid__cell next-grid__cell--no-flex">
                                               <a class="btn"
-                                                 (click)="submitDefaultAddress(address.id);isShowChange = false;">Select</a>
+                                                 (click)="selectDefaultAddress(address.id);">Select</a>
                                             </div>
                                           </div>
                                         </div>
@@ -2922,7 +2925,7 @@
                           {{ customer.default_address?.address1 }}
                           <br>{{ customer.default_address?.city }}
                           {{ customer.default_address?.zip }}
-                          <br>{{ customer.default_address?.country }}
+                          <br>{{ countries.getName(customer.default_address?.country) }}
                           <br>
                           {{ customer.default_address?.phone }}
                         </p>
@@ -2931,270 +2934,14 @@
                     </aside>
                   </div>
                   <!--UI TAGS-->
-                  <!-- TODO: build thành module Tags để xài chung-->
-                  <div class="ui-layout__item">
-                    <div class="next-card next-card--aside">
-                      <header class="next-card__header">
-                        <div class="wrappable wrappable--half-spacing wrappable--vertically-centered">
-                          <div class="wrappable__item">
-                            <h3 class="next-heading">Tags</h3>
-                          </div>
-                          <div class="wrappable__item wrappable__item--no-flex">
-                            <a (click)="showAllTags()">View all tags</a>
-                          </div>
-                        </div>
-                      </header>
 
-                      <div class="hide" id="display-one-tag">
-                        <li class="next-token">
-                          <span class="next-token__label">Tag 1</span>
-                          <a class="next-token__remove">
-                            <input type="hidden" name="" value="">
-                            <span class="next-token__remove__icon">
-                                                            <svg
-                                                              class="next-icon next-icon--size-10 next-icon--no-nudge">
-                                                                <use xlink:href="#next-remove"></use>
-                                                            </svg>
-                                                        </span>
-                          </a>
-                        </li>
-                      </div>
-
-                      <section class="next-card__section">
-                        <div context="tagDisplay" id="tags-event-bus">
-                          <div class="hide">
-                            <a href="#" class="modal_source" style="display: none"></a>
-                            <div id="autocomplete-header-suggestion-template">
-                              <li>
-                                <a class="next-list__item next-list__item--promoted-action">
-                                  <div class="next-grid next-grid--no-outside-padding next-grid--compact">
-                                    <div
-                                      class="next-grid__cell next-grid__cell--no-flex next-grid__cell--vertically-centered">
-                                      <svg style="overflow: visible; /* fixes clipping in Chrome */"
-                                           class="next-icon next-icon--size-12 next-icon next-icon--12 block">
-
-                                      </svg>
-                                    </div>
-                                    <div class="next-grid__cell">
-                                      <strong>Add</strong> Input
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-                            </div>
-                            <div id="autocomplete-suggestions-list-template">
-                              <li>
-                                <a class="next-list__item">
-                                  suggestion
-                                </a>
-                              </li>
-                            </div>
-                            <div id="autocomplete-no-suggestions-template">
-                              <li>
-                                <div class="ui-popover__section">
-                                  <p class="type--subdued tc">No results found</p>
-                                </div>
-                              </li>
-                            </div>
-                            <div id="country-autocomplete-list-template">
-                              <li>
-                                <a class="next-list__item">
-                                  suggestion name
-                                </a>
-                              </li>
-                            </div>
-
-                            <div id="autocomplete-v2-suggestions-list-with-toggle-template">
-                              <li>
-                                <a class="next-list__item">
-                                  <div class="next-grid next-grid--no-outside-padding next-grid--compact">
-                                    <div class="next-grid__cell next-grid__cell--no-flex">
-                                      <svg class="next-icon next-icon--size-12">
-                                        <use xlink:href="#next-checkmark"/>
-                                      </svg>
-                                    </div>
-                                    <div class="next-grid__cell">
-                                      suggestion display
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-                            </div>
-                            <div id="autocomplete-v2-no-results-template">
-                              <li>
-                                <a class="next-list__item next-list__item--promoted-action">
-                                  <div class="next-grid next-grid--no-outside-padding next-grid--compact">
-                                    <div
-                                      class="next-grid__cell next-grid__cell--no-flex next-grid__cell--vertically-centered">
-                                      <svg style="overflow: visible; /* fixes clipping in Chrome */"
-                                           class="next-icon next-icon--size-12 next-icon next-icon--12 block">
-
-                                      </svg>
-                                    </div>
-                                    <div class="next-grid__cell">
-                                      <strong>Add</strong> input
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-                            </div>
-                            <div id="autocomplete-v2-results-template">
-                              <li>
-                                <a class="next-list__item next-list__item--promoted-action">
-                                  <div class="next-grid next-grid--no-outside-padding next-grid--compact">
-                                    <div
-                                      class="next-grid__cell next-grid__cell--no-flex next-grid__cell--vertically-centered">
-                                      <svg style="overflow: visible /* fixes clipping in Chrome */"
-                                           class="next-icon next-icon--size-12 next-icon next-icon--12 block"></svg>
-                                    </div>
-                                    <div class="next-grid__cell">
-                                      <strong>Add</strong> input
-                                    </div>
-                                  </div>
-                                </a>
-                              </li>
-                              <li>
-                                <a class="next-list__item">
-                                  suggestion
-                                </a>
-                              </li>
-                            </div>
-                          </div>
-                          <div class="ui-popover__container ui-popover__container--full-width-container"
-                               data-context="tagsAutocomplete">
-                            <div>
-                              <div class="">
-                                <input class="next-input next-field--connected js-no-dirty"
-                                       (focus)="showFreqTags()"
-                                       placeholder="VIP, sale shopper, etc."
-                                       id="tags"
-                                       size="30"
-                                       type="text" aria-expanded="false"
-                                       aria-haspopup="false"
-                                       aria-owns="popover-dropdown-2"
-                                       aria-controls="popover-announce-selected"
-                                       role="combobox"
-                                       [attr.aria-autocomplete]="FreqTags"
-                                       aria-activedescendant="selected-option-1">
-                              </div>
-                              <div class="tooltip-error attached-to-bottom hide">
-                                <ul class="error-list">
-                                  <li class="errorMessage"></li>
-                                </ul>
-                              </div>
-                            </div>
-                            <div class="ui-popover ui-popover--full-width ui-popover--no-focus"
-                                 id="ui-popover--1" aria-labelledby="tags"
-                                 aria-expanded="false" role="dialog"
-                                 style="margin-right: 0px; margin-left: 0px;">
-                              <div class="ui-popover__tooltip"></div>
-                              <div class="ui-popover__content-wrapper">
-                                <div class="ui-popover__content">
-                                  <div class="ui-popover__pane">
-                                    <ul
-                                      class="js-autocomplete-suggestions next-list next-list--compact next-list--toggles"
-                                      role="listbox"
-                                      id="popover-dropdown-2"></ul>
-                                    <div class="ui-popover__section hide">
-                                      <p class="type--subdued tc">
-                                                                          <span class="next-spinner">
-                                                                              <svg class="next-icon next-icon--size-16">
-                                                                                  <use
-                                                                                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                    xlink:href="#next-spinner">
-                                                                                  </use>
-                                                                              </svg>
-                                                                          </span>
-                                        Loading…
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <!--Freq tags-->
-                            <div
-                              class="ui-popover ui-popover--full-width ui-popover--no-focus ui-popover--is-positioned-above"
-                              [class.ui-popover--is-active]="isShowFreqTags"
-                              ertical-margin="13" id="ui-popover--9"
-                              aria-labelledby="tags" aria-expanded="true"
-                              role="dialog"
-                              style="margin-right: 0px; margin-left: 0px; transform-origin: 50% calc(100% + 5px) 0px;">
-                              <div class="ui-popover__tooltip"></div>
-                              <div class="ui-popover__content-wrapper">
-                                <div class="ui-popover__content"
-                                     style="max-height: 297px;">
-                                  <div class="ui-popover__pane">
-                                    <ul
-                                      class="js-autocomplete-suggestions next-list next-list--compact next-list--toggles"
-                                      role="listbox" id="popover-dropdown-4">
-                                      <li role="option">
-                                        <h3 class="next-heading next-heading--micro-uppercase-bordered">
-                                          Frequently used tags</h3>
-                                      </li>
-                                      <li *ngFor="let tag of FreqTags; let i=index"
-                                          role="option"
-                                          (click)="addTag(appliedTags, tag)">
-                                        <a class="next-list__item">
-                                          {{tag}}
-                                        </a>
-                                      </li>
-                                    </ul>
-                                    <div class="ui-popover__section"
-                                         [class.hide]="!loadingResults">
-                                      <p class="type--subdued tc">
-                                                                              <span class="next-spinner">
-                                                                                  <svg
-                                                                                    class="next-icon next-icon--size-16">
-                                                                                      <use
-                                                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                        xlink:href="#next-spinner">
-                                                                                      </use>
-                                                                                  </svg>
-                                                                              </span>
-                                        Loading…
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <!--END Freq tags-->
-                          </div>
-                          <!--Display tag-->
-                          <ul class="js-tag-list next-token-list st">
-                            <li *ngFor="let tag of customer.tags" class="next-token">
-                              <span class="next-token__label">{{tag}}</span>
-                              <a class="next-token__remove"
-                                 (click)="customer.tags = removeTag(customer.tags, tag)">
-                                                              <span class="next-token__remove__icon">
-                                                                  <svg
-                                                                    class="next-icon next-icon--size-10 next-icon--no-nudge">
-                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                         xlink:href="#next-remove"></use>
-                                                                  </svg>
-                                                              </span>
-                              </a>
-                            </li>
-                            <li *ngFor="let tag of appliedTags" class="next-token">
-                              <span class="next-token__label">{{tag}}</span>
-                              <a class="next-token__remove"
-                                 (click)="appliedTags = removeTag(appliedTags, tag)">
-                                                              <span class="next-token__remove__icon">
-                                                                  <svg
-                                                                    class="next-icon next-icon--size-10 next-icon--no-nudge">
-                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                         xlink:href="#next-remove"></use>
-                                                                  </svg>
-                                                              </span>
-                              </a>
-                            </li>
-                          </ul>
-                          <!--END Display tag-->
-                        </div>
-                      </section>
-                    </div>
-                  </div>
+                  <!--View all tags-->
+                  <app-popup-manager-tags
+                    [tagsExists]="customer.tags"
+                    [dataTags]="customerTags"
+                    (reloadData)="reloadData($event)"
+                  ></app-popup-manager-tags>
+                  <!--END View all tags-->
                   <!--END UI TAGS-->
                   <div class="ui-layout__item hide"></div>
                 </div>
@@ -3212,9 +2959,10 @@
                 </div>
               </div>
             </div>
+
             <!--MODALs-->
             <!--Reset pw form-->
-            <div class="modal modal_source hide">
+            <!--<div class="modal modal_source hide">
               <header>
                 <h2>Reset password</h2>
                 <a href="#" class="close-modal">×</a>
@@ -3226,12 +2974,12 @@
                 </div>
                 <div class="buttons">
                   <button class="ui-button" type="button" name="button">Cancel</button>
-                  <button class="ui-button ui-button--primary js-btn-loadable js-btn-primary"
+                  <button class="ui-button ui-button&#45;&#45;primary js-btn-loadable js-btn-primary"
                           type="submit" name="commit">Reset password
                   </button>
                 </div>
               </form>
-            </div>
+            </div>-->
             <!--END Reset pw form-->
             <!--Edit contact-->
             <style>
@@ -3255,46 +3003,53 @@
                           (click)="popupCustomerContact.hide()" name="button">Close modal
                   </button>
                 </header>
-                <form #contact [formGroup]="AddressForm" (submit)="submitChangeContact();"
+                <form [formGroup]="dataForm" (submit)="submitForm();"
                       autocomplete="off"
                       class="edit_customer" id="edit_customer_{{ customer.id }}">
                   <div class="body address-editable">
                     <app-alert></app-alert>
-                    <div class="ui-form__section" formGroupName="customer">
+                    <div class="ui-form__section">
                       <div class="ui-form__group">
                         <div class="next-input-wrapper">
                           <label class="next-label" for="customer_first_name">First
                             name</label>
-                          <input formControlName="first_name" class="next-input" size="30"
+                          <input formControlName="first_name"
+                                 [(ngModel)]="customer.first_name"
+                                 class="next-input" size="30"
                                  type="text"
-                                 name="customer[first_name]" id="customer_first_name"/>
+                                 id="customer_first_name"/>
                         </div>
                         <div class="next-input-wrapper">
                           <label class="next-label" for="customer_last_name">Last name</label>
-                          <input formControlName="last_name" class="next-input" size="30"
+                          <input formControlName="last_name"
+                                 [(ngModel)]="customer.last_name"
+                                 class="next-input" size="30"
                                  type="text"
-                                 name="customer[last_name]" id="customer_last_name"/>
+                                 id="customer_last_name"/>
                         </div>
                       </div>
                       <div class="next-input-wrapper">
                         <label class="next-label" for="customer_email">Email address</label>
-                        <input formControlName="email" class="next-input" size="30" type="text"
-                               name="customer[email]"
+                        <input formControlName="email"
+                               [(ngModel)]="customer.email"
+                               class="next-input" size="30" type="text"
                                id="customer_email"/>
                       </div>
                       <div class="next-input-wrapper">
                         <label class="next-label" for="customer_phone">Phone number</label>
-                        <input formControlName="phone" class="next-input" size="30" type="tel"
-                               name="customer[phone]"
+                        <input formControlName="phone"
+                               [(ngModel)]="customer.phone"
+                               class="next-input" size="30" type="tel"
                                id="customer_phone"/>
                       </div>
                       <div class="next-input-wrapper">
                         <label class="next-label next-label--switch"
                                for="customer_accepts_marketing">Customer accepts email
                           marketing</label>
-                        <input formControlName="accept_marketing" class="next-checkbox"
+                        <input formControlName="accept_marketing"
+                               [(ngModel)]="customer.accept_marketing"
+                               class="next-checkbox"
                                type="checkbox"
-                               name="customer[accepts_marketing]"
                                id="customer_accepts_marketing"/>
                         <span class="next-checkbox--styled">
                                       <svg class="next-icon next-icon--size-10 checkmark"> <use
@@ -3304,9 +3059,11 @@
                       <div class="next-input-wrapper">
                         <label class="next-label next-label--switch" for="customer_tax_exempt">Customer
                           is tax exempt</label>
-                        <input formControlName="tax_exempt" class="next-checkbox"
+                        <input formControlName="tax_exempt"
+                               [(ngModel)]="customer.tax_exempt"
+                               class="next-checkbox"
                                type="checkbox"
-                               name="customer[tax_exempt]" id="customer_tax_exempt"/>
+                               id="customer_tax_exempt"/>
                         <span class="next-checkbox--styled">
                                       <svg class="next-icon next-icon--size-10 checkmark"> <use
                                         xlink:href="#next-checkmark-thick"/> </svg>
@@ -3421,9 +3178,9 @@
                           </div>
                           <div class="next-grid next-grid--no-outside-padding">
                             <div class="next-grid__cell">
-                                                  <span class="type--subdued">This template can be edited in
-                                                      <a class="type--subdued" href="#">Notifications</a>.
-                                                  </span>
+                              <span class="type--subdued">This template can be edited in
+                                  <a class="type--subdued" href="#">Notifications</a>.
+                              </span>
                             </div>
                           </div>
                           <div class="next-grid next-grid--no-outside-padding">
@@ -3439,9 +3196,10 @@
                                        value="yd.kim@tripath.co.kr"
                                        name="customer_contact_message[bcc][]"/>
                                 <span class="next-checkbox--styled">
-                                                                <svg class="next-icon next-icon--size-10 checkmark">
-                                                                    <use xlink:href="#next-checkmark-thick"/> </svg>
-                                                            </span>
+                                  <svg class="next-icon next-icon--size-10 checkmark">
+                                    <use xlink:href="#next-checkmark-thick"/>
+                                  </svg>
+                                </span>
                               </div>
                             </div>
                             <div class="next-grid__cell next-grid__cell--no-flex">
@@ -3452,9 +3210,9 @@
                                        type="checkbox" value="lam.nguyen@dwork.vn"
                                        name="customer_contact_message[bcc][]"/>
                                 <span class="next-checkbox--styled">
-                                                                <svg class="next-icon next-icon--size-10 checkmark">
-                                                                    <use xlink:href="#next-checkmark-thick"/> </svg>
-                                                            </span>
+                                      <svg class="next-icon next-icon--size-10 checkmark">
+                                          <use xlink:href="#next-checkmark-thick"/> </svg>
+                                </span>
                               </div>
                             </div>
                           </div>
@@ -3498,31 +3256,32 @@
                           (click)="popupCustomerAddress.hide()" name="button">Close modal
                   </button>
                 </header>
-                <form [formGroup]="AddressForm" (submit)="submitAddAddress();" autocomplete="off"
+                <form *ngIf="selectedAddress" [formGroup]="selectedAddress" (submit)="submitAddress()"
                       class="new_customer_address" id="new_customer_address">
 
                   <div class="body address-editable">
-                    <div class="ui-form__section" formGroupName="address">
+                    <div class="ui-form__section">
                       <div class="ui-form__group">
                         <div class="next-input-wrapper">
                           <label class="next-label" for="customer_address_first_name">First
                             name</label>
-                          <input formControlName="first_name" class="next-input" size="30"
-                                 type="text" name="customer_address[first_name]"
+                          <input formControlName="first_name"
+                                 class="next-input" size="30"
+                                 type="text"
                                  id="customer_address_first_name"/>
                         </div>
                         <div class="next-input-wrapper">
                           <label class="next-label" for="customer_address_last_name">Last
                             name</label>
                           <input formControlName="last_name" class="next-input" size="30"
-                                 type="text" name="customer_address[last_name]"
+                                 type="text"
                                  id="customer_address_last_name"/>
                         </div>
                         <div class="next-input-wrapper">
                           <label class="next-label"
                                  for="customer_address_company">Company</label>
                           <input formControlName="company" class="next-input" size="30"
-                                 type="text" name="customer_address[company]"
+                                 type="text"
                                  id="customer_address_company"/>
                         </div>
                       </div>
@@ -3531,7 +3290,6 @@
                           1</label>
                         <input formControlName="address1" class="next-input" size="30"
                                type="text"
-                               name="customer_address[address1]"
                                id="customer_address_address1"/>
                       </div>
                       <div class="next-input-wrapper">
@@ -3539,7 +3297,6 @@
                           2</label>
                         <input formControlName="address2" class="next-input" size="30"
                                type="text"
-                               name="customer_address[address2]"
                                id="customer_address_address2"/>
                       </div>
                       <div class="ui-form__group">
@@ -3547,14 +3304,14 @@
                           <label class="next-label" for="customer_address_city">City</label>
                           <input formControlName="city" class="next-input" size="30"
                                  type="text"
-                                 name="customer_address[city]" id="customer_address_city"/>
+                                 id="customer_address_city"/>
                         </div>
                         <div class="next-input-wrapper">
                           <label class="next-label" for="customer_address_zip">Zip / Postal
                             code</label>
                           <input formControlName="zip" class="next-input" size="30"
                                  type="text"
-                                 name="customer_address[zip]" id="customer_address_zip"/>
+                                 id="customer_address_zip"/>
                         </div>
                       </div>
                       <div>
@@ -3564,325 +3321,11 @@
                                    for="customer_address_country">Country</label>
                             <div class="ui-select__wrapper">
                               <select formControlName="country"
-                                      class="ui-select js-country-select"
-                                      x-autocompletetype="country"
-                                      name="customer_address[country]"
-                                      id="customer_address_country">
-                                <option value="Afghanistan">Afghanistan</option>
-                                <option value="Aland Islands">Aland Islands</option>
-                                <option value="Albania">Albania</option>
-                                <option value="Algeria">Algeria</option>
-                                <option value="Andorra">Andorra</option>
-                                <option value="Angola">Angola</option>
-                                <option value="Anguilla">Anguilla</option>
-                                <option value="Antigua And Barbuda">Antigua And Barbuda
+                                      class="ui-select js-country-select">
+                                <option *ngFor="let country of countriesList;"
+                                        [selected]="country.code == 'VN'"
+                                        [value]="country.code">{{country.name}}
                                 </option>
-                                <option value="Argentina">Argentina</option>
-                                <option value="Armenia">Armenia</option>
-                                <option value="Aruba">Aruba</option>
-                                <option value="Australia">Australia</option>
-                                <option value="Austria">Austria</option>
-                                <option value="Azerbaijan">Azerbaijan</option>
-                                <option value="Bahamas">Bahamas</option>
-                                <option value="Bahrain">Bahrain</option>
-                                <option value="Bangladesh">Bangladesh</option>
-                                <option value="Barbados">Barbados</option>
-                                <option value="Belarus">Belarus</option>
-                                <option value="Belgium">Belgium</option>
-                                <option value="Belize">Belize</option>
-                                <option value="Benin">Benin</option>
-                                <option value="Bermuda">Bermuda</option>
-                                <option value="Bhutan">Bhutan</option>
-                                <option value="Bolivia">Bolivia</option>
-                                <option value="Bosnia And Herzegovina">Bosnia And
-                                  Herzegovina
-                                </option>
-                                <option value="Botswana">Botswana</option>
-                                <option value="Bouvet Island">Bouvet Island</option>
-                                <option value="Brazil">Brazil</option>
-                                <option value="British Indian Ocean Territory">British
-                                  Indian Ocean Territory
-                                </option>
-                                <option value="Brunei">Brunei</option>
-                                <option value="Bulgaria">Bulgaria</option>
-                                <option value="Burkina Faso">Burkina Faso</option>
-                                <option value="Burundi">Burundi</option>
-                                <option value="Cambodia">Cambodia</option>
-                                <option value="Canada">Canada</option>
-                                <option value="Cape Verde">Cape Verde</option>
-                                <option value="Cayman Islands">Cayman Islands</option>
-                                <option value="Central African Republic">Central African
-                                  Republic
-                                </option>
-                                <option value="Chad">Chad</option>
-                                <option value="Chile">Chile</option>
-                                <option value="China">China</option>
-                                <option value="Christmas Island">Christmas Island
-                                </option>
-                                <option value="Cocos (Keeling) Islands">Cocos (Keeling)
-                                  Islands
-                                </option>
-                                <option value="Colombia">Colombia</option>
-                                <option value="Comoros">Comoros</option>
-                                <option value="Congo">Congo</option>
-                                <option value="Congo, The Democratic Republic Of The">
-                                  Congo,
-                                  The Democratic Republic Of The
-                                </option>
-                                <option value="Cook Islands">Cook Islands</option>
-                                <option value="Costa Rica">Costa Rica</option>
-                                <option value="Croatia">Croatia</option>
-                                <option value="Cuba">Cuba</option>
-                                <option value="Curaçao">Curaçao</option>
-                                <option value="Cyprus">Cyprus</option>
-                                <option value="Czech Republic">Czech Republic</option>
-                                <option value="Côte d&#39;Ivoire">Côte d&#39;Ivoire
-                                </option>
-                                <option value="Denmark">Denmark</option>
-                                <option value="Djibouti">Djibouti</option>
-                                <option value="Dominica">Dominica</option>
-                                <option value="Dominican Republic">Dominican Republic
-                                </option>
-                                <option value="Ecuador">Ecuador</option>
-                                <option value="Egypt">Egypt</option>
-                                <option value="El Salvador">El Salvador</option>
-                                <option value="Equatorial Guinea">Equatorial Guinea
-                                </option>
-                                <option value="Eritrea">Eritrea</option>
-                                <option value="Estonia">Estonia</option>
-                                <option value="Ethiopia">Ethiopia</option>
-                                <option value="Falkland Islands (Malvinas)">Falkland
-                                  Islands
-                                  (Malvinas)
-                                </option>
-                                <option value="Faroe Islands">Faroe Islands</option>
-                                <option value="Fiji">Fiji</option>
-                                <option value="Finland">Finland</option>
-                                <option value="France">France</option>
-                                <option value="French Guiana">French Guiana</option>
-                                <option value="French Polynesia">French Polynesia
-                                </option>
-                                <option value="French Southern Territories">French
-                                  Southern
-                                  Territories
-                                </option>
-                                <option value="Gabon">Gabon</option>
-                                <option value="Gambia">Gambia</option>
-                                <option value="Georgia">Georgia</option>
-                                <option value="Germany">Germany</option>
-                                <option value="Ghana">Ghana</option>
-                                <option value="Gibraltar">Gibraltar</option>
-                                <option value="Greece">Greece</option>
-                                <option value="Greenland">Greenland</option>
-                                <option value="Grenada">Grenada</option>
-                                <option value="Guadeloupe">Guadeloupe</option>
-                                <option value="Guatemala">Guatemala</option>
-                                <option value="Guernsey">Guernsey</option>
-                                <option value="Guinea">Guinea</option>
-                                <option value="Guinea Bissau">Guinea Bissau</option>
-                                <option value="Guyana">Guyana</option>
-                                <option value="Haiti">Haiti</option>
-                                <option value="Heard Island And Mcdonald Islands">Heard
-                                  Island And Mcdonald Islands
-                                </option>
-                                <option value="Holy See (Vatican City State)">Holy See
-                                  (Vatican City State)
-                                </option>
-                                <option value="Honduras">Honduras</option>
-                                <option value="Hong Kong">Hong Kong</option>
-                                <option value="Hungary">Hungary</option>
-                                <option value="Iceland">Iceland</option>
-                                <option value="India">India</option>
-                                <option value="Indonesia">Indonesia</option>
-                                <option value="Iran, Islamic Republic Of">Iran, Islamic
-                                  Republic Of
-                                </option>
-                                <option value="Iraq">Iraq</option>
-                                <option value="Ireland">Ireland</option>
-                                <option value="Isle Of Man">Isle Of Man</option>
-                                <option value="Israel">Israel</option>
-                                <option value="Italy">Italy</option>
-                                <option value="Jamaica">Jamaica</option>
-                                <option value="Japan">Japan</option>
-                                <option value="Jersey">Jersey</option>
-                                <option value="Jordan">Jordan</option>
-                                <option value="Kazakhstan">Kazakhstan</option>
-                                <option value="Kenya">Kenya</option>
-                                <option value="Kiribati">Kiribati</option>
-                                <option value="Korea, Democratic People&#39;s Republic Of">
-                                  Korea, Democratic People&#39;s Republic Of
-                                </option>
-                                <option value="Kosovo">Kosovo</option>
-                                <option value="Kuwait">Kuwait</option>
-                                <option value="Kyrgyzstan">Kyrgyzstan</option>
-                                <option value="Lao People&#39;s Democratic Republic">Lao
-                                  People&#39;s Democratic Republic
-                                </option>
-                                <option value="Latvia">Latvia</option>
-                                <option value="Lebanon">Lebanon</option>
-                                <option value="Lesotho">Lesotho</option>
-                                <option value="Liberia">Liberia</option>
-                                <option value="Libyan Arab Jamahiriya">Libyan Arab
-                                  Jamahiriya
-                                </option>
-                                <option value="Liechtenstein">Liechtenstein</option>
-                                <option value="Lithuania">Lithuania</option>
-                                <option value="Luxembourg">Luxembourg</option>
-                                <option value="Macao">Macao</option>
-                                <option value="Macedonia, Republic Of">Macedonia,
-                                  Republic
-                                  Of
-                                </option>
-                                <option value="Madagascar">Madagascar</option>
-                                <option value="Malawi">Malawi</option>
-                                <option value="Malaysia">Malaysia</option>
-                                <option value="Maldives">Maldives</option>
-                                <option value="Mali">Mali</option>
-                                <option value="Malta">Malta</option>
-                                <option value="Martinique">Martinique</option>
-                                <option value="Mauritania">Mauritania</option>
-                                <option value="Mauritius">Mauritius</option>
-                                <option value="Mayotte">Mayotte</option>
-                                <option value="Mexico">Mexico</option>
-                                <option value="Moldova, Republic of">Moldova, Republic
-                                  of
-                                </option>
-                                <option value="Monaco">Monaco</option>
-                                <option value="Mongolia">Mongolia</option>
-                                <option value="Montenegro">Montenegro</option>
-                                <option value="Montserrat">Montserrat</option>
-                                <option value="Morocco">Morocco</option>
-                                <option value="Mozambique">Mozambique</option>
-                                <option value="Myanmar">Myanmar</option>
-                                <option value="Namibia">Namibia</option>
-                                <option value="Nauru">Nauru</option>
-                                <option value="Nepal">Nepal</option>
-                                <option value="Netherlands">Netherlands</option>
-                                <option value="Netherlands Antilles">Netherlands
-                                  Antilles
-                                </option>
-                                <option value="New Caledonia">New Caledonia</option>
-                                <option value="New Zealand">New Zealand</option>
-                                <option value="Nicaragua">Nicaragua</option>
-                                <option value="Niger">Niger</option>
-                                <option value="Nigeria">Nigeria</option>
-                                <option value="Niue">Niue</option>
-                                <option value="Norfolk Island">Norfolk Island</option>
-                                <option value="Norway">Norway</option>
-                                <option value="Oman">Oman</option>
-                                <option value="Pakistan">Pakistan</option>
-                                <option value="Palestinian Territory, Occupied">
-                                  Palestinian
-                                  Territory, Occupied
-                                </option>
-                                <option value="Panama">Panama</option>
-                                <option value="Papua New Guinea">Papua New Guinea
-                                </option>
-                                <option value="Paraguay">Paraguay</option>
-                                <option value="Peru">Peru</option>
-                                <option value="Philippines">Philippines</option>
-                                <option value="Pitcairn">Pitcairn</option>
-                                <option value="Poland">Poland</option>
-                                <option value="Portugal">Portugal</option>
-                                <option value="Qatar">Qatar</option>
-                                <option value="Republic of Cameroon">Republic of
-                                  Cameroon
-                                </option>
-                                <option value="Reunion">Reunion</option>
-                                <option value="Romania">Romania</option>
-                                <option value="Russia">Russia</option>
-                                <option value="Rwanda">Rwanda</option>
-                                <option value="Saint Barthélemy">Saint Barthélemy
-                                </option>
-                                <option value="Saint Helena">Saint Helena</option>
-                                <option value="Saint Kitts And Nevis">Saint Kitts And
-                                  Nevis
-                                </option>
-                                <option value="Saint Lucia">Saint Lucia</option>
-                                <option value="Saint Martin">Saint Martin</option>
-                                <option value="Saint Pierre And Miquelon">Saint Pierre
-                                  And
-                                  Miquelon
-                                </option>
-                                <option value="Samoa">Samoa</option>
-                                <option value="San Marino">San Marino</option>
-                                <option value="Sao Tome And Principe">Sao Tome And
-                                  Principe
-                                </option>
-                                <option value="Saudi Arabia">Saudi Arabia</option>
-                                <option value="Senegal">Senegal</option>
-                                <option value="Serbia">Serbia</option>
-                                <option value="Seychelles">Seychelles</option>
-                                <option value="Sierra Leone">Sierra Leone</option>
-                                <option value="Singapore">Singapore</option>
-                                <option value="Sint Maarten">Sint Maarten</option>
-                                <option value="Slovakia">Slovakia</option>
-                                <option value="Slovenia">Slovenia</option>
-                                <option value="Solomon Islands">Solomon Islands</option>
-                                <option value="Somalia">Somalia</option>
-                                <option value="South Africa">South Africa</option>
-                                <option value="South Georgia And The South Sandwich Islands">
-                                  South Georgia And The South Sandwich Islands
-                                </option>
-                                <option value="South Korea">South Korea</option>
-                                <option value="South Sudan">South Sudan</option>
-                                <option value="Spain">Spain</option>
-                                <option value="Sri Lanka">Sri Lanka</option>
-                                <option value="St. Vincent">St. Vincent</option>
-                                <option value="Sudan">Sudan</option>
-                                <option value="Suriname">Suriname</option>
-                                <option value="Svalbard And Jan Mayen">Svalbard And Jan
-                                  Mayen
-                                </option>
-                                <option value="Swaziland">Swaziland</option>
-                                <option value="Sweden">Sweden</option>
-                                <option value="Switzerland">Switzerland</option>
-                                <option value="Syria">Syria</option>
-                                <option value="Taiwan">Taiwan</option>
-                                <option value="Tajikistan">Tajikistan</option>
-                                <option value="Tanzania, United Republic Of">Tanzania,
-                                  United Republic Of
-                                </option>
-                                <option value="Thailand">Thailand</option>
-                                <option value="Timor Leste">Timor Leste</option>
-                                <option value="Togo">Togo</option>
-                                <option value="Tokelau">Tokelau</option>
-                                <option value="Tonga">Tonga</option>
-                                <option value="Trinidad and Tobago">Trinidad and Tobago
-                                </option>
-                                <option value="Tunisia">Tunisia</option>
-                                <option value="Turkey">Turkey</option>
-                                <option value="Turkmenistan">Turkmenistan</option>
-                                <option value="Turks and Caicos Islands">Turks and
-                                  Caicos
-                                  Islands
-                                </option>
-                                <option value="Tuvalu">Tuvalu</option>
-                                <option value="Uganda">Uganda</option>
-                                <option value="Ukraine">Ukraine</option>
-                                <option value="United Arab Emirates">United Arab
-                                  Emirates
-                                </option>
-                                <option value="United Kingdom">United Kingdom</option>
-                                <option value="United States">United States</option>
-                                <option value="United States Minor Outlying Islands">
-                                  United
-                                  States Minor Outlying Islands
-                                </option>
-                                <option value="Uruguay">Uruguay</option>
-                                <option value="Uzbekistan">Uzbekistan</option>
-                                <option value="Vanuatu">Vanuatu</option>
-                                <option value="Venezuela">Venezuela</option>
-                                <option value="Vietnam">Vietnam</option>
-                                <option value="Virgin Islands, British">Virgin Islands,
-                                  British
-                                </option>
-                                <option value="Wallis And Futuna">Wallis And Futuna
-                                </option>
-                                <option value="Western Sahara">Western Sahara</option>
-                                <option value="Yemen">Yemen</option>
-                                <option value="Zambia">Zambia</option>
-                                <option value="Zimbabwe">Zimbabwe</option>
                               </select>
                               <svg class="next-icon next-icon--size-16">
                                 <use xlink:href="#select-chevron"/>
@@ -3895,7 +3338,6 @@
                             <input formControlName="province"
                                    class="next-input js-province-select"
                                    x-autocompletetype="province" size="30" type="text"
-                                   name="customer_address[province]"
                                    id="customer_address_province"/>
                           </div>
                         </div>
@@ -3903,7 +3345,7 @@
                       <div class="next-input-wrapper">
                         <label class="next-label" for="customer_address_phone">Phone</label>
                         <input formControlName="phone" class="next-input" size="30" type="text"
-                               name="customer_address[phone]" id="customer_address_phone"/>
+                               id="customer_address_phone"/>
                       </div>
                     </div>
                   </div>
@@ -3928,18 +3370,18 @@
                         (click)="isShowEditAddress = !isShowEditAddress" name="button">Close modal
                 </button>
               </header>
-              <form *ngIf="currentAddress" [formGroup]="AddressForm" (submit)="submitEditAddress()"
+              <form *ngIf="selectedAddress" [formGroup]="selectedAddress" (submit)="submitAddress()"
                     autocomplete="off"
-                    class="edit_customer_address" id="edit_customer_address_{{ currentAddress.id }}">
-                <div class="body address-editable" formGroupName="address">
+                    class="edit_customer_address" id="edit_customer_address_{{ selectedAddressID }}">
+                <div class="body address-editable">
                   <div class="ui-form__section">
                     <div class="ui-form__group">
                       <div class="next-input-wrapper">
                         <label class="next-label" for="customer_address_first_name">First
                           name</label>
-                        <input formControlName="first_name" class="next-input" size="30"
+                        <input formControlName="first_name"
+                               class="next-input" size="30"
                                type="text"
-                               name="customer_address[first_name]"
                                id="customer_address_first_name"/>
                       </div>
                       <div class="next-input-wrapper">
@@ -3947,21 +3389,21 @@
                           name</label>
                         <input formControlName="last_name" class="next-input" size="30"
                                type="text"
-                               name="customer_address[last_name]"
                                id="customer_address_last_name"/>
                       </div>
                       <div class="next-input-wrapper">
                         <label class="next-label" for="customer_address_company">Company</label>
                         <input formControlName="company" class="next-input" size="30"
                                type="text"
-                               name="customer_address[company]" id="customer_address_company"/>
+                               id="customer_address_company"/>
                       </div>
                     </div>
                     <div class="next-input-wrapper">
                       <label class="next-label" for="customer_address_address1">Address line
                         1</label>
-                      <input formControlName="address1" class="next-input" size="30" type="text"
-                             name="customer_address[address1]" id="customer_address_address1"/>
+                      <input formControlName="address1" class="next-input" size="30"
+                             type="text"
+                             id="customer_address_address1"/>
                     </div>
                     <div class="next-input-wrapper">
                       <label class="next-label" for="customer_address_address2">Address line
@@ -3974,13 +3416,13 @@
                       <div class="next-input-wrapper">
                         <label class="next-label" for="customer_address_city">City</label>
                         <input formControlName="city" class="next-input" size="30" type="text"
-                               name="customer_address[city]" id="customer_address_city"/>
+                               id="customer_address_city"/>
                       </div>
                       <div class="next-input-wrapper">
                         <label class="next-label" for="customer_address_zip">Zip / Postal
                           code</label>
                         <input formControlName="zip" class="next-input" size="30" type="text"
-                               name="customer_address[zip]" id="customer_address_zip"/>
+                               id="customer_address_zip"/>
                       </div>
                     </div>
                     <div class="ui-form__group">
@@ -3990,305 +3432,11 @@
                         <div class="ui-select__wrapper">
                           <select formControlName="country"
                                   class="ui-select js-country-select"
-                                  x-autocompletetype="country"
-                                  name="customer_address[country]"
                                   id="customer_address_country">
-                            <option value="Afghanistan">Afghanistan</option>
-                            <option value="Aland Islands">Aland Islands</option>
-                            <option value="Albania">Albania</option>
-                            <option value="Algeria">Algeria</option>
-                            <option value="Andorra">Andorra</option>
-                            <option value="Angola">Angola</option>
-                            <option value="Anguilla">Anguilla</option>
-                            <option value="Antigua And Barbuda">Antigua And Barbuda
+                            <option *ngFor="let country of countriesList;"
+                                    [selected]="country.name == selectedAddress.get('country').value"
+                                    [value]="country.code">{{country.name}}
                             </option>
-                            <option value="Argentina">Argentina</option>
-                            <option value="Armenia">Armenia</option>
-                            <option value="Aruba">Aruba</option>
-                            <option value="Australia">Australia</option>
-                            <option value="Austria">Austria</option>
-                            <option value="Azerbaijan">Azerbaijan</option>
-                            <option value="Bahamas">Bahamas</option>
-                            <option value="Bahrain">Bahrain</option>
-                            <option value="Bangladesh">Bangladesh</option>
-                            <option value="Barbados">Barbados</option>
-                            <option value="Belarus">Belarus</option>
-                            <option value="Belgium">Belgium</option>
-                            <option value="Belize">Belize</option>
-                            <option value="Benin">Benin</option>
-                            <option value="Bermuda">Bermuda</option>
-                            <option value="Bhutan">Bhutan</option>
-                            <option value="Bolivia">Bolivia</option>
-                            <option value="Bosnia And Herzegovina">Bosnia And
-                              Herzegovina
-                            </option>
-                            <option value="Botswana">Botswana</option>
-                            <option value="Bouvet Island">Bouvet Island</option>
-                            <option value="Brazil">Brazil</option>
-                            <option value="British Indian Ocean Territory">British
-                              Indian Ocean Territory
-                            </option>
-                            <option value="Brunei">Brunei</option>
-                            <option value="Bulgaria">Bulgaria</option>
-                            <option value="Burkina Faso">Burkina Faso</option>
-                            <option value="Burundi">Burundi</option>
-                            <option value="Cambodia">Cambodia</option>
-                            <option value="Canada">Canada</option>
-                            <option value="Cape Verde">Cape Verde</option>
-                            <option value="Cayman Islands">Cayman Islands</option>
-                            <option value="Central African Republic">Central African
-                              Republic
-                            </option>
-                            <option value="Chad">Chad</option>
-                            <option value="Chile">Chile</option>
-                            <option value="China">China</option>
-                            <option value="Christmas Island">Christmas Island</option>
-                            <option value="Cocos (Keeling) Islands">Cocos (Keeling)
-                              Islands
-                            </option>
-                            <option value="Colombia">Colombia</option>
-                            <option value="Comoros">Comoros</option>
-                            <option value="Congo">Congo</option>
-                            <option value="Congo, The Democratic Republic Of The">Congo,
-                              The Democratic Republic Of The
-                            </option>
-                            <option value="Cook Islands">Cook Islands</option>
-                            <option value="Costa Rica">Costa Rica</option>
-                            <option value="Croatia">Croatia</option>
-                            <option value="Cuba">Cuba</option>
-                            <option value="Curaçao">Curaçao</option>
-                            <option value="Cyprus">Cyprus</option>
-                            <option value="Czech Republic">Czech Republic</option>
-                            <option value="Côte d&#39;Ivoire">Côte d&#39;Ivoire</option>
-                            <option value="Denmark">Denmark</option>
-                            <option value="Djibouti">Djibouti</option>
-                            <option value="Dominica">Dominica</option>
-                            <option value="Dominican Republic">Dominican Republic
-                            </option>
-                            <option value="Ecuador">Ecuador</option>
-                            <option value="Egypt">Egypt</option>
-                            <option value="El Salvador">El Salvador</option>
-                            <option value="Equatorial Guinea">Equatorial Guinea</option>
-                            <option value="Eritrea">Eritrea</option>
-                            <option value="Estonia">Estonia</option>
-                            <option value="Ethiopia">Ethiopia</option>
-                            <option value="Falkland Islands (Malvinas)">Falkland Islands
-                              (Malvinas)
-                            </option>
-                            <option value="Faroe Islands">Faroe Islands</option>
-                            <option value="Fiji">Fiji</option>
-                            <option value="Finland">Finland</option>
-                            <option value="France">France</option>
-                            <option value="French Guiana">French Guiana</option>
-                            <option value="French Polynesia">French Polynesia</option>
-                            <option value="French Southern Territories">French Southern
-                              Territories
-                            </option>
-                            <option value="Gabon">Gabon</option>
-                            <option value="Gambia">Gambia</option>
-                            <option value="Georgia">Georgia</option>
-                            <option value="Germany">Germany</option>
-                            <option value="Ghana">Ghana</option>
-                            <option value="Gibraltar">Gibraltar</option>
-                            <option value="Greece">Greece</option>
-                            <option value="Greenland">Greenland</option>
-                            <option value="Grenada">Grenada</option>
-                            <option value="Guadeloupe">Guadeloupe</option>
-                            <option value="Guatemala">Guatemala</option>
-                            <option value="Guernsey">Guernsey</option>
-                            <option value="Guinea">Guinea</option>
-                            <option value="Guinea Bissau">Guinea Bissau</option>
-                            <option value="Guyana">Guyana</option>
-                            <option value="Haiti">Haiti</option>
-                            <option value="Heard Island And Mcdonald Islands">Heard
-                              Island And Mcdonald Islands
-                            </option>
-                            <option value="Holy See (Vatican City State)">Holy See
-                              (Vatican City State)
-                            </option>
-                            <option value="Honduras">Honduras</option>
-                            <option value="Hong Kong">Hong Kong</option>
-                            <option value="Hungary">Hungary</option>
-                            <option value="Iceland">Iceland</option>
-                            <option value="India">India</option>
-                            <option value="Indonesia">Indonesia</option>
-                            <option value="Iran, Islamic Republic Of">Iran, Islamic
-                              Republic Of
-                            </option>
-                            <option value="Iraq">Iraq</option>
-                            <option value="Ireland">Ireland</option>
-                            <option value="Isle Of Man">Isle Of Man</option>
-                            <option value="Israel">Israel</option>
-                            <option value="Italy">Italy</option>
-                            <option value="Jamaica">Jamaica</option>
-                            <option value="Japan">Japan</option>
-                            <option value="Jersey">Jersey</option>
-                            <option value="Jordan">Jordan</option>
-                            <option value="Kazakhstan">Kazakhstan</option>
-                            <option value="Kenya">Kenya</option>
-                            <option value="Kiribati">Kiribati</option>
-                            <option value="Korea, Democratic People&#39;s Republic Of">
-                              Korea, Democratic People&#39;s Republic Of
-                            </option>
-                            <option value="Kosovo">Kosovo</option>
-                            <option value="Kuwait">Kuwait</option>
-                            <option value="Kyrgyzstan">Kyrgyzstan</option>
-                            <option value="Lao People&#39;s Democratic Republic">Lao
-                              People&#39;s Democratic Republic
-                            </option>
-                            <option value="Latvia">Latvia</option>
-                            <option value="Lebanon">Lebanon</option>
-                            <option value="Lesotho">Lesotho</option>
-                            <option value="Liberia">Liberia</option>
-                            <option value="Libyan Arab Jamahiriya">Libyan Arab
-                              Jamahiriya
-                            </option>
-                            <option value="Liechtenstein">Liechtenstein</option>
-                            <option value="Lithuania">Lithuania</option>
-                            <option value="Luxembourg">Luxembourg</option>
-                            <option value="Macao">Macao</option>
-                            <option value="Macedonia, Republic Of">Macedonia, Republic
-                              Of
-                            </option>
-                            <option value="Madagascar">Madagascar</option>
-                            <option value="Malawi">Malawi</option>
-                            <option value="Malaysia">Malaysia</option>
-                            <option value="Maldives">Maldives</option>
-                            <option value="Mali">Mali</option>
-                            <option value="Malta">Malta</option>
-                            <option value="Martinique">Martinique</option>
-                            <option value="Mauritania">Mauritania</option>
-                            <option value="Mauritius">Mauritius</option>
-                            <option value="Mayotte">Mayotte</option>
-                            <option value="Mexico">Mexico</option>
-                            <option value="Moldova, Republic of">Moldova, Republic of
-                            </option>
-                            <option value="Monaco">Monaco</option>
-                            <option value="Mongolia">Mongolia</option>
-                            <option value="Montenegro">Montenegro</option>
-                            <option value="Montserrat">Montserrat</option>
-                            <option value="Morocco">Morocco</option>
-                            <option value="Mozambique">Mozambique</option>
-                            <option value="Myanmar">Myanmar</option>
-                            <option value="Namibia">Namibia</option>
-                            <option value="Nauru">Nauru</option>
-                            <option value="Nepal">Nepal</option>
-                            <option value="Netherlands">Netherlands</option>
-                            <option value="Netherlands Antilles">Netherlands Antilles
-                            </option>
-                            <option value="New Caledonia">New Caledonia</option>
-                            <option value="New Zealand">New Zealand</option>
-                            <option value="Nicaragua">Nicaragua</option>
-                            <option value="Niger">Niger</option>
-                            <option value="Nigeria">Nigeria</option>
-                            <option value="Niue">Niue</option>
-                            <option value="Norfolk Island">Norfolk Island</option>
-                            <option value="Norway">Norway</option>
-                            <option value="Oman">Oman</option>
-                            <option value="Pakistan">Pakistan</option>
-                            <option value="Palestinian Territory, Occupied">Palestinian
-                              Territory, Occupied
-                            </option>
-                            <option value="Panama">Panama</option>
-                            <option value="Papua New Guinea">Papua New Guinea</option>
-                            <option value="Paraguay">Paraguay</option>
-                            <option value="Peru">Peru</option>
-                            <option value="Philippines">Philippines</option>
-                            <option value="Pitcairn">Pitcairn</option>
-                            <option value="Poland">Poland</option>
-                            <option value="Portugal">Portugal</option>
-                            <option value="Qatar">Qatar</option>
-                            <option value="Republic of Cameroon">Republic of Cameroon
-                            </option>
-                            <option value="Reunion">Reunion</option>
-                            <option value="Romania">Romania</option>
-                            <option value="Russia">Russia</option>
-                            <option value="Rwanda">Rwanda</option>
-                            <option value="Saint Barthélemy">Saint Barthélemy</option>
-                            <option value="Saint Helena">Saint Helena</option>
-                            <option value="Saint Kitts And Nevis">Saint Kitts And
-                              Nevis
-                            </option>
-                            <option value="Saint Lucia">Saint Lucia</option>
-                            <option value="Saint Martin">Saint Martin</option>
-                            <option value="Saint Pierre And Miquelon">Saint Pierre And
-                              Miquelon
-                            </option>
-                            <option value="Samoa">Samoa</option>
-                            <option value="San Marino">San Marino</option>
-                            <option value="Sao Tome And Principe">Sao Tome And
-                              Principe
-                            </option>
-                            <option value="Saudi Arabia">Saudi Arabia</option>
-                            <option value="Senegal">Senegal</option>
-                            <option value="Serbia">Serbia</option>
-                            <option value="Seychelles">Seychelles</option>
-                            <option value="Sierra Leone">Sierra Leone</option>
-                            <option value="Singapore">Singapore</option>
-                            <option value="Sint Maarten">Sint Maarten</option>
-                            <option value="Slovakia">Slovakia</option>
-                            <option value="Slovenia">Slovenia</option>
-                            <option value="Solomon Islands">Solomon Islands</option>
-                            <option value="Somalia">Somalia</option>
-                            <option value="South Africa">South Africa</option>
-                            <option value="South Georgia And The South Sandwich Islands">
-                              South Georgia And The South Sandwich Islands
-                            </option>
-                            <option value="South Korea">South Korea</option>
-                            <option value="South Sudan">South Sudan</option>
-                            <option value="Spain">Spain</option>
-                            <option value="Sri Lanka">Sri Lanka</option>
-                            <option value="St. Vincent">St. Vincent</option>
-                            <option value="Sudan">Sudan</option>
-                            <option value="Suriname">Suriname</option>
-                            <option value="Svalbard And Jan Mayen">Svalbard And Jan
-                              Mayen
-                            </option>
-                            <option value="Swaziland">Swaziland</option>
-                            <option value="Sweden">Sweden</option>
-                            <option value="Switzerland">Switzerland</option>
-                            <option value="Syria">Syria</option>
-                            <option value="Taiwan">Taiwan</option>
-                            <option value="Tajikistan">Tajikistan</option>
-                            <option value="Tanzania, United Republic Of">Tanzania,
-                              United Republic Of
-                            </option>
-                            <option value="Thailand">Thailand</option>
-                            <option value="Timor Leste">Timor Leste</option>
-                            <option value="Togo">Togo</option>
-                            <option value="Tokelau">Tokelau</option>
-                            <option value="Tonga">Tonga</option>
-                            <option value="Trinidad and Tobago">Trinidad and Tobago
-                            </option>
-                            <option value="Tunisia">Tunisia</option>
-                            <option value="Turkey">Turkey</option>
-                            <option value="Turkmenistan">Turkmenistan</option>
-                            <option value="Turks and Caicos Islands">Turks and Caicos
-                              Islands
-                            </option>
-                            <option value="Tuvalu">Tuvalu</option>
-                            <option value="Uganda">Uganda</option>
-                            <option value="Ukraine">Ukraine</option>
-                            <option value="United Arab Emirates">United Arab Emirates
-                            </option>
-                            <option value="United Kingdom">United Kingdom</option>
-                            <option value="United States">United States</option>
-                            <option value="United States Minor Outlying Islands">United
-                              States Minor Outlying Islands
-                            </option>
-                            <option value="Uruguay">Uruguay</option>
-                            <option value="Uzbekistan">Uzbekistan</option>
-                            <option value="Vanuatu">Vanuatu</option>
-                            <option value="Venezuela">Venezuela</option>
-                            <option selected="selected" value="Vietnam">Vietnam</option>
-                            <option value="Virgin Islands, British">Virgin Islands,
-                              British
-                            </option>
-                            <option value="Wallis And Futuna">Wallis And Futuna</option>
-                            <option value="Western Sahara">Western Sahara</option>
-                            <option value="Yemen">Yemen</option>
-                            <option value="Zambia">Zambia</option>
-                            <option value="Zimbabwe">Zimbabwe</option>
                           </select>
                           <svg class="next-icon next-icon--size-16">
                             <use xlink:href="#select-chevron"/>
@@ -4301,21 +3449,21 @@
                         <input formControlName="province"
                                class="next-input js-province-select"
                                x-autocompletetype="province" size="30" type="text"
-                               name="customer_address[province]"
                                id="customer_address_province"/>
                       </div>
                     </div>
                     <div class="next-input-wrapper">
                       <label class="next-label" for="customer_address_phone">Phone</label>
                       <input formControlName="phone" class="next-input" size="30" type="text"
-                             name="customer_address[phone]"
                              id="customer_address_phone"/>
                     </div>
                   </div>
                 </div>
                 <div class="buttons">
-                  <button *ngIf="currentAddress.id!= customer.default_address?.id" class="fl btn btn-destroy js-btn-loadable has-loading" type="button"
-                  (click)="deleteCustomerAddress()">Delete address</button>
+                  <button *ngIf="selectedAddressID != customer.default_address?.id"
+                          class="fl btn btn-destroy js-btn-loadable has-loading" type="button"
+                          (click)="deleteAddress(selectedAddressID)">Delete address
+                  </button>
                   <button class="ui-button close-modal" type="button"
                           (click)="isShowEditAddress = false;" name="button">Cancel
                   </button>
@@ -4326,14 +3474,6 @@
               </form>
             </div>
             <!--END edit address-->
-            <!--View all tags-->
-            <app-popup-manager-tags
-              [customer]="customer"
-              [customerTags]="customerTag"
-              [appliedTagsTemp]="appliedTags"
-              (reloadData)="reloadData($event)"
-            ></app-popup-manager-tags>
-            <!--END View all tags-->
             <!--Delete customer-->
             <div (onHidden)="popupCustomerAccount.hide()" [config]="{ show: false }" bsModal
                  #popupCustomerAccount="bs-modal"
@@ -4377,6 +3517,8 @@
             <!--END Modal wrapper-->
             <!--END MODALs-->
           </form>
+          tag source:{{customerTags}}
+          tag exists: {{customer.tags }}
         </div>
       </div>
     </div>

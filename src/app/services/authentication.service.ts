@@ -4,11 +4,12 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import {Router} from "@angular/router";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {AppConfig} from "../config/app.config";
+
 import {JSONObject} from "../models/JSONObject";
 import {Token} from "../models/token";
 import {Msisdn} from "../models/msisdn";
 import {Account} from "../models/account";
+import {LocalStoreManagerService} from "./local-store-manager.service";
 
 @Injectable()
 export class AuthenticationService {
@@ -16,12 +17,13 @@ export class AuthenticationService {
   currentUserObservable: Observable<string> = null;
 
   constructor(private http: HttpClient,
-              private config: AppConfig,
-              private router: Router) {
+              
+              private router: Router,
+              private localStoreManagerService: LocalStoreManagerService) {
   }
 
   login(params: any): Observable<any> {
-    return this.http.post<JSONObject>(this.config.apiUrl + '/user_session.json', JSON.stringify(params))
+    return this.http.post<JSONObject>('/user_session.json', JSON.stringify(params))
       .map((response) => {
         if (response.code == 200) {
           this.setSessionAccessToken(response.token);
@@ -33,7 +35,7 @@ export class AuthenticationService {
   }
 
   checkPassword(params: any): Observable<any> {
-    return this.http.post<JSONObject>(this.config.apiUrl + '/user_session.json', JSON.stringify(params))
+    return this.http.post<JSONObject>('/user_session.json', JSON.stringify(params))
       .map((response) => {
         return response;
       });
@@ -41,7 +43,7 @@ export class AuthenticationService {
   }
 
   resetPassword(params: any): Observable<any> {
-    return this.http.post<JSONObject>(this.config.apiUrl + '/password_resets.json', JSON.stringify(params))
+    return this.http.post<JSONObject>('/password_resets.json', JSON.stringify(params))
       .map((response) => {
         return response;
       });
@@ -49,7 +51,7 @@ export class AuthenticationService {
   }
 
   logout(): Observable<any> {
-    return this.http.delete<JSONObject>(this.config.apiUrl + '/user_session.json')
+    return this.http.delete<JSONObject>('/user_session.json')
       .map((response) => {
         this.deleteSession();
         return response.data;
@@ -59,16 +61,16 @@ export class AuthenticationService {
   setSessionAccessToken(token: any) {
     let data = new Token();
     data.access_token = token;
-    sessionStorage.setItem('accessToken', JSON.stringify(data));
+    this.localStoreManagerService.saveSyncedSessionData(data, 'accessToken');
   }
 
   setSessionUserLogin(user: Account) {
     user.full_name = `${user.first_name} ${user.last_name}`;
-    sessionStorage.setItem('adminUser', JSON.stringify(user));
+    this.localStoreManagerService.saveSyncedSessionData(user, 'adminUser');
   }
 
   deleteSession() {
-    sessionStorage.removeItem('accessToken');
-    sessionStorage.removeItem('adminUser');
+    this.localStoreManagerService.deleteData('accessToken');
+    this.localStoreManagerService.deleteData('adminUser');
   }
 }

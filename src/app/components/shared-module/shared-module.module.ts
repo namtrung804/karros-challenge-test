@@ -20,6 +20,7 @@ import {RouterModule} from "@angular/router";
 import {LayoutMainModule} from "../layout-main/layout-main.module";
 import {PopupManagerImagesComponent} from "./popup-manager-images/popup-manager-images.component";
 import {PopupTagsComponent} from "./popup-tags/popup-tags.component";
+import {PopupManagerTagsComponent} from './popup-manager-tags/popup-manager-tags.component';
 
 @NgModule({
   imports: [
@@ -48,10 +49,12 @@ import {PopupTagsComponent} from "./popup-tags/popup-tags.component";
   ],
   declarations: [
     PopupManagerImagesComponent,
+    PopupManagerTagsComponent,
     PopupTagsComponent
   ],
   exports: [
     PopupManagerImagesComponent,
+    PopupManagerTagsComponent,
     PopupTagsComponent
   ],
 })

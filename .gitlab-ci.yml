@@ -11,6 +11,8 @@ stages:
 - deploy
 
 pages:
+  tags:
+  - node
   stage: deploy
   script:
   - yarn --ignore-engines
