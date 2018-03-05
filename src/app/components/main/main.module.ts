@@ -9,22 +9,25 @@ import {MainComponent} from './main.component';
 import {MainRoutingModule} from './main-routing.module';
 import {ClickOutsideModule} from 'ng-click-outside';
 import {AgmCoreModule} from '@agm/core';
+import {PaginatorModule} from 'primeng/primeng';
+import {API_KEY_GOOGLE_MAP} from '../../config/global-const';
 
 
 @NgModule({
-    imports: [
-        CommonModule,
-        AlertModule,
-        ReactiveFormsModule,
-        RouterModule,
-        ClickOutsideModule,
-        AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyCOtKWiQLysOXdzJ8h1a69wHlbbyfiiZzU',
-            libraries: ["places"]
-        }),
-        MainRoutingModule,
-    ],
-    declarations: [MainComponent],
+  imports: [
+    CommonModule,
+    AlertModule,
+    ReactiveFormsModule,
+    RouterModule,
+    ClickOutsideModule,
+    AgmCoreModule.forRoot({
+      apiKey: API_KEY_GOOGLE_MAP,
+      libraries: ['places']
+    }),
+    PaginatorModule,
+    MainRoutingModule,
+  ],
+  declarations: [MainComponent],
 })
 export class MainModule {
 

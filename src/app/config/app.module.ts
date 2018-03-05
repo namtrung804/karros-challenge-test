@@ -32,6 +32,7 @@ import {LocaleDatePipe} from '../pipes/LocaleDate.pipe';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {LocalStoreManagerService} from '../services/local-store-manager.service';
 import {YelpService} from '../services/yelp.service';
+import {API_KEY_GOOGLE_MAP} from './global-const';
 
 
 // AoT requires an exported function for factories
@@ -74,7 +75,7 @@ export class RavenErrorHandler implements ErrorHandler {
         ReactiveFormsModule,
         ReCaptchaModule,
         AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyCOtKWiQLysOXdzJ8h1a69wHlbbyfiiZzU'
+            apiKey: API_KEY_GOOGLE_MAP
         }),
         // DatePickerModule,
         CalendarModule,
