@@ -6,3 +6,11 @@
     color: white !important;
   }
 }
+.pac-container {
+  &.pac-logo{
+    z-index: 99999;
+  }
+}
+agm-map {
+  height: 300px;
+}

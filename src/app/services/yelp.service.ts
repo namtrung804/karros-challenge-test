@@ -18,4 +18,20 @@ export class YelpService {
         return this.http.get<JSONObject>(`${API_URL}/autocomplete?text=${text}`)
             .map((response) => response);
     }
+
+    getDataBusinessSearch(queryObject: any): Observable<any> {
+        let stringQuery = this.queryStringParams(queryObject);
+        return this.http.get<JSONObject>(`${API_URL}/businesses/search?${stringQuery}`)
+            .map((response) => response);
+    }
+
+    queryStringParams(param: any = []) {
+        let string = '&';
+        for (let key in param) {
+            if (param.hasOwnProperty(key)) {
+                string += key + '=' + encodeURI(param[key]) + '&';
+            }
+        }
+        return string.substring(0, string.length - 1);
+    }
 }
