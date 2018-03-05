@@ -25,6 +25,11 @@ export class YelpService {
             .map((response) => response);
     }
 
+    getReviewsOfBusiness(id: string): Observable<any> {
+        return this.http.get<JSONObject>(`${API_URL}/businesses/${id}/reviews`)
+            .map((response) => response);
+    }
+
     queryStringParams(param: any = []) {
         let string = '&';
         for (let key in param) {

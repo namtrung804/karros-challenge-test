@@ -6,11 +6,39 @@
     color: white !important;
   }
 }
+
 .pac-container {
-  &.pac-logo{
+  &.pac-logo {
     z-index: 99999;
   }
 }
+
+
+
+.ui-paginator-element {
+  min-width: 15px;
+  margin: 0;
+  margin-bottom: -1px;
+  text-align: center;
+  padding: 12px 6px 9px;
+  border-bottom: 3px solid transparent;
+  &.ui-state-active{
+    color: #333;
+    border-bottom-color: #d32323;
+    cursor: auto;
+  }
+}
+.map-wrapper{
+  position: relative;
+}
 agm-map {
   height: 300px;
+}
+.mo-map{
+  .column-alpha{
+    width: 33.3333% !important;
+  }
+  agm-map {
+    height: 500px;
+  }
 }

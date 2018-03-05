@@ -380,6 +380,12 @@ angular-in-memory-web-api@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/angular-in-memory-web-api/-/angular-in-memory-web-api-0.5.2.tgz#ff2ea666abfd04dd7d16c953ec972e1318a09824"
 
+angular-pipes@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/angular-pipes/-/angular-pipes-7.0.1.tgz#12bad8d43a6c6f36ef2f878842da3adad54f81e9"
+  dependencies:
+    tslib "^1.7.1"
+
 angular2-recaptcha@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/angular2-recaptcha/-/angular2-recaptcha-0.6.0.tgz#1d67363925d169b9213adefcfacd03a40125efe3"
