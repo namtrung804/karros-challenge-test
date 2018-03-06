@@ -254,12 +254,13 @@ export class MainComponent implements OnInit {
                     this.longitude = result.region.center.longitude;
                     this.zoom = 12;
                 }
+                this.scrollToTop();
             },
             error => {
                 this.loading = false;
             }
         )
-        this.scrollToTop();
+
     }
 
     getAddressShop(address: any) {

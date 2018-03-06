@@ -3727,9 +3727,7 @@
 
 
                             </div>
-                            <div *ngIf="loading" class="throbber-overlay">
-                                <div class="throbber-container"></div>
-                            </div>
+
                         </div>
 
                     </div>
@@ -3796,7 +3794,9 @@
 
         </div>
     </div>
-
+    <div *ngIf="loading" class="throbber-overlay">
+        <div class="throbber-container"></div>
+    </div>
 
     <!-- google_ad_section_start(weight=ignore) -->
     <!-- <a href="/biz/outlook-autumn-market-fundamental-catwalk-flimsy-roost-legibility-individualism-grocer-predestination-3">yelp</a> -->
