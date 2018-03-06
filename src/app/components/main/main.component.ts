@@ -191,13 +191,13 @@ export class MainComponent implements OnInit {
     this.isShowInfoWindow = true;
     this.selectedBusiness = business;
     let infoWindow = this.document.getElementById('infoWindowBusiness');
-    infoWindow.style.top = `${this.positionInfoWindowTop - infoWindow.offsetHeight}px`;
-    infoWindow.style.left = `${this.positionInfoWindowLeft - infoWindow.offsetWidth}px`;
+    let top = this.positionInfoWindowTop + infoWindow.offsetHeight;
+    let left = this.positionInfoWindowLeft + infoWindow.offsetWidth;
+    infoWindow.style.top = `${top}px`;
+    infoWindow.style.left = `${left}px`;
   }
   hideInfoWindowBusinessMap(){
-    console.log(123123123);
     this.isShowInfoWindow = false;
-    console.log(this.isShowInfoWindow);
   }
   chosePlace(text: string) {
     this.inputSearchPlace.nativeElement.value = text;
