@@ -34,7 +34,14 @@ export class YelpService {
         let string = '&';
         for (let key in param) {
             if (param.hasOwnProperty(key)) {
-                string += key + '=' + encodeURI(param[key]) + '&';
+                if (Array.isArray(param[key])) {
+                    if (param[key].length) {
+                        string += key + '=' + encodeURI(param[key].join(',')) + '&';
+                    }
+                } else {
+                    string += key + '=' + encodeURI(param[key]) + '&';
+                }
+
             }
         }
         return string.substring(0, string.length - 1);

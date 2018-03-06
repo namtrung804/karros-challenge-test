@@ -39,10 +39,13 @@ export class MainComponent implements OnInit {
     selectedBusiness: Business;
     limitPerPage: number = 10;
     page: number = 0;
-    totalBusiness: number = 0;
+    totalBusiness: number = 10;
     bigSizeMap: boolean = false;
     positionInfoWindowTop: number = 0;
     positionInfoWindowLeft: number = 0;
+    filter: any = {
+        sort_by: 'best_match',
+    }
 
     constructor(private yelpService: YelpService,
                 private router: Router,
@@ -205,16 +208,42 @@ export class MainComponent implements OnInit {
         this.getDataBusiness();
     }
 
+    addFilter(key: string, value: string) {
+        if (_.isUndefined(this.filter[key])) {
+            // underfined
+            if (key == 'price' || key == 'attributes') {
+                this.filter[key] = [];
+                this.filter[key].push(value);
+            } else {
+                this.filter[key] = value;
+            }
+        } else {
+            if (key == 'price' || key == 'attributes') {
+                if (this.filter[key].indexOf(value) == -1) {
+                    // not yet value
+                    this.filter[key].push(value);
+                } else {
+                    this.filter[key] = this.filter[key].filter((item: any, index: any) => item != value);
+                }
+            } else {
+                delete this.filter[key];
+            }
+        }
+        this.getDataBusiness();
+    }
+
     getDataBusiness(page: number = 0) {
         this.page = page;
         this.loading = true;
         this.totalBusiness = 0;
+        this.listBusiness = [];
         let dataSearch = {
             term: this.inputSearchPlace.nativeElement.value,
             location: this.inputSearchNear.nativeElement.value,
             limit: this.limitPerPage,
             offset: page * this.limitPerPage
         }
+        dataSearch = _.merge(dataSearch, this.filter);
         this.yelpService.getDataBusinessSearch(dataSearch).subscribe(
             result => {
                 this.loading = false;
@@ -234,7 +263,7 @@ export class MainComponent implements OnInit {
     }
 
     getAddressShop(address: any) {
-        if (address.length) {
+        if (address != null && address.length) {
             return address.join('<br>');
         }
         return '';

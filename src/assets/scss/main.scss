@@ -13,8 +13,6 @@
   }
 }
 
-
-
 .ui-paginator-element {
   min-width: 15px;
   margin: 0;
@@ -22,23 +20,32 @@
   text-align: center;
   padding: 12px 6px 9px;
   border-bottom: 3px solid transparent;
-  &.ui-state-active{
+  &.ui-state-active {
     color: #333;
     border-bottom-color: #d32323;
     cursor: auto;
   }
 }
-.map-wrapper{
+
+.map-wrapper {
   position: relative;
 }
+
 agm-map {
   height: 300px;
 }
-.mo-map{
-  .column-alpha{
+
+.mo-map {
+  .column-alpha {
     width: 33.3333% !important;
   }
   agm-map {
     height: 500px;
   }
+}
+
+.check {
+  border-color: #348c42 !important;
+  background-color: #c4f3a4 !important;
+  color: #348c42 !important;
 }
