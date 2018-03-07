@@ -12,9 +12,7 @@ import {Http} from '@angular/http';
 import {Router} from '@angular/router';
 import * as Raven from 'raven-js';
 import {AlertService} from '../services/alert.service';
-import {AlertPopupService} from '../services/alert-popup.service';
 import {HttpCacheService} from '../services/http-cache.service';
-import {Token} from '../models/token';
 import {environment} from '../../environments/environment';
 import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/catch';
@@ -25,7 +23,6 @@ import {API_KEY_YELP, API_URL} from '../config/global-const';
 export class AuthInterceptor implements HttpInterceptor {
     constructor(private router: Router,
                 private alertService: AlertService,
-                private alertPopupService: AlertPopupService,
                 private cache: HttpCacheService,
                 private localStoreManagerService: LocalStoreManagerService) {
     }

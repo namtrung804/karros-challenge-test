@@ -15,11 +15,7 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import * as Raven from 'raven-js';
 import {AppRoutingModule} from './app-routing.module';
 import {AuthInterceptor} from '../interceptor/auth.interceptor';
-import {AuthGuard} from '../guards/auth.guard';
 import {AlertService} from '../services/alert.service';
-import {AlertPopupService} from '../services/alert-popup.service';
-import {AuthenticationService} from '../services/authentication.service';
-import {UserService} from '../services/user.service';
 import {ValidationService} from '../services/validation.service';
 import {HttpCacheService} from '../services/http-cache.service';
 import {AppComponent} from '../components/app.component';
@@ -91,10 +87,7 @@ export class RavenErrorHandler implements ErrorHandler {
             useClass: AuthInterceptor,
             multi: true
         },
-        AuthGuard,
         AlertService,
-        AlertPopupService,
-        AuthenticationService,
         YelpService,
         LocalStoreManagerService,
         ValidationService,
