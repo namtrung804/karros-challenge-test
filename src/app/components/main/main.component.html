@@ -2720,7 +2720,7 @@
                                                                        (keyup)="boxSearchPlace.next(inputSearchPlace.value)"
                                                                        maxlength="64" id="find_desc" autocomplete="off"
                                                                        placeholder="tacos, cheap dinner, Max’s"
-                                                                       class="main-search_field pseudo-input_field"
+                                                                       class="main-search_field pseudo-input_field place-input"
                                                                        aria-autocomplete="list" tabindex="1"
                                                                        style="display: inline-block; background: transparent; position: relative; width: 100%; box-sizing: border-box;">
             </span>
@@ -2761,7 +2761,7 @@
                 <input maxlength="80" id="dropperText_Mast" autocomplete="off"
                        #inputSearchNear
                        placeholder="address, neighborhood, city, state or zip"
-                       class="main-search_field pseudo-input_field" aria-autocomplete="list" tabindex="2"
+                       class="main-search_field pseudo-input_field near-input" aria-autocomplete="list" tabindex="2"
                 >
             </span>
                             </label>
@@ -3166,7 +3166,7 @@
 
                   <li class="suggested-filters_filter">
                     <ul class="suggested-filters_price-filters">
-                      <li (click)="addFilter('price',1)">
+                      <li class="filter-price" (click)="addFilter('price',1)">
                         <label class="radio-check">
                                                     <span [class.check]="filter.price && filter.price.indexOf(1)!=-1"
                                                           class="filter-label show-tooltip">
@@ -3177,7 +3177,7 @@
         </span>
                         </label>
                       </li>
-                      <li (click)="addFilter('price',2)">
+                      <li class="filter-price" (click)="addFilter('price',2)">
                         <label class="radio-check">
                                                     <span [class.check]="filter.price && filter.price.indexOf(2)!=-1"
                                                           class="filter-label show-tooltip">
@@ -3188,7 +3188,7 @@
         </span>
                         </label>
                       </li>
-                      <li (click)="addFilter('price',3)">
+                      <li class="filter-price" (click)="addFilter('price',3)">
                         <label class="radio-check">
                                                     <span [class.check]="filter.price && filter.price.indexOf(3)!=-1"
                                                           class="filter-label show-tooltip">
@@ -3199,7 +3199,7 @@
         </span>
                         </label>
                       </li>
-                      <li (click)="addFilter('price',4)">
+                      <li class="filter-price" (click)="addFilter('price',4)">
                         <label class="radio-check">
                                                     <span [class.check]="filter.price && filter.price.indexOf(4)!=-1"
                                                           class="filter-label show-tooltip">
@@ -3213,7 +3213,7 @@
                     </ul>
                   </li>
 
-                  <li (click)="addFilter('open_now',true)" class="suggested-filters_filter">
+                  <li (click)="addFilter('open_now',true)" class="suggested-filters_filter filter-open-now">
                     <label class="feature open-now radio-check">
                                         <span [class.check]="filter.open_now" class="filter-label show-tooltip">
             <span aria-hidden="true" style="width: 18px; height: 18px;"
@@ -3233,7 +3233,7 @@
                     </label>
 
                   </li>
-                  <li (click)="addFilter('attributes','cashback')" class="suggested-filters_filter">
+                  <li (click)="addFilter('attributes','cashback')" class="suggested-filters_filter filter-cashback">
                     <label class="feature radio-check">
                                             <span
                                               [class.check]="filter.attributes && filter.attributes.indexOf('cashback')!=-1"
@@ -3256,7 +3256,7 @@
 
 
                   </li>
-                  <li (click)="isShowAllFilter = !isShowAllFilter" class="suggested-filters_filter"><label
+                  <li  (click)="isShowAllFilter = !isShowAllFilter" class="suggested-filters_filter filter-all"><label
                     class="radio-check">
         <span [class.show-triangle-below]="isShowAllFilter"
               class="filter-label filters-toggle js-all-filters-toggle show-tooltip ">
@@ -3307,7 +3307,7 @@
               <div id="filterAllArea" [class.is-collapsed]="!isShowAllFilter" class="filter-panel_filters ">
                 <div class="container">
                   <div class="filter-set sort-filters">
-                    <h4>Sort By</h4>
+                    <h4 class="all-filter-show">Sort By</h4>
                     <ul class="radio-list radio-list-links main">
                       <li (click)="filter.sort_by == 'best_match' ? '' : addFilter('sort_by','best_match')"><label>
                         <span [class.strong-text]="filter.sort_by && filter.sort_by == 'best_match'" class="radio-link">Best Match</span>

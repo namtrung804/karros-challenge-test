@@ -28,11 +28,7 @@
       }
     }
 
-    .pac-container {
-      &.pac-logo {
-        z-index: 99999;
-      }
-    }
+
 
     .ui-paginator-element {
       min-width: 15px;
@@ -94,7 +90,11 @@
     }
   }
 }
-
+.pac-container {
+  &.pac-logo {
+    z-index: 99999;
+  }
+}
 @media screen and (min-width: 768px) and (max-width: 998px) {
   #yelp_main_body {
     .layout-block, .arrange--18, .arrange--6 {

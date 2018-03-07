@@ -6,12 +6,11 @@ exports.config = {
   // param test
   params: {
     timeStep: 1000,
-    msisdn: '01225924037',
-    password: '123456',
-    serialNumber: '744224690767'
+    place: 'Hot Pot',
+    near: 'Los Feliz Boulevard, Los Angeles, CA, USA'
   },
   // end param test
-  allScriptsTimeout: 11000,
+  allScriptsTimeout: 300000,
   specs: [
     './e2e/**/*.e2e-spec.ts'
   ],
@@ -23,7 +22,7 @@ exports.config = {
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
-    defaultTimeoutInterval: 30000,
+    defaultTimeoutInterval: 60000,
     print: function () {
     }
   },
