@@ -3250,8 +3250,8 @@
 
 
                                     </li>
-                                    <li class="suggested-filters_filter"><label class="radio-check">
-        <span class="filter-label filters-toggle js-all-filters-toggle show-tooltip show-triangle-below">
+                                    <li (click)="isShowAllFilter = !isShowAllFilter" class="suggested-filters_filter"><label class="radio-check">
+        <span [class.show-triangle-below]="isShowAllFilter" class="filter-label filters-toggle js-all-filters-toggle show-tooltip ">
             <span aria-hidden="true" style="width: 18px; height: 18px;"
                   class="icon icon--18-filter icon--size-18 icon--currentColor">
     <svg class="icon_svg">
@@ -3296,83 +3296,43 @@
                             </div>
 
 
-                            <div class="filter-panel_filters is-collapsed" style="opacity: 1; display: block;">
+                            <div id="filterAllArea" [class.is-collapsed]="!isShowAllFilter" class="filter-panel_filters " >
                                 <div class="container">
                                     <div class="filter-set sort-filters">
                                         <h4>Sort By</h4>
                                         <ul class="radio-list radio-list-links main">
-                                            <li><label>
-                                                <input checked="checked" class="radio" name="sort" type="radio"
-                                                       value="best_match">
-                                                <span class="radio-link">Best Match</span>
+                                            <li (click)="filter.sort_by == 'best_match' ? '' : addFilter('sort_by','best_match')" ><label>
+                                                <span [class.strong-text]="filter.sort_by && filter.sort_by == 'best_match'" class="radio-link">Best Match</span>
                                             </label>
                                             </li>
-                                            <li><label>
-                                                <input class="radio" name="sort" type="radio" value="rating">
-                                                <span class="radio-link">Highest Rated</span>
+                                            <li (click)="filter.sort_by == 'rating' ? '' : addFilter('sort_by','rating')"><label>
+                                                <span [class.strong-text]="filter.sort_by && filter.sort_by == 'rating'" class="radio-link">Highest Rated</span>
                                             </label>
                                             </li>
-                                            <li><label>
-                                                <input class="radio" name="sort" type="radio" value="review_count">
-                                                <span class="radio-link">Most Reviewed</span>
+                                            <li (click)="filter.sort_by == 'review_count' ? '' : addFilter('sort_by','review_count')"><label>
+                                                <span [class.strong-text]="filter.sort_by && filter.sort_by == 'review_count'" class="radio-link">Most Reviewed</span>
                                             </label>
                                             </li>
                                         </ul>
                                     </div>
 
-                                    <div class="filter-set distance-filters">
-                                        <h4>Distance</h4>
-                                        <ul class="radio-list radio-list-links main">
-                                            <li><label>
-                                                <input class="radio" name="l" type="radio"
-                                                       value="g:-118.423690796,33.9763923189,-118.219070435,34.1470444949">
-                                                <span class="radio-link">Bird's-eye View</span>
-                                            </label>
-                                            </li>
-                                            <li><label>
-                                                <input class="radio" name="l" type="radio"
-                                                       value="g:-118.372535706,34.0188030083,-118.270225525,34.1041293955">
-                                                <span class="radio-link">Driving (5 mi.)</span>
-                                            </label>
-                                            </li>
-                                            <li><label>
-                                                <input class="radio" name="l" type="radio"
-                                                       value="g:-118.34695816,34.0402849045,-118.29580307,34.0829480282">
-                                                <span class="radio-link">Biking (2 mi.)</span>
-                                            </label>
-                                            </li>
-                                            <li><label>
-                                                <input class="radio" name="l" type="radio"
-                                                       value="g:-118.334169388,34.0509526988,-118.308591843,34.0722842608">
-                                                <span class="radio-link">Walking (1 mi.)</span>
-                                            </label>
-                                            </li>
-                                            <li><label>
-                                                <input class="radio" name="l" type="radio"
-                                                       value="g:-118.324577808,34.0589171101,-118.318183422,34.0642500028">
-                                                <span class="radio-link">Within 4 blocks</span>
-                                            </label>
-                                            </li>
-                                        </ul>
-                                    </div>
 
                                     <div class="filter-set price-filters"
                                     >
                                         <h4>Price</h4>
                                         <ul class="main">
-                                            <li>
+                                            <li (click)="addFilter('price',1)">
                                                 <label class="radio-check">
-                                                    <input name="price" type="checkbox"
-                                                           value="RestaurantsPriceRange2.1">
+                                                    <input [checked]="filter.price && filter.price.indexOf(1)!=-1" name="price" type="checkbox">
 
                                                     <span class="filter-label">
             $
         </span>
                                                 </label>
                                             </li>
-                                            <li>
+                                            <li (click)="addFilter('price',2)">
                                                 <label class="radio-check">
-                                                    <input name="price" type="checkbox"
+                                                    <input [checked]="filter.price && filter.price.indexOf(2)!=-1" name="price" type="checkbox"
                                                            value="RestaurantsPriceRange2.2">
 
                                                     <span class="filter-label">
@@ -3380,9 +3340,9 @@
         </span>
                                                 </label>
                                             </li>
-                                            <li>
+                                            <li (click)="addFilter('price',3)">
                                                 <label class="radio-check">
-                                                    <input name="price" type="checkbox"
+                                                    <input  [checked]="filter.price && filter.price.indexOf(3)!=-1" name="price" type="checkbox"
                                                            value="RestaurantsPriceRange2.3">
 
                                                     <span class="filter-label">
@@ -3390,9 +3350,9 @@
         </span>
                                                 </label>
                                             </li>
-                                            <li>
+                                            <li (click)="addFilter('price',4)">
                                                 <label class="radio-check">
-                                                    <input name="price" type="checkbox"
+                                                    <input [checked]="filter.price && filter.price.indexOf(4)!=-1" name="price" type="checkbox"
                                                            value="RestaurantsPriceRange2.4">
 
                                                     <span class="filter-label">
@@ -3407,8 +3367,9 @@
                                     >
                                         <h4 class="feature-filter-title">Features</h4>
                                         <ul class="main">
-                                            <li>            <label class="feature open-now radio-check">
-                                                <input autocomplete="off" checked="checked" name="feature" type="checkbox" value="open_now">
+                                            <li (click)="addFilter('open_now',true)">
+                                              <label class="feature open-now radio-check">
+                                                <input [checked]="filter.open_now" name="feature" type="checkbox" >
 
 
                                                 <span class="filter-label">

@@ -49,3 +49,21 @@ agm-map {
   background-color: #c4f3a4 !important;
   color: #348c42 !important;
 }
+
+.strong-text{
+  font-weight: bold;
+  color: #333 !important;
+  text-decoration: none;
+  cursor: default;
+}
+
+.filter-panel_filters {
+  transition: all 0.5s;
+  height: 150px;
+  opacity: 1;
+  &.is-collapsed {
+    display: block !important;
+    height: 0;
+    opacity: 0;
+  }
+}
