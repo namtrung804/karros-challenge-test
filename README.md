@@ -4,7 +4,7 @@
 * Yarn (https://yarnpkg.com/en/docs/install)
 * Angular 5+
 * Angular CLI v1.6+
-# Function
+# Functions
 - Autocomplete suggestion Place and Near
 - Find Businesses by Place and Near
 - Pagination
@@ -24,6 +24,7 @@
  - lodash (https://lodash.com/)
  - PrimeNG (https://www.primefaces.org/primeng/#/)
  - Google Maps for Angular (https://angular-maps.com/)
+ - Typescript Google Map (https://yarnpkg.com/en/package/@types/googlemaps)
  - Yelp API v3 (https://www.yelp.com/developers/documentation/v3)
 
 
