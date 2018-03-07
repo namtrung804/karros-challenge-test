@@ -63,18 +63,24 @@ export class MainComponent implements OnInit {
   @HostListener('window:scroll', [])
   onWindowScroll() {
     let offset = window.scrollY;
+    let innerWidth = window.innerWidth;
+
     let map = this.document.getElementById('mapArea');
     let filterAllArea = this.document.getElementById('filterAllArea');
     map.style.position = 'relative';
-    if (offset < 300) {
-      map.style.top = `0px`;
-    } else {
-      let maxScroll = this.document.body.scrollHeight - window.innerHeight - this.document.getElementById('footerArea').offsetHeight;
-      if (offset > maxScroll) {
-        map.style.top = `${maxScroll - filterAllArea.offsetHeight}px`;
+    if (innerWidth > 998) {
+      if (offset < 300) {
+        map.style.top = `0px`;
       } else {
-        map.style.top = `${offset - 200 - filterAllArea.offsetHeight}px`;
+        let maxScroll = this.document.body.scrollHeight - window.innerHeight - this.document.getElementById('footerArea').offsetHeight;
+        if (offset > maxScroll) {
+          map.style.top = `${maxScroll - filterAllArea.offsetHeight}px`;
+        } else {
+          map.style.top = `${offset - 200 - filterAllArea.offsetHeight}px`;
+        }
       }
+    }else{
+      map.style.top = `0px`;
     }
   }
 

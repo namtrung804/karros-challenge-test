@@ -1,69 +1,275 @@
 @import "mixin";
 
-.suggestions-list-item {
-  &:hover {
-    background-color: #0073bb;
-    color: white !important;
+#yelp_main_body {
+  .main-content-wrap {
+    min-width: auto;
+    .content-container {
+      .layout-a {
+        .column-alpha {
+          float: left;
+          .photo-box {
+            .photo-box-img {
+              border-radius: 4px;
+              max-width: 250px;
+            }
+
+          }
+        }
+        .column-beta {
+          float: right;
+        }
+      }
+    }
+
+    .suggestions-list-item {
+      &:hover {
+        background-color: #0073bb;
+        color: white !important;
+      }
+    }
+
+    .pac-container {
+      &.pac-logo {
+        z-index: 99999;
+      }
+    }
+
+    .ui-paginator-element {
+      min-width: 15px;
+      margin: 0;
+      margin-bottom: -1px;
+      text-align: center;
+      padding: 12px 6px 9px;
+      border-bottom: 3px solid transparent;
+      &.ui-state-active {
+        color: #333;
+        border-bottom-color: #d32323;
+        cursor: auto;
+      }
+    }
+
+    .map-wrapper {
+      position: relative;
+    }
+
+    agm-map {
+      height: 300px;
+    }
+
+    .mo-map {
+      .column-alpha {
+        width: 33.3333% !important;
+      }
+      agm-map {
+        height: 500px;
+      }
+    }
+
+    .check {
+      border-color: #348c42 !important;
+      background-color: #c4f3a4 !important;
+      color: #348c42 !important;
+    }
+
+    .strong-text {
+      font-weight: bold;
+      color: #333 !important;
+      text-decoration: none;
+      cursor: default;
+    }
+
+    .filter-panel_filters {
+      transition: all 0.5s;
+      height: 150px;
+      opacity: 1;
+      &.is-collapsed {
+        display: block !important;
+        height: 0;
+        opacity: 0;
+      }
+    }
+
+    .page-header {
+      margin: 0;
+    }
   }
 }
 
-.pac-container {
-  &.pac-logo {
-    z-index: 99999;
+@media screen and (min-width: 768px) and (max-width: 998px) {
+  #yelp_main_body {
+    .layout-block, .arrange--18, .arrange--6 {
+      margin: 0;
+    }
+    .page-header {
+      .main-header {
+        .main-header_wrapper {
+          .main-header--full_arrange_unit {
+            width: 100%;
+            margin: 0;
+            display: block;
+            .main-header_logo {
+              margin: 0 auto 15px auto;
+            }
+            .main-header_notifications {
+              text-align: right;
+            }
+            .main-search_submit{
+              position: relative;
+              top: -6px;
+              left: -3px;
+            }
+          }
+        }
+      }
+    }
+    .main-content-wrap {
+      .top-shelf {
+        min-width: auto;
+      }
+      .content-container {
+        width: 100%;
+        padding: 0;
+        .layout-a {
+          &.mo-map {
+            .column-alpha {
+              width: 100% !important;
+            }
+            agm-map, .yelp-map-container {
+              height: 300px;
+            }
+          }
+          .column-alpha {
+            width: 100%;
+            .indexed-biz-archive {
+              .biz-listing-large {
+                margin: 0;
+              }
+            }
+          }
+          .column-beta {
+            width: 100%;
+            .map-wrapper, .yelp-map-container {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+    #footerArea {
+      .arrange--30.arrange--equal, .arrange--30.arrange--wrap {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
   }
 }
 
-.ui-paginator-element {
-  min-width: 15px;
-  margin: 0;
-  margin-bottom: -1px;
-  text-align: center;
-  padding: 12px 6px 9px;
-  border-bottom: 3px solid transparent;
-  &.ui-state-active {
-    color: #333;
-    border-bottom-color: #d32323;
-    cursor: auto;
-  }
-}
+@media screen and (max-width: 768px) {
+  #yelp_main_body {
+    .layout-block, .arrange--18, .arrange--6 {
+      margin: 0;
+    }
+    .page-header {
+      .main-header {
+        .main-header_wrapper {
+          .main-header--full_arrange_unit {
+            width: 100%;
+            margin: 0;
+            display: block;
+            .main-header_logo {
+              margin: 0 auto 15px auto;
+            }
+            .arrange {
+              display: block;
+              min-width: auto;
+              table-layout: unset;
+              .arrange_unit {
+                display: block;
+                .main-search_search-field-arrange, .main-search_near-field-arrange {
+                  display: block;
+                  width: 100%;
+                }
 
-.map-wrapper {
-  position: relative;
-}
+              }
+              .main-search_submit {
+                width: 100%;
+                margin: 10px 0;
+              }
+            }
+            .main-header_notifications {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    .main-content-wrap {
+      .top-shelf {
+        min-width: auto;
+      }
+      .content-container {
+        width: 100%;
+        padding: 0;
+        .layout-a {
+          &.mo-map {
+            .column-alpha {
+              width: 100% !important;
+            }
+            agm-map, .yelp-map-container {
+              height: 300px;
+            }
+          }
+          .column-alpha {
+            width: 100%;
 
-agm-map {
-  height: 300px;
-}
+            .indexed-biz-archive {
+              .biz-listing-large {
+                margin: 0;
+                .photo-box {
+                  height: 100px;
+                  width: 100px;
+                  .photo-box-img {
+                    border-radius: 4px;
+                    max-width: 100px;
+                  }
 
-.mo-map {
-  .column-alpha {
-    width: 33.3333% !important;
-  }
-  agm-map {
-    height: 500px;
-  }
-}
+                }
+                .main-attributes, .secondary-attributes {
+                  width: 100%;
+                  text-align: left;
+                }
+              }
+            }
+            .page-of-pages, .pagination-links {
+              width: 100%;
+              display: block;
+              text-align: center;
+              font-size: 0.7em;
+            }
+          }
+          .column-beta {
+            width: 100%;
+            .map-wrapper, .yelp-map-container {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+    #footerArea {
+      .arrange--30.arrange--equal, .arrange--30.arrange--wrap {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .main-footer_section {
+        display: block;
+        .main-footer_item {
+          width: 100%;
+          display: block;
+          float: none;
+        }
+      }
 
-.check {
-  border-color: #348c42 !important;
-  background-color: #c4f3a4 !important;
-  color: #348c42 !important;
-}
-
-.strong-text{
-  font-weight: bold;
-  color: #333 !important;
-  text-decoration: none;
-  cursor: default;
-}
-
-.filter-panel_filters {
-  transition: all 0.5s;
-  height: 150px;
-  opacity: 1;
-  &.is-collapsed {
-    display: block !important;
-    height: 0;
-    opacity: 0;
+    }
   }
 }
