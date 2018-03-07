@@ -72,9 +72,9 @@ export class MainComponent implements OnInit {
       if (offset < 300) {
         map.style.top = `0px`;
       } else {
-        let maxScroll = this.document.body.scrollHeight - window.innerHeight - this.document.getElementById('footerArea').offsetHeight;
+        let maxScroll = this.document.body.scrollHeight - window.innerHeight - this.document.getElementById('footerArea').offsetHeight - filterAllArea.offsetHeight + 300;
         if (offset > maxScroll) {
-          map.style.top = `${maxScroll - filterAllArea.offsetHeight}px`;
+          map.style.top = `${maxScroll}px`;
         } else {
           map.style.top = `${offset - 200 - filterAllArea.offsetHeight}px`;
         }
