@@ -31,15 +31,7 @@
     {
       "name": "api-freshness",
       "urls": [
-        "/products",
-        "/collections",
-        "/dashboard",
-        "/themes",
-        "/navigation",
-        "/settings",
-        "/customers",
-        "/orders",
-        "/pages"
+        "/search"
       ],
       "cacheConfig": {
         "strategy": "freshness",

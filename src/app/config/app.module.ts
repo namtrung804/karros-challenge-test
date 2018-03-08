@@ -74,7 +74,7 @@ export class RavenErrorHandler implements ErrorHandler {
         CalendarModule,
         DragulaModule,
         DndModule.forRoot(),
-        // ServiceWorkerModule.register('./ngsw-worker.js', {enabled: environment.production}),
+        ServiceWorkerModule.register('./ngsw-worker.js', {enabled: environment.production}),
         // App Routing
         AppRoutingModule,
     ],
