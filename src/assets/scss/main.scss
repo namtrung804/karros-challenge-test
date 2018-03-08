@@ -56,6 +56,10 @@
       .column-alpha {
         width: 33.3333% !important;
       }
+      .column-beta{
+        right: 33.33%;
+        position: relative;
+      }
       agm-map {
         height: 500px;
       }
