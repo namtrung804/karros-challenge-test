@@ -3,7 +3,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import * as moment from 'moment';
 import {AlertService} from '../../services/alert.service';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from "rxjs/Observable";
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/forkJoin'
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 import {Subject} from 'rxjs/Subject';
 import {YelpService} from '../../services/yelp.service';
@@ -11,7 +14,6 @@ import {MapsAPILoader} from '@agm/core';
 import {} from 'googlemaps';
 import {Business} from '../../models/business';
 import * as _ from 'lodash';
-import {number} from 'ng2-validation/dist/number';
 import {PageScrollInstance, PageScrollService} from 'ng2-page-scroll';
 import {DOCUMENT} from '@angular/common';
 
@@ -216,7 +218,7 @@ export class MainComponent implements OnInit {
         this.getDataBusiness();
     }
 
-    addFilter(key: string, value: string) {
+    addFilter(key: string, value: any) {
         if (_.isUndefined(this.filter[key])) {
             // underfined
             if (key == 'price' || key == 'attributes') {

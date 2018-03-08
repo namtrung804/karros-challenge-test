@@ -2,7 +2,10 @@
 import {Headers, Http, RequestOptions, Response} from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
-import {Observable} from 'rxjs';
+import {Observable} from "rxjs/Observable";
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/forkJoin';
 import * as moment from 'moment';
 import {HttpClient} from '@angular/common/http';
 

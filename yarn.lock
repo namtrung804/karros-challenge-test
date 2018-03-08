@@ -380,11 +380,9 @@ angular-in-memory-web-api@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/angular-in-memory-web-api/-/angular-in-memory-web-api-0.5.2.tgz#ff2ea666abfd04dd7d16c953ec972e1318a09824"
 
-angular-pipes@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/angular-pipes/-/angular-pipes-7.0.1.tgz#12bad8d43a6c6f36ef2f878842da3adad54f81e9"
-  dependencies:
-    tslib "^1.7.1"
+angular2-pipes@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/angular2-pipes/-/angular2-pipes-2.0.1.tgz#b4334a21c1b2fbdb390545aee5b0845e40fa9e10"
 
 angular2-recaptcha@^0.6.0:
   version "0.6.0"
@@ -4696,6 +4694,10 @@ ngx-chips@^1.6.1:
   resolved "https://registry.yarnpkg.com/ngx-chips/-/ngx-chips-1.6.1.tgz#b812769f5cfbdbd9ee18c3508c7e8f1890d89e5a"
   dependencies:
     ng2-material-dropdown "~0.8.2"
+
+ngx-pipes@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/ngx-pipes/-/ngx-pipes-2.1.2.tgz#c487f8a11d95f8164800caacdd7af352e9c51424"
 
 ngx-slimscroll@^3.5.2:
   version "3.5.2"

@@ -70,14 +70,11 @@ export class RavenErrorHandler implements ErrorHandler {
         }),
         ReactiveFormsModule,
         ReCaptchaModule,
-        AgmCoreModule.forRoot({
-            apiKey: API_KEY_GOOGLE_MAP
-        }),
         // DatePickerModule,
         CalendarModule,
         DragulaModule,
         DndModule.forRoot(),
-        ServiceWorkerModule.register('./ngsw-worker.js', {enabled: environment.production}),
+        // ServiceWorkerModule.register('./ngsw-worker.js', {enabled: environment.production}),
         // App Routing
         AppRoutingModule,
     ],

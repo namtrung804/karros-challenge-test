@@ -49,7 +49,7 @@ function searchPlaceAndNear() {
     let filterPrice = element.all(by.css('.filter-price'));
     it('should return business with $ price filter', function () {
         filterPrice.get(0).click();
-        expect(business.getText()).toBe('Western Doma Noodles');
+        expect(business.getText()).toBe('Sanamluang Cafe');
     });
     it('should return business with $$ price filter', function () {
         filterPrice.get(1).click();
